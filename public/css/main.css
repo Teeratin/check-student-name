@@ -1,0 +1,382 @@
+:root {
+    --bg: #f0f7f7;
+    --primary: #025951;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    overflow: hidden;
+    font-family: "Noto Sans Thai", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.menu-wrapper {
+    height: 80vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 92vh;
+}
+
+.wrapper .content {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 1rem;
+}
+
+.avatar {
+    margin-right: 8px;
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.sidebar-avatar {
+    background-color: var(--bg);
+    padding: 1.5rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-radius: 14px;
+    transform: scale(1);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.sidebar-avatar:hover {
+    background-color: var(--primary);
+}
+
+.sidebar-avatar:focus,
+.sidebar-avatar:active {
+    filter: brightness(90%);
+    transform: scale(0.96);
+}
+
+.sidebar-avatar img {
+    width: 102px;
+    height: 102px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    margin-bottom: 1rem;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.sidebar-avatar-text {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #3e4756;
+    transition: color 0.3s ease-in-out;
+}
+
+.sidebar-avatar:hover .sidebar-avatar-text {
+    color: var(--bg);
+}
+/*============= Start Button Login =============*/
+.btn-login {
+    background-color: var(--primary);
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.6rem 0.75rem;
+    color: #fff;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transform: scale(1);
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out,
+        transform 0.1s;
+}
+
+.btn-login:hover {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.btn-login:focus,
+.btn-login:active {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    transform: scale(0.98);
+}
+/*============= End Button Login =============*/
+.login-wrapper {
+    /* background-image: url("../image/bg-login.jpg"); */
+    /* background-image: url("https://images.pexels.com/photos/4965816/pexels-photo-4965816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+    /* background-image: linear-gradient(
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.4)
+      ),
+      url("https://scontent.fbkk22-7.fna.fbcdn.net/v/t1.15752-9/89328157_555011792031293_1948202353786093568_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeHFpnPDtWYhJvJo9TltAreL0NuFTWSNENzQ24VNZI0Q3L50ox6hHgxZWujCLSmjoMMsKTVgtQAUZeQxLFVAZT-N&_nc_ohc=xVEGxXoC1M4AX-0JmfU&_nc_ht=scontent.fbkk22-7.fna&oh=03_AdQkzxGj--_TK2pNothukOtNz3j3gO3TKjdhAr4hH5eQsg&oe=6399AC26"); */
+    background-color: #b3cdcb;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+    height: 100vh;
+}
+
+.card-login {
+    background-color: var(--bg);
+    width: 85%;
+    border: none;
+    backdrop-filter: blur(6px);
+    border-radius: 14px;
+}
+
+.card-login .card-body {
+    padding: 6rem 2.5rem;
+}
+
+.card-login .card-login-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: #3e4756;
+}
+.nav-color {
+    background-color: #b0d9d5;
+    color: var(--primary);
+}
+
+.font-header {
+    color: var(--primary);
+}
+.sidebar {
+    background-color: white;
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)),
+      url("https://images.unsplash.com/photo-1664714517831-83a2d442f4f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=753&q=80"); */
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 16.25rem;
+    margin: 0 0 1rem 1rem;
+    padding: 2rem 0 1.75rem 1rem;
+    border-radius: 0.75rem;
+    /* backdrop-filter: blur(10px); */
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.sidebar .sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .sidebar-item {
+    position: relative;
+}
+
+.sidebar .sidebar-item a {
+    position: relative;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.75px;
+    color: #3e4756;
+    /* color: #fff; */
+    padding: 0.874rem 1rem;
+}
+
+.sidebar .sidebar-item.active a {
+    color: var(--primary);
+    background-color: var(--bg);
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+}
+
+.sidebar .sidebar-item a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--bg);
+    width: 0;
+    height: 100%;
+    opacity: 0;
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.sidebar .sidebar-item.has-submenu .sidebar-submenu::after {
+    content: "\F282";
+    font-family: bootstrap-icons !important;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.sidebar .sidebar-item.has-submenu .sidebar-submenu:active,
+.sidebar .sidebar-item.has-submenu .sidebar-submenu:focus {
+    color: var(--primary);
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+}
+
+.sidebar .sidebar-item a:hover:before,
+.sidebar .sidebar-item a:active:before,
+.sidebar .sidebar-item a:focus:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--bg);
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+}
+
+/* .sidebar .sidebar-item:not(:last-child) {
+    margin-bottom: 1.25rem;
+  } */
+
+.sidebar .sidebar-item span {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.625rem;
+    z-index: 1;
+}
+
+.sidebar .sidebar-item i {
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar li .submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.sub-menu {
+    padding-left: 80px;
+}
+/*============= Start Form Login =============*/
+.form-label-login {
+    font-size: 0.874rem;
+    font-weight: 300;
+    color: #3e4756;
+    letter-spacing: 0.8px;
+}
+
+.form-control-login {
+    background-color: transparent;
+    color: #3e4756;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    letter-spacing: 0.8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-control-login:focus {
+    background-color: transparent;
+    outline: none !important;
+    border: 1px solid var(--primary);
+    box-shadow: var(--primary) 0px 1px 3px 0px, var(--primary) 0px 0px 0px 1px;
+}
+
+.form-control-login::placeholder {
+    transition: all 0.2s ease-in-out;
+}
+
+.form-control-login:focus::placeholder {
+    letter-spacing: 2px;
+}
+/*============= End Form Login =============*/
+
+/*============= Start Card Menu Page =============*/
+
+.card-menu {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.card-menu:hover {
+    color: #f0f7f7;
+    cursor: pointer;
+}
+
+.card-menu:focus,
+.card-menu:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-menu .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background-color: var(--primary);
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-menu:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+    z-index: 0;
+}
+
+/*============= End Card Menu Page =============*/
+
+.img-account-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}

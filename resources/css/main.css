@@ -1,0 +1,64 @@
+:root {
+    --bg: #f0f7f7;
+    --primary: #025951;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    overflow: hidden;
+    font-family: "Noto Sans Thai", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.menu-wrapper {
+    height: 80vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 92vh;
+}
+
+.wrapper .content {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 1rem;
+}
+.login-wrapper {
+    /* background-image: url("../image/bg-login.jpg"); */
+    /* background-image: url("https://images.pexels.com/photos/4965816/pexels-photo-4965816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+    /* background-image: linear-gradient(
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.4)
+      ),
+      url("https://scontent.fbkk22-7.fna.fbcdn.net/v/t1.15752-9/89328157_555011792031293_1948202353786093568_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeHFpnPDtWYhJvJo9TltAreL0NuFTWSNENzQ24VNZI0Q3L50ox6hHgxZWujCLSmjoMMsKTVgtQAUZeQxLFVAZT-N&_nc_ohc=xVEGxXoC1M4AX-0JmfU&_nc_ht=scontent.fbkk22-7.fna&oh=03_AdQkzxGj--_TK2pNothukOtNz3j3gO3TKjdhAr4hH5eQsg&oe=6399AC26"); */
+    background-color: #b3cdcb;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+    height: 100vh;
+}
