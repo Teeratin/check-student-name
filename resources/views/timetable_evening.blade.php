@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-lg-4">
-            <a href="{{ route('checkname') }}">
+            <a href="{{ route('checkname_index') }}">
                 <div class="card bg-c-green">
                     <div class="card-block">
                         <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-lg-4">
-            <a href="{{ route('checkname') }}">
+            <a href="{{ route('checkname_index') }}">
                 <div class="card bg-c-green">
                     <div class="card-block">
                         <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="col-lg-4">
-            <a href="{{ route('checkname') }}">
+            <a href="{{ route('checkname_index') }}">
                 <div class="card bg-c-green">
                     <div class="card-block">
                         <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>

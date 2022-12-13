@@ -35,7 +35,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('profile_index') }}">
                                     <i class="bi bi-person-gear"></i> บัญชี</a>
                             </li>
                             <li>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <a href="{{ route('profile') }}">
+                        <a href="{{ route('profile_index') }}">
                             <div class="card card-menu p-3 mb-5 bg-body">
                                 <div class="card-body text-center">
                                     <i class="bi bi-person-vcard" style="font-size: 100px"></i>

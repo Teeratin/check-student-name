@@ -35,7 +35,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('profile_index') }}">
                                     <i class="bi bi-person-gear"></i> บัญชี</a>
                             </li>
                             <li>
@@ -57,7 +57,7 @@
             <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-4 mx-auto">
-                        <a href="{{ route('timetable_normal') }}">
+                        <a href="{{ route('timetable_normal_index') }}">
                             <div class="card card-menu p-3 mb-5 bg-body">
                                 <div class="card-body text-center">
                                     <i class="bi bi-mortarboard" style="font-size: 100px"></i>
@@ -67,7 +67,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4 mx-auto">
-                        <a href="{{ route('timetable_evening') }}">
+                        <a href="{{ route('timetable_evening_index') }}">
                             <div class="card card-menu p-3 mb-5 bg-body">
                                 <div class="card-body text-center">
                                     <i class="bi bi-mortarboard-fill" style="font-size: 100px"></i>

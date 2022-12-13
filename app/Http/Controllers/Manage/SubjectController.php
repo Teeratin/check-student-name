@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manage;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ChecknameController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class ChecknameController extends Controller
      */
     public function index()
     {
-        return view('checkname');
+        return view('manage.subject');
     }
 
     /**
@@ -54,9 +55,9 @@ class ChecknameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('manage.edit_subject');
     }
 
     /**

@@ -37,7 +37,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('profile') }}">
+                                <a class="dropdown-item" href="{{ route('profile_index') }}">
                                     <i class="bi bi-person-gear"></i> บัญชี</a>
                             </li>
                             <li>
@@ -85,12 +85,12 @@
                     <div class="collapse {{ $menu_timetable ? 'show' : '' }}" id="section-collapse">
                         <ul class="submenu">
                             <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'timetable_normal' ? 'active' : '' }}"
-                                    href="{{ route('timetable_normal') }}"> <span>ภาคปกติ</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'timetable_normal_index' ? 'active' : '' }}"
+                                    href="{{ route('timetable_normal_index') }}"> <span>ภาคปกติ</span></a>
                             </li>
                             <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'timetable_evening' ? 'active' : '' }}"
-                                    href="{{ route('timetable_evening') }}"><span>ภาคสมทบ</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'timetable_evening_index' ? 'active' : '' }}"
+                                    href="{{ route('timetable_evening_index') }}"><span>ภาคสมทบ</span></a>
                             </li>
                         </ul>
                     </div>
@@ -107,24 +107,24 @@
                     <div class="collapse {{ $menu_manage ? 'show' : '' }}" id="manage-collapse">
                         <ul class="submenu">
                             <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'manage_lecturer' ? 'active' : '' }}"
-                                    href="{{ route('manage_lecturer') }}"> <span>อาจารย์</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_lecturer_index' ? 'active' : '' }}"
+                                    href="{{ route('manage_lecturer_index') }}"> <span>อาจารย์</span></a>
                             </li>
                             <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'manage_course' ? 'active' : '' }}"
-                                    href="{{ route('manage_course') }}"><span>หลักสูตร</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_course_index' ? 'active' : '' }}"
+                                    href="{{ route('manage_course_index') }}"><span>หลักสูตร</span></a>
                             </li>
                             <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'manage_scoring' ? 'active' : '' }}"
-                                    href="{{ route('manage_scoring') }}"><span>เกณฑ์การให้คะแนน</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_scoring_index' ? 'active' : '' }}"
+                                    href="{{ route('manage_scoring_index') }}"><span>เกณฑ์การให้คะแนน</span></a>
                             </li>
                             <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'manage_subject' ? 'active' : '' }}"
-                                    href="{{ route('manage_subject') }}"><span>วิชา</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_subject_index' ? 'active' : '' }}"
+                                    href="{{ route('manage_subject_index') }}"><span>วิชา</span></a>
                             </li>
                             <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'manage_section' ? 'active' : '' }}"
-                                    href="{{ route('manage_section') }}"><span>กลุ่มเรียน</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_section_index' ? 'active' : '' }}"
+                                    href="{{ route('manage_section_index') }}"><span>กลุ่มเรียน</span></a>
                             </li>
                         </ul>
                     </div>
@@ -156,6 +156,7 @@
 <script src="{{ asset('js/overscroll.js') }}"></script>
 <script src="{{ asset('js/smooth-scrollbar.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
+

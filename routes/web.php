@@ -3,6 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ChecknameController;
+use App\Http\Controllers\Manage\CourseController;
+use App\Http\Controllers\Manage\LecturerController;
+use App\Http\Controllers\Manage\ScoringController;
+use App\Http\Controllers\Manage\SectionController;
+use App\Http\Controllers\Manage\SubjectController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Timetable\EveningController;
+use App\Http\Controllers\Timetable\NormalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,21 +30,43 @@ Route::get('/', function () {
 //  MenuController
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/menu_section', [MenuController::class, 'menu_section'])->name('menu_section');
+Route::prefix('profile')->name('profile_')->group(function () {
+    Route::get('/', [ProfileController::class, 'index'])->name('index');
+});
+Route::prefix('checkname')->name('checkname_')->group(function () {
+    Route::get('/', [ChecknameController::class, 'index'])->name('index');
+});
 Route::prefix('timetable')->name('timetable_')->group(function () {
-    Route::get('/normal', [MenuController::class, 'timetable_normal'])->name('normal');
-    Route::get('/evening', [MenuController::class, 'timetable_evening'])->name('evening');
+    Route::prefix('normal')->name('normal_')->group(function () {
+        Route::get('/', [NormalController::class, 'index'])->name('index');
+    });
+    Route::prefix('evening')->name('evening_')->group(function () {
+        Route::get('/', [EveningController::class, 'index'])->name('index');
+    });
 });
-Route::get('/profile', [MenuController::class, 'profile'])->name('profile');
 Route::prefix('manage')->name('manage_')->group(function () {
-    Route::get('/course', [MenuController::class, 'manage_course'])->name('course');
-    Route::get('/lecturer', [MenuController::class, 'manage_lecturer'])->name('lecturer');
-    Route::get('/scoring', [MenuController::class, 'manage_scoring'])->name('scoring');
-    Route::get('/section', [MenuController::class, 'manage_section'])->name('section');
-    Route::get('/subject', [MenuController::class, 'manage_subject'])->name('subject');
+    Route::prefix('subject')->name('subject_')->group(function () {
+        Route::get('/', [SubjectController::class, 'index'])->name('index');
+        Route::get('/edit', [SubjectController::class, 'edit'])->name('edit');
+    });
+    Route::prefix('course')->name('course_')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+    });
+    Route::prefix('lecturer')->name('lecturer_')->group(function () {
+        Route::get('/', [LecturerController::class, 'index'])->name('index');
+    });
+    Route::prefix('scoring')->name('scoring_')->group(function () {
+        Route::get('/', [ScoringController::class, 'index'])->name('index');
+    });
+    Route::prefix('section')->name('section_')->group(function () {
+        Route::get('/', [SectionController::class, 'index'])->name('index');
+        Route::get('/edit', [SectionController::class, 'edit'])->name('edit');
+    });
 });
+
 
 //  End MenuController
 
 //  ChecknameController
-Route::get('/checkname', [ChecknameController::class, 'index'])->name('checkname');
+
 //  End ChecknameController
