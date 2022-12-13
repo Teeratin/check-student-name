@@ -21,15 +21,20 @@ Route::get('/', function () {
 
 //  MenuController
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
-Route::get('/menu_section', [MenuController::class, 'menu2'])->name('menu2');
-Route::get('/timetable1', [MenuController::class, 'timetable1'])->name('timetable1');
-Route::get('/timetable2', [MenuController::class, 'timetable2'])->name('timetable2');
+Route::get('/menu_section', [MenuController::class, 'menu_section'])->name('menu_section');
+Route::prefix('timetable')->name('timetable_')->group(function () {
+    Route::get('/normal', [MenuController::class, 'timetable_normal'])->name('normal');
+    Route::get('/evening', [MenuController::class, 'timetable_evening'])->name('evening');
+});
 Route::get('/profile', [MenuController::class, 'profile'])->name('profile');
-Route::get('/manage_course', [MenuController::class, 'manage_course'])->name('manage_course');
-Route::get('/manage_lecturer', [MenuController::class, 'manage_lecturer'])->name('manage_lecturer');
-Route::get('/manage_scoring', [MenuController::class, 'manage_scoring'])->name('manage_scoring');
-Route::get('/manage_section', [MenuController::class, 'manage_section'])->name('manage_section');
-Route::get('/manage_subject', [MenuController::class, 'manage_subject'])->name('manage_subject');
+Route::prefix('manage')->name('manage_')->group(function () {
+    Route::get('/course', [MenuController::class, 'manage_course'])->name('course');
+    Route::get('/lecturer', [MenuController::class, 'manage_lecturer'])->name('lecturer');
+    Route::get('/scoring', [MenuController::class, 'manage_scoring'])->name('scoring');
+    Route::get('/section', [MenuController::class, 'manage_section'])->name('section');
+    Route::get('/subject', [MenuController::class, 'manage_subject'])->name('subject');
+});
+
 //  End MenuController
 
 //  ChecknameController

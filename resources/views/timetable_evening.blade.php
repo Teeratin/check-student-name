@@ -23,14 +23,12 @@
             <p class="h4 mt-3">ช่วงเช้า</p>
         </div>
 
-        <div class="col-lg-3">
-            <a href="">
-                <div class="card">
-                    <div class="card-header text-center h4">
-                        วันจันทร์
-                    </div>
-                    <div class="card-body text-center">
-                        <p>[405-41-06 - 42464]</p>
+        <div class="col-lg-4">
+            <a href="{{ route('checkname') }}">
+                <div class="card bg-c-green">
+                    <div class="card-block">
+                        <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
+                        <h6>[405-41-06 - 42464]</h6>
                         <p>17081 เขตเหนือ [อาคาร 17 ]</p>
                         <p>Information Technology Project2</p>
                     </div>
@@ -42,14 +40,12 @@
             <p class="h4 mt-3">ช่วงบ่าย</p>
         </div>
 
-        <div class="col-lg-3">
-            <a href="">
-                <div class="card">
-                    <div class="card-header text-center h4">
-                        วันจันทร์
-                    </div>
-                    <div class="card-body text-center">
-                        <p>[405-41-06 - 42464]</p>
+        <div class="col-lg-4">
+            <a href="{{ route('checkname') }}">
+                <div class="card bg-c-green">
+                    <div class="card-block">
+                        <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
+                        <h6>[405-41-06 - 42464]</h6>
                         <p>17081 เขตเหนือ [อาคาร 17 ]</p>
                         <p>Information Technology Project2</p>
                     </div>
@@ -61,14 +57,12 @@
             <p class="h4 mt-3">ช่วงค่ำ</p>
         </div>
 
-        <div class="col-lg-3">
-            <a href="">
-                <div class="card">
-                    <div class="card-header text-center h4">
-                        วันจันทร์
-                    </div>
-                    <div class="card-body text-center">
-                        <p>[405-41-06 - 42464]</p>
+        <div class="col-lg-4">
+            <a href="{{ route('checkname') }}">
+                <div class="card bg-c-green">
+                    <div class="card-block">
+                        <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
+                        <h6>[405-41-06 - 42464]</h6>
                         <p>17081 เขตเหนือ [อาคาร 17 ]</p>
                         <p>Information Technology Project2</p>
                     </div>

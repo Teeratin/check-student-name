@@ -42,7 +42,7 @@
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="index.html">
+                                <a class="dropdown-item" href="{{ route('login') }}">
                                     <i class="bi bi-box-arrow-right"></i> ออกจากระบบ</a>
                             </li>
                         </ul>
@@ -57,7 +57,7 @@
             <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-4">
-                        <a href="{{ route('menu2') }}">
+                        <a href="{{ route('menu_section') }}">
                             <div class="card card-menu p-3 mb-5 bg-body">
                                 <div class="card-body text-center">
                                     <i class="bi bi-calendar-check" style="font-size: 100px"></i>

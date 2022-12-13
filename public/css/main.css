@@ -98,6 +98,7 @@ a:focus {
 .sidebar-avatar:hover .sidebar-avatar-text {
     color: var(--bg);
 }
+
 /*============= Start Button Login =============*/
 .btn-login {
     background-color: var(--primary);
@@ -126,6 +127,7 @@ a:focus {
     border: 1px solid var(--primary);
     transform: scale(0.98);
 }
+
 /*============= End Button Login =============*/
 .login-wrapper {
     /* background-image: url("../image/bg-login.jpg"); */
@@ -162,6 +164,7 @@ a:focus {
     margin-bottom: 2rem;
     color: #3e4756;
 }
+
 .nav-color {
     background-color: #b0d9d5;
     color: var(--primary);
@@ -170,6 +173,7 @@ a:focus {
 .font-header {
     color: var(--primary);
 }
+
 .sidebar {
     background-color: white;
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)),
@@ -206,6 +210,8 @@ a:focus {
     /* color: #fff; */
     padding: 0.874rem 1rem;
 }
+
+
 
 .sidebar .sidebar-item.active a {
     color: var(--primary);
@@ -245,6 +251,11 @@ a:focus {
     border-top-left-radius: 9999px;
     border-bottom-left-radius: 9999px;
 }
+.sidebar .sidebar-item.has-submenu .sidebar-submenu.active {
+    color: var(--primary);
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+}
 
 .sidebar .sidebar-item a:hover:before,
 .sidebar .sidebar-item a:active:before,
@@ -259,6 +270,10 @@ a:focus {
     opacity: 1;
     border-top-left-radius: 9999px;
     border-bottom-left-radius: 9999px;
+}
+
+.submenu .nav-link.active {
+    color: var(--primary);
 }
 
 /* .sidebar .sidebar-item:not(:last-child) {
@@ -284,9 +299,11 @@ a:focus {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
 .sub-menu {
     padding-left: 80px;
 }
+
 /*============= Start Form Login =============*/
 .form-label-login {
     font-size: 0.874rem;
@@ -320,6 +337,7 @@ a:focus {
 .form-control-login:focus::placeholder {
     letter-spacing: 2px;
 }
+
 /*============= End Form Login =============*/
 
 /*============= Start Card Menu Page =============*/
@@ -379,4 +397,17 @@ a:focus {
     width: 150px;
     height: 150px;
     border-radius: 100%;
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg, var(--primary), #4ebda7);
+    color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    padding: 25px;
 }

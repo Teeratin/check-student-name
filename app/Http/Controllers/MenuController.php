@@ -6,45 +6,53 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
-    function index(){
+    public function index()
+    {
         return view('menu');
     }
 
-    function menu2(){
+    public function menu_section()
+    {
         return view('menu_section');
     }
 
-    function timetable1(){
-        return view('timetable1');
+    public function timetable_normal()
+    {
+        return view('timetable_normal');
     }
 
-    function timetable2(){
-        return view('timetable2');
+    public function timetable_evening()
+    {
+        return view('timetable_evening');
     }
 
-    function profile(){
+    public function profile()
+    {
         return view('profile');
     }
 
-    function manage_course(){
+    public function manage_course()
+    {
         return view('manage.course');
     }
 
-    function manage_lecturer(){
+    public function manage_lecturer()
+    {
         return view('manage.lecturer');
     }
 
-    function manage_scoring(){
+    public function manage_scoring()
+    {
         return view('manage.scoring_criteria');
     }
 
-    function manage_section(){
+    public function manage_section()
+    {
         return view('manage.section');
     }
 
-    function manage_subject(){
+    public function manage_subject()
+    {
         return view('manage.subject');
     }
-
-
 }

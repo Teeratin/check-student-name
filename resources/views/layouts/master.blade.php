@@ -67,51 +67,64 @@
                 </div>
             </a>
             <ul class="list-unstyled ps-0">
-                <li class="sidebar-item ">
+                <li class="sidebar-item {{ Route::currentRouteName() == 'menu' ? 'active' : '' }}">
                     <a href="{{ route('menu') }}">
                         <i class="bi bi-house-door"></i>
                         <span>หน้าหลัก</span>
                     </a>
                 </li>
-                <li class="sidebar-item has-submenu collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#section-collapse" aria-expanded="false">
-                    <a class="sidebar-link sidebar-submenu" href="#">
+                @php
+                    $menu_timetable = strpos(Route::currentRouteName(), 'timetable_') === 0;
+                @endphp
+                <li class="sidebar-item has-submenu {{ !$menu_timetable ? 'collapsed' : '' }}" data-bs-toggle="collapse"
+                    data-bs-target="#section-collapse" aria-expanded="{{ $menu_timetable ? 'true' : 'false' }}">
+                    <a class="sidebar-link sidebar-submenu {{ $menu_timetable ? 'active' : '' }}" href="#">
                         <i class="bi bi-calendar-check"></i>
                         <span>ตารางสอน</span>
                     </a>
-                    <div class="collapse" id="section-collapse">
+                    <div class="collapse {{ $menu_timetable ? 'show' : '' }}" id="section-collapse">
                         <ul class="submenu">
                             <li>
-                                <a class="nav-link" href="{{ route('timetable1') }}"> <span>ภาคปกติ</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'timetable_normal' ? 'active' : '' }}"
+                                    href="{{ route('timetable_normal') }}"> <span>ภาคปกติ</span></a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('timetable2') }}"><span>ภาคสมทบ</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'timetable_evening' ? 'active' : '' }}"
+                                    href="{{ route('timetable_evening') }}"><span>ภาคสมทบ</span></a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                <li class="sidebar-item has-submenu collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#manage-collapse" aria-expanded="false">
-                    <a class="sidebar-link sidebar-submenu" href="#">
+                @php
+                    $menu_manage = strpos(Route::currentRouteName(), 'manage_') === 0;
+                @endphp
+                <li class="sidebar-item has-submenu {{ !$menu_manage ? 'collapsed' : '' }}" data-bs-toggle="collapse"
+                    data-bs-target="#manage-collapse" aria-expanded="{{ $menu_manage ? 'true' : 'false' }}">
+                    <a class="sidebar-link sidebar-submenu {{ $menu_manage ? 'active' : '' }} " href="#">
                         <i class="bi bi-gear-wide-connected"></i>
                         <span>ตั้งค่า</span>
                     </a>
-                    <div class="collapse" id="manage-collapse">
+                    <div class="collapse {{ $menu_manage ? 'show' : '' }}" id="manage-collapse">
                         <ul class="submenu">
                             <li>
-                                <a class="nav-link" href="{{ route('manage_lecturer') }}"> <span>อาจารย์</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_lecturer' ? 'active' : '' }}"
+                                    href="{{ route('manage_lecturer') }}"> <span>อาจารย์</span></a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('manage_course') }}"><span>หลักสูตร</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_course' ? 'active' : '' }}"
+                                    href="{{ route('manage_course') }}"><span>หลักสูตร</span></a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('manage_scoring') }}"><span>เกณฑ์การให้คะแนน</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_scoring' ? 'active' : '' }}"
+                                    href="{{ route('manage_scoring') }}"><span>เกณฑ์การให้คะแนน</span></a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('manage_subject') }}"><span>วิชา</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_subject' ? 'active' : '' }}"
+                                    href="{{ route('manage_subject') }}"><span>วิชา</span></a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('manage_subject') }}"><span>กลุ่มเรียน</span></a>
+                                <a class="nav-link {{ Route::currentRouteName() == 'manage_section' ? 'active' : '' }}"
+                                    href="{{ route('manage_section') }}"><span>กลุ่มเรียน</span></a>
                             </li>
                         </ul>
                     </div>
