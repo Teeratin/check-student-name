@@ -7,61 +7,84 @@
                 <div class="col-lg-12">
                     <p class="fs-5">Information Technology Project 2</p>
                 </div>
-                <div class="col-lg-2">
-                    <label class="form-label">รหัสวิชา</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="col-lg-4">
-                    <label class="form-label">ชื่อวิชา</label>
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="col-lg-2">
-                    <label class="form-label">วันที่เรียน</label>
-                    <select class="form-select">
-                        <option selected>จันทร์</option>
-                        <option value="1">อังคาร</option>
-                        <option value="2">พุธ</option>
-                    </select>
-                </div>
-                <div class="col-lg-2">
-                    <label class="form-label">หลักสูตร</label>
-                    <select class="form-select">
-                        <option selected>สาขาวิชาเทคโนโลยีสารสนเทศ</option>
-                        <option value="1">สาขาวิชาวิทยาการคอมพิวเตอร์</option>
-                        <option value="2">สาขาวิชาเทคโนโลยีดิจิทัลมิเดีย</option>
-                    </select>
-                </div>
-                <div class="col-lg-2">
-                    <label class="form-label">กลุ่มเรียน</label>
-                    <select class="form-select">
-                        <option selected>ITS16421N</option>
-                        <option value="1">ITS16422N</option>
-                        <option value="2">ITS16423N</option>
-                    </select>
-                </div>
-                <div class="col-lg-2">
-                    <label class="form-label">ช่วงเวลาเรียน</label>
-                    <select class="form-select">
-                        <option selected>เช้า</option>
-                        <option value="1">บ่าย</option>
-                        <option value="2">ค่ำ</option>
-                    </select>
-                </div>
-                <div class="col-lg-4">
-                    <label class="form-label">เวลาเริ่ม</label>
-                    <input type="time" class="form-control" />
-                </div>
-                <div class="col-lg-4">
-                    <label class="form-label">เวลาจบ</label>
-                    <input type="time" class="form-control" />
-                </div>
-                <div class="col-lg-2">
-                    <label class="form-label">เกณฑ์การให้คะแนน</label>
-                    <select class="form-select">
-                        <option selected>5/4/3</option>
-                        <option value="1">5/3/1</option>
-                        <option value="2">5/2/0</option>
-                    </select>
+                <div class="row m-auto g-3">
+                    <div class="col-lg-4">
+                        <label class="form-label">รหัสวิชา</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">รายชื่อวิชา</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">สถานที่เรียน</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">หลักสูตร</label>
+                        <select class="form-select">
+                            <option selected>สาขาวิชาเทคโนโลยีสารสนเทศ</option>
+                            <option value="1">สาขาวิชาวิทยาการคอมพิวเตอร์</option>
+                            <option value="2">สาขาวิชาเทคโนโลยีดิจิทัลมิเดีย</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label">ปีการศึกษา</label>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label">ภาคที่เรียน</label>
+                        <select class="form-select">
+                            <option selected>ภาคปกติ</option>
+                            <option value="1">ภาคสมทบ</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label">เทอม</label>
+                        <select class="form-select">
+                            <option selected>1</option>
+                            <option value="1">2</option>
+                            <option value="2">summer</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label">วันที่เรียน</label>
+                        <select class="form-select">
+                            <option selected>จันทร์</option>
+                            <option value="1">อังคาร</option>
+                            <option value="2">พุธ</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label">กลุ่มเรียน</label>
+                        <select class="form-select">
+                            <option selected>ITS16421N</option>
+                            <option value="1">ITS16421N</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label">ช่วงเวลาเรียน</label>
+                        <select class="form-select">
+                            <option selected>เช้า</option>
+                            <option value="1">บ่าย</option>
+                            <option value="2">ค่ำ</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label">เวลาเริ่ม</label>
+                        <input type="time" class="form-control" />
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label">เวลาจบ</label>
+                        <input type="time" class="form-control" />
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label">เกณฑ์การให้คะแนน</label>
+                        <select class="form-select">
+                            <option selected>5/4/3</option>
+                            <option value="1">5/0/0</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-lg-12">
                     <button type="button" class="btn btn-success float-end mt-2">
@@ -129,13 +152,21 @@
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
                         เพิ่มรายชื่อนักศึกษา
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row m-auto g-3">
                         <div class="col-lg-12">
                             <label class="form-label">รหัสนักศึกษา</label>
                             <input type="text" class="form-control" />
+                        </div>
+                        <div class="col-lg-12">
+                            <label class="form-label">คำนำหน้า</label>
+                            <select class="form-select">
+                                <option value="1">นาย</option>
+                                <option value="1">นางสาว</option>
+                            </select>
                         </div>
                         <div class="col-lg-12">
                             <label class="form-label">ชื่อ</label>
@@ -183,6 +214,13 @@
                             <input type="text" class="form-control" />
                         </div>
                         <div class="col-lg-12">
+                            <label class="form-label">คำนำหน้า</label>
+                            <select class="form-select">
+                                <option value="1">นาย</option>
+                                <option value="1">นางสาว</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12">
                             <label class="form-label">ชื่อ</label>
                             <input type="text" class="form-control" />
                         </div>
@@ -219,7 +257,8 @@
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
                         ลบ
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row m-auto g-3">

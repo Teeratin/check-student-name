@@ -2,19 +2,20 @@
 
 namespace Database\Seeders;
 
+use App\Models\Section;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class SectionSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
+        Section::create([
+            'section_name' => 'test'
         ]);
     }
 }

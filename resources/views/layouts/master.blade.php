@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@v1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans Thai" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                             aria-expanded="false">
                             <img src="https://images.unsplash.com/photo-1667382479804-e0c062fd6ad2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                                 class="avatar" alt="" />
-                            ฆราวัฒน์ สนธิเณร
+                                {{ auth()->user()->fullname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
@@ -44,7 +45,7 @@
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('login') }}">
+                                <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="bi bi-box-arrow-right"></i> ออกจากระบบ</a>
                             </li>
                         </ul>
@@ -63,7 +64,7 @@
                 <div class="sidebar-avatar">
                     <img
                         src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" />
-                    <h4 class="sidebar-avatar-text mb-0">ฆราวัฒน์ สนธิเณร</h4>
+                    <h4 class="sidebar-avatar-text mb-0">{{ auth()->user()->fullname }}</h4>
                 </div>
             </a>
             <ul class="list-unstyled ps-0">
@@ -153,10 +154,9 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
 </body>
-<script src="{{ asset('js/overscroll.js') }}"></script>
+{{-- <script src="{{ asset('js/overscroll.js') }}"></script> --}}
 <script src="{{ asset('js/smooth-scrollbar.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
-

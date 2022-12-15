@@ -19,7 +19,9 @@
         <div class="d-flex align-items-center justify-content-center h-100">
             <div>
                 <!-- <h1 class="h1 text-center">ระบบเช็คชื่อเข้าเรียนของนักศึกษา</h1> -->
-
+                @php
+                    // dd($errors->all());
+                @endphp
                 <div class="card card-login mx-auto">
                     <div class="row m-3">
                         <div class="col-6">
@@ -29,23 +31,25 @@
                         <div class="col-6">
                             <div class="card-body">
                                 <h4 class="card-login-title">เข้าสู่ระบบ</h4>
-                                <form>
+                                <form action="{{ route('submit_login') }}" method="POST">
+                                    @csrf
                                     <div class="mb-3">
                                         <label class="form-label form-label-login">ชื่อผู้ใช้</label>
                                         <input type="text" class="form-control form-control-login"
-                                            placeholder="Username" />
+                                            placeholder="Email" name="email" value="{{ old('email') }}" />
                                     </div>
-
                                     <div>
                                         <label class="form-label form-label-login">รหัสผ่าน</label>
                                         <input type="password" class="form-control form-control-login"
-                                            placeholder="********" />
+                                            placeholder="********" name="password" value="{{ old('password') }}" />
                                     </div>
-
                                     <div class="mt-5 text-center">
-                                        <a href="{{ route('menu') }}" class="btn btn-login w-100">
+                                        @error('error')
+                                            <p class="fs-5 mb-3 text-danger">{{ $message }}</p>
+                                        @enderror
+                                        <button type="submit" class="btn btn-login w-100">
                                             เข้าสู่ระบบ
-                                        </a>
+                                        </button>
                                     </div>
                                 </form>
                             </div>

@@ -25,6 +25,7 @@
                             <th scope="col">วันที่</th>
                             <th scope="col">เวลา</th>
                             <th scope="col">เกณฑ์การให้คะแนน</th>
+                            <th scope="col">จำนวนนักศึกษา</th>
                             <th scope="col">ตัวเลือก</th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@
                             <td>วันจันทร์</td>
                             <td>เช้า(08:00-12:00)</td>
                             <td>5/4/3</td>
+                            <td>30</td>
                             <td>
                                 <a href="{{ route('manage_subject_edit') }}">
                                     <button type="button" class="btn btn-warning">
@@ -68,7 +70,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row m-auto g-3">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <label class="form-label">รหัสวิชา</label>
                             <input type="text" class="form-control" />
                         </div>
@@ -76,20 +78,43 @@
                             <label class="form-label">รายชื่อวิชา</label>
                             <input type="text" class="form-control" />
                         </div>
-                        <div class="col-lg-2">
-                            <label class="form-label">วันที่เรียน</label>
-                            <select class="form-select">
-                                <option selected>จันทร์</option>
-                                <option value="1">สาขาวิชาวิทยาการคอมพิวเตอร์</option>
-                                <option value="2">สาขาวิชาเทคโนโลยีดิจิทัลมิเดีย</option>
-                            </select>
+                        <div class="col-lg-4">
+                            <label class="form-label">สถานที่เรียน</label>
+                            <input type="text" class="form-control" />
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <label class="form-label">หลักสูตร</label>
                             <select class="form-select">
                                 <option selected>สาขาวิชาเทคโนโลยีสารสนเทศ</option>
                                 <option value="1">สาขาวิชาวิทยาการคอมพิวเตอร์</option>
                                 <option value="2">สาขาวิชาเทคโนโลยีดิจิทัลมิเดีย</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">ปีการศึกษา</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">ภาคที่เรียน</label>
+                            <select class="form-select">
+                                <option selected>ภาคปกติ</option>
+                                <option value="1">ภาคสมทบ</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">เทอม</label>
+                            <select class="form-select">
+                                <option selected>1</option>
+                                <option value="1">2</option>
+                                <option value="2">summer</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">วันที่เรียน</label>
+                            <select class="form-select">
+                                <option selected>จันทร์</option>
+                                <option value="1">อังคาร</option>
+                                <option value="2">พุธ</option>
                             </select>
                         </div>
                         <div class="col-lg-2">

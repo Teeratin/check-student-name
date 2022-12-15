@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ChecknameController;
@@ -23,46 +24,54 @@ use App\Http\Controllers\Timetable\NormalController;
 |
  */
 
-Route::get('/', function () {
-    return view('login');
-})->name('login');
+Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'subminLogin'])->name('submit_login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //  MenuController
-Route::get('/menu', [MenuController::class, 'index'])->name('menu');
-Route::get('/menu_section', [MenuController::class, 'menu_section'])->name('menu_section');
-Route::prefix('profile')->name('profile_')->group(function () {
-    Route::get('/', [ProfileController::class, 'index'])->name('index');
+Route::middleware('auth')->group(function () {
+    Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+    Route::get('/menu_section', [MenuController::class, 'menu_section'])->name('menu_section');
+    Route::prefix('profile')->name('profile_')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+    });
+    Route::prefix('checkname')->name('checkname_')->group(function () {
+        Route::get('/', [ChecknameController::class, 'index'])->name('index');
+    });
+    Route::prefix('timetable')->name('timetable_')->group(function () {
+        Route::prefix('normal')->name('normal_')->group(function () {
+            Route::get('/', [NormalController::class, 'index'])->name('index');
+        });
+        Route::prefix('evening')->name('evening_')->group(function () {
+            Route::get('/', [EveningController::class, 'index'])->name('index');
+        });
+    });
+    Route::prefix('manage')->name('manage_')->group(function () {
+        Route::prefix('subject')->name('subject_')->group(function () {
+            Route::get('/', [SubjectController::class, 'index'])->name('index');
+            Route::get('/edit', [SubjectController::class, 'edit'])->name('edit');
+        });
+        Route::prefix('course')->name('course_')->group(function () {
+            Route::get('/', [CourseController::class, 'index'])->name('index');
+        });
+        Route::prefix('lecturer')->name('lecturer_')->group(function () {
+            Route::get('/', [LecturerController::class, 'index'])->name('index');
+            Route::get('/add', [LecturerController::class, 'add'])->name('add');
+            Route::post('/create', [LecturerController::class, 'create'])->name('create');
+            Route::get('/edit/{id}', [LecturerController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [LecturerController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [LecturerController::class, 'destroy'])->name('delete');
+        });
+        Route::prefix('scoring')->name('scoring_')->group(function () {
+            Route::get('/', [ScoringController::class, 'index'])->name('index');
+        });
+        Route::prefix('section')->name('section_')->group(function () {
+            Route::get('/', [SectionController::class, 'index'])->name('index');
+            Route::get('/edit', [SectionController::class, 'edit'])->name('edit');
+        });
+    });
 });
-Route::prefix('checkname')->name('checkname_')->group(function () {
-    Route::get('/', [ChecknameController::class, 'index'])->name('index');
-});
-Route::prefix('timetable')->name('timetable_')->group(function () {
-    Route::prefix('normal')->name('normal_')->group(function () {
-        Route::get('/', [NormalController::class, 'index'])->name('index');
-    });
-    Route::prefix('evening')->name('evening_')->group(function () {
-        Route::get('/', [EveningController::class, 'index'])->name('index');
-    });
-});
-Route::prefix('manage')->name('manage_')->group(function () {
-    Route::prefix('subject')->name('subject_')->group(function () {
-        Route::get('/', [SubjectController::class, 'index'])->name('index');
-        Route::get('/edit', [SubjectController::class, 'edit'])->name('edit');
-    });
-    Route::prefix('course')->name('course_')->group(function () {
-        Route::get('/', [CourseController::class, 'index'])->name('index');
-    });
-    Route::prefix('lecturer')->name('lecturer_')->group(function () {
-        Route::get('/', [LecturerController::class, 'index'])->name('index');
-    });
-    Route::prefix('scoring')->name('scoring_')->group(function () {
-        Route::get('/', [ScoringController::class, 'index'])->name('index');
-    });
-    Route::prefix('section')->name('section_')->group(function () {
-        Route::get('/', [SectionController::class, 'index'])->name('index');
-        Route::get('/edit', [SectionController::class, 'edit'])->name('edit');
-    });
-});
+
 
 
 //  End MenuController

@@ -67,6 +67,13 @@
                             <label class="form-label">รหัสนักศึกษา</label>
                             <input type="text" class="form-control" />
                         </div>
+                        <div class="col-12">
+                            <label class="form-label">คำนำหน้า</label>
+                            <select class="form-select">
+                                <option value="1">นาย</option>
+                                <option value="2">นางสาว</option>
+                            </select>
+                        </div>
                         <div class="col-lg-12">
                             <label class="form-label">ชื่อ</label>
                             <input type="text" class="form-control" />
@@ -130,6 +137,13 @@
                         <div class="col-lg-12">
                             <label class="form-label">รหัสนักศึกษา</label>
                             <input type="text" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">คำนำหน้า</label>
+                            <select class="form-select">
+                                <option value="1">นาย</option>
+                                <option value="2">นางสาว</option>
+                            </select>
                         </div>
                         <div class="col-lg-12">
                             <label class="form-label">ชื่อ</label>

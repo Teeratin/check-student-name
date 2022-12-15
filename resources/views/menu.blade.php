@@ -31,7 +31,7 @@
                             aria-expanded="false">
                             <img src="https://images.unsplash.com/photo-1667382479804-e0c062fd6ad2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                                 class="avatar" alt="" />
-                            ฆราวัฒน์ สนธิเณร
+                            {{ auth()->user()->fullname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
@@ -42,7 +42,7 @@
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('login') }}">
+                                <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="bi bi-box-arrow-right"></i> ออกจากระบบ</a>
                             </li>
                         </ul>

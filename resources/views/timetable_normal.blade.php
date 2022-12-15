@@ -22,7 +22,7 @@
             <p class="h4 mt-3">ช่วงเช้า</p>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
             <a href="{{ route('checkname_index') }}">
                 <div class="card bg-c-green">
                     <div class="card-block">
@@ -39,7 +39,7 @@
             <p class="h4 mt-3">ช่วงบ่าย</p>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
             <a href="{{ route('checkname_index') }}">
                 <div class="card bg-c-green">
                     <div class="card-block">

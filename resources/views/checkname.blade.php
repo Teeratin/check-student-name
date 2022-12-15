@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <p class="fs-2">[630-11-01 - 10565] Thai for Communication</p>
+            <p class="fs-2">[405-41-06 - 42464] Information Technology Project2</p>
         </div>
         <div class="col-lg-12">
             <table class="table">
@@ -56,7 +56,8 @@
             <div class="modal-content">
                 <div class="modal-header bg-secondary">
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">การลา</h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">

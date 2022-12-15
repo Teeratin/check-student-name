@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lecturer;
 use Illuminate\Http\Request;
 
 class LecturerController extends Controller
@@ -14,7 +15,13 @@ class LecturerController extends Controller
      */
     public function index()
     {
-        return view('manage.lecturer');
+        $data = Lecturer::all();
+        return view('manage.lecturer', ['member' => $data]);
+    }
+
+    public function add()
+    {
+        return view('add.add_lecturer');
     }
 
     /**
@@ -22,9 +29,18 @@ class LecturerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
+            $filePath = $request->file('lecturer_image')->storeAs('uploads', $fileName, 'public');
+            $data['lecturer_image'] = $filePath;
+        }
+
+        Lecturer::create($data);
+
+        return redirect()->route('manage_lecturer_index');
     }
 
     /**
@@ -57,7 +73,9 @@ class LecturerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Lecturer::find($id);
+
+        return view('edit.edit_lecturer', ['id' => $id, 'data' => $data]);
     }
 
     /**
@@ -69,7 +87,20 @@ class LecturerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
+            $filePath = $request->file('lecturer_image')->storeAs('uploads', $fileName, 'public');
+            $data['lecturer_image'] = $filePath;
+        }
+
+        if ($data['lecturer_password'] == null or $data['lecturer_password'] == "") {
+            unset($data['lecturer_password']);
+        }
+
+        Lecturer::find($id)->update($data);
+
+        return redirect()->route('manage_lecturer_index');
     }
 
     /**
@@ -80,6 +111,8 @@ class LecturerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Lecturer::find($id)->delete();
+
+        return redirect()->route('manage_lecturer_index');
     }
 }
