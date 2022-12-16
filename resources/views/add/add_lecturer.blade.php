@@ -22,20 +22,18 @@
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">ชื่อ</label>
-                            <input type="text" class="form-control" name="lecturer_fname" required />
+                            <input type="text" class="form-control input-nonenumber" name="lecturer_fname" required>
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">นามสกุล</label>
-                            <input type="text" class="form-control" name="lecturer_lname" required />
+                            <input type="text" class="form-control input-nonenumber" name="lecturer_lname" required>
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">Email</label>
-                            <div class="input-group mb-3">
+                            <div class="input-group">
                                 <input type="text" class="form-control" name="lecturer_username" required>
-                                <span class="input-group-text" >@rmutsb.ac.th</span>
-                              </div>
-
-
+                                <span class="input-group-text">@rmutsb.ac.th</span>
+                            </div>
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">Password</label>
@@ -43,7 +41,7 @@
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">รูปภาพ</label>
-                            <input type="file" class="form-control" name="lecturer_image"  />
+                            <input type="file" class="form-control" name="lecturer_image" />
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">สิทธิการใช้งาน</label>

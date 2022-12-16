@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+    protected $table = 'student';
+
+    protected $primaryKey = 'student_id';
+
+    public $timestamps = false;
+
+    protected $guarded = [];
+
+    public function getFullnameAttribute()
+
+    {
+        return $this->student_perfix . $this->student_fname . ' ' . $this->student_lname;
+    }
 }

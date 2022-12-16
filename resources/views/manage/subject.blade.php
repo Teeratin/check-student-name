@@ -6,10 +6,9 @@
             <p class="fs-2 mt-2 ms-3">รายชื่อวิชา</p>
         </div>
         <div class="col-lg-12">
-            <button type="button" class="btn btn-success float-end me-5" data-bs-toggle="modal"
-                data-bs-target="#exampleModalAdd">
+            <a href="{{ route('manage_subject_add') }}" class="btn btn-success float-end me-5">
                 <i class="bi bi-plus"></i>เพิ่มข้อมูล
-            </button>
+            </a>
         </div>
     </div>
     <hr />
@@ -66,7 +65,8 @@
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
                         เพิ่มรายชื่อวิชา
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row m-auto g-3">
@@ -169,7 +169,8 @@
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
                         ลบ
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row m-auto g-3">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Section;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -14,7 +16,8 @@ class SectionController extends Controller
      */
     public function index()
     {
-        return view('manage.section');
+        $data = Section::all();
+        return view('manage.section', ['data' => $data]);
     }
 
     /**
@@ -22,9 +25,18 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        Section::create($data);
+        return redirect()->route('manage_section_index');
+    }
+
+    public function create_student(Request $request)
+    {
+        $data = $request->all();
+        Student::create($data);
+        return redirect()->route('manage_section_edit', $request->section_id);
     }
 
     /**
@@ -55,9 +67,11 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('manage.edit_section');
+        $data_student = Student::select('student_id', 'student_code', 'student_perfix', 'student_fname', 'student_lname', 'section_id')->where('section_id', $id)->get();
+        $data_section = Section::find($id);
+        return view('edit.edit_section', ['id' => $id], ['data_student' => $data_student], ['data_section' => $data_section]);
     }
 
     /**
@@ -67,9 +81,11 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $sid)
     {
-        //
+        $data = $request->all();
+        Student::find($sid)->update($data);
+        return Redirect()->route('manage_section_edit', $id);
     }
 
     /**
@@ -78,8 +94,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Section::find($id)->delete();
+        return redirect()->route('manage_section_index');
     }
 }

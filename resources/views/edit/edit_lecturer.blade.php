@@ -13,35 +13,43 @@
                         <div class="col-lg-4">
                             <label class="form-label">คำนำหน้า</label>
                             <select class="form-select" name="lecturer_perfix">
-                                <option value="นาย">นาย</option>
-                                <option value="นาง">นาง</option>
-                                <option value="นางสาว">นางสาว</option>
+                                <option value="นาย" {{ $data->lecturer_perfix == 'นาย' ? 'selected' : '' }}>นาย</option>
+                                <option value="นาง" {{ $data->lecturer_perfix == 'นาง' ? 'selected' : '' }}>นาง</option>
+                                <option value="นางสาว" {{ $data->lecturer_perfix == 'นางสาว' ? 'selected' : '' }}>นางสาว
+                                </option>
+                                <option value="ผู้ช่วยศาสตราจารย์" {{ $data->lecturer_perfix == 'ผู้ช่วยศาสตราจารย์' ? 'selected' : '' }}>
+                                    ผู้ช่วยศาสตราจารย์</option>
+                                <option value="รองศาสตราจารย์" {{ $data->lecturer_perfix == 'รองศาสตราจารย์' ? 'selected' : '' }}>
+                                    รองศาสตราจารย์</option>
                             </select>
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">ชื่อ</label>
-                            <input type="text" class="form-control" name="lecturer_fname"
+                            <input type="text" class="form-control input-nonenumber" name="lecturer_fname"
                                 value="{{ $data->lecturer_fname }}" required />
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">นามสกุล</label>
-                            <input type="text" class="form-control" name="lecturer_lname"
+                            <input type="text" class="form-control input-nonenumber" name="lecturer_lname"
                                 value="{{ $data->lecturer_lname }}" required />
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">Email</label>
-                            <input type="text" class="form-control" name="lecturer_username"
-                                value="{{ $data->lecturer_username }}" required />
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="lecturer_username"
+                                    value="{{ substr($data->lecturer_username, 0, strpos($data->lecturer_username, '@rmutsb.ac.th')) }}"
+                                    required />
+                                <span class="input-group-text">@rmutsb.ac.th</span>
+                            </div>
+
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" name="lecturer_password"
-                                />
+                            <input type="password" class="form-control" name="lecturer_password" />
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">รูปภาพ</label>
-                            <input type="file" class="form-control" name="lecturer_image"
-                                />
+                            <input type="file" class="form-control" name="lecturer_image" />
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">สิทธิการใช้งาน</label>

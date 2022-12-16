@@ -130,7 +130,7 @@
                         <div class="row m-auto g-3">
                             <div class="col-lg-12">
                                 <label class="form-label">รายชื่อหลักสูตร</label>
-                                <input type="text" class="form-control" name="course_name" />
+                                <input type="text" class="form-control" name="course_name" required />
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -17,14 +18,22 @@ class SubjectController extends Controller
         return view('manage.subject');
     }
 
+    public function add()
+    {
+        return view('add.add_subject');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        Subject::create($data);
+        return redirect()->route('manage_subject_index');
     }
 
     /**
@@ -57,7 +66,7 @@ class SubjectController extends Controller
      */
     public function edit()
     {
-        return view('manage.edit_subject');
+
     }
 
     /**

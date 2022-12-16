@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@v1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans Thai" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
@@ -34,7 +35,7 @@
                             aria-expanded="false">
                             <img src="https://images.unsplash.com/photo-1667382479804-e0c062fd6ad2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                                 class="avatar" alt="" />
-                                {{ auth()->user()->fullname }}
+                            {{ auth()->user()->fullname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
@@ -64,7 +65,7 @@
                 <div class="sidebar-avatar">
                     <img
                         src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" />
-                    <h4 class="sidebar-avatar-text mb-0">{{ auth()->user()->fullname }}</h4>
+                    <h1 class="sidebar-avatar-text mb-0">{{ auth()->user()->fullname }}</h1>
                 </div>
             </a>
             <ul class="list-unstyled ps-0">
@@ -155,7 +156,7 @@
     </script>
 </body>
 {{-- <script src="{{ asset('js/overscroll.js') }}"></script> --}}
-<script src="{{ asset('js/smooth-scrollbar.js') }}"></script>
+{{-- <script src="{{ asset('js/smooth-scrollbar.js') }}"></script> --}}
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

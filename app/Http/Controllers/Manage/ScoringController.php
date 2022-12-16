@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manage;
 use App\Http\Controllers\Controller;
 use App\Models\Scoring;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ScoringController extends Controller
 {
@@ -74,7 +75,9 @@ class ScoringController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        Scoring::find($id)->update($data);
+        return Redirect()->route('manage_scoring_index');
     }
 
     /**

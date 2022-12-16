@@ -12,6 +12,7 @@ use App\Http\Controllers\Manage\SubjectController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Timetable\EveningController;
 use App\Http\Controllers\Timetable\NormalController;
+use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('manage')->name('manage_')->group(function () {
         Route::prefix('subject')->name('subject_')->group(function () {
             Route::get('/', [SubjectController::class, 'index'])->name('index');
+            Route::get('/add', [SubjectController::class, 'add'])->name('add');
+            Route::post('/create', [SubjectController::class, 'create'])->name('create');
             Route::get('/edit', [SubjectController::class, 'edit'])->name('edit');
         });
         Route::prefix('course')->name('course_')->group(function () {
@@ -67,12 +70,17 @@ Route::middleware('auth')->group(function () {
         });
         Route::prefix('scoring')->name('scoring_')->group(function () {
             Route::get('/', [ScoringController::class, 'index'])->name('index');
-            Route::post('/create',[ScoringController::class, 'create'])->name('create');
+            Route::post('/create', [ScoringController::class, 'create'])->name('create');
+            Route::post('/update/{id}', [ScoringController::class, 'update'])->name('update');
             Route::get('/delete/{id}', [ScoringController::class, 'delete'])->name('delete');
         });
         Route::prefix('section')->name('section_')->group(function () {
             Route::get('/', [SectionController::class, 'index'])->name('index');
-            Route::get('/edit', [SectionController::class, 'edit'])->name('edit');
+            Route::post('/create', [SectionController::class, 'create'])->name('create');
+            Route::get('/delete/{id}', [SectionController::class, 'delete'])->name('delete');
+            Route::get('/edit/{id}', [SectionController::class, 'edit'])->name('edit');
+            Route::post('/edit/create_student', [SectionController::class, 'create_student'])->name('create_student');
+            Route::post('/update/{id}/{sid}', [SectionController::class, 'update'])->name('update');
         });
     });
 });
