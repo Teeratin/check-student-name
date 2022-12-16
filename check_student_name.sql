@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 02:44 PM
+-- Generation Time: Dec 16, 2022 at 03:07 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -32,6 +32,15 @@ CREATE TABLE `course` (
   `course_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`course_id`, `course_name`) VALUES
+(1, 'สาขาวิชาเทคโนโลยีสารสนเทศ'),
+(2, 'สาขาวิชาวิทยาการคอมพิวเตอร์'),
+(3, 'สาขาวิชาเทคโนโลยีดิจิทัลมิเดีย');
+
 -- --------------------------------------------------------
 
 --
@@ -46,7 +55,7 @@ CREATE TABLE `lecturer` (
   `lecturer_type` int(11) NOT NULL,
   `lecturer_username` varchar(255) NOT NULL,
   `lecturer_password` varchar(255) NOT NULL,
-  `lecturer_image` varchar(255) NOT NULL
+  `lecturer_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -54,22 +63,8 @@ CREATE TABLE `lecturer` (
 --
 
 INSERT INTO `lecturer` (`lecturer_id`, `lecturer_perfix`, `lecturer_fname`, `lecturer_lname`, `lecturer_type`, `lecturer_username`, `lecturer_password`, `lecturer_image`) VALUES
-(3, 'นาย', 'ธีรทิน', 'ภู่ระมาต', 1, 'teeratin@gmail.com', '$2y$10$UjWPyQ700TV5nGIbukkFFuen6ZRjDtN.LT.rRaGLCZeS83lz0t3oG', 'uploads/1671110969_Screenshot_20221127_014252.png'),
-(5, 'นาย', 'ฆราวัฒน์', 'สนธิเณร', 2, 'karawat@gmail.com', '$2y$10$2jTNoGF/8IV5LASQ5f4h7ucxQiUIR.nWiXBON.E1el.jh1HpHvt1a', 'uploads/1671109164_Screenshot_20221202_102113.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rate_score`
---
-
-CREATE TABLE `rate_score` (
-  `rs_id` int(11) NOT NULL,
-  `rs_name` varchar(255) NOT NULL,
-  `rs_punctual` int(11) NOT NULL,
-  `rs_late` int(11) NOT NULL,
-  `rs_absent` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+(3, 'นาย', 'ธีรทิน', 'ภู่ระมาต', 1, 'teeratin@rmutsb.ac.th', '$2y$10$/O92WekoJ2sQEe6cq0nDIO5FhpoiZkMv2wyETksanx4GK7.w0MwKW', 'uploads/1671110969_Screenshot_20221127_014252.png'),
+(5, 'นาย', 'ฆราวัฒน์', 'สนธิเณร', 2, 'karawat@rmutsb.ac.th', '$2y$10$7AMolG5wkEL0Po.982IUL.mi180cuzbU6sQQPCwI5RyUE98To5gz.', 'uploads/1671109164_Screenshot_20221202_102113.png');
 
 -- --------------------------------------------------------
 
@@ -90,6 +85,27 @@ CREATE TABLE `roll_call` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `scoring`
+--
+
+CREATE TABLE `scoring` (
+  `scoring_id` int(11) NOT NULL,
+  `scoring_name` varchar(255) NOT NULL,
+  `scoring_punctual` int(11) NOT NULL,
+  `scoring_late` int(11) NOT NULL,
+  `scoring_absent` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `scoring`
+--
+
+INSERT INTO `scoring` (`scoring_id`, `scoring_name`, `scoring_punctual`, `scoring_late`, `scoring_absent`) VALUES
+(2, 'จิตพิสัย 10 คะแนน', 5, 4, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `section`
 --
 
@@ -103,7 +119,8 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`section_id`, `section_name`) VALUES
-(1, 'test');
+(3, 'ITS16421N'),
+(4, 'ITS16422N');
 
 -- --------------------------------------------------------
 
@@ -119,6 +136,14 @@ CREATE TABLE `student` (
   `student_lname` varchar(255) NOT NULL,
   `section_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_id`, `student_code`, `student_perfix`, `student_fname`, `student_lname`, `section_id`) VALUES
+(1, '164424221013', 'นาย', 'ธีรทิน', 'ภู่ระมาต', 3),
+(2, '164424221005', 'นาย', 'ฆราวัฒน์', 'สนธิเณร', 3);
 
 -- --------------------------------------------------------
 
@@ -143,7 +168,7 @@ CREATE TABLE `subject` (
   `student_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `rc_id` int(11) NOT NULL,
-  `rs_id` int(11) NOT NULL
+  `scoring_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -163,16 +188,16 @@ ALTER TABLE `lecturer`
   ADD PRIMARY KEY (`lecturer_id`);
 
 --
--- Indexes for table `rate_score`
---
-ALTER TABLE `rate_score`
-  ADD PRIMARY KEY (`rs_id`);
-
---
 -- Indexes for table `roll_call`
 --
 ALTER TABLE `roll_call`
   ADD PRIMARY KEY (`rc_id`);
+
+--
+-- Indexes for table `scoring`
+--
+ALTER TABLE `scoring`
+  ADD PRIMARY KEY (`scoring_id`);
 
 --
 -- Indexes for table `section`
@@ -200,19 +225,13 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lecturer`
 --
 ALTER TABLE `lecturer`
-  MODIFY `lecturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `rate_score`
---
-ALTER TABLE `rate_score`
-  MODIFY `rs_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lecturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roll_call`
@@ -221,16 +240,22 @@ ALTER TABLE `roll_call`
   MODIFY `rc_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `scoring`
+--
+ALTER TABLE `scoring`
+  MODIFY `scoring_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subject`
