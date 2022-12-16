@@ -35,7 +35,7 @@
                             <td>Information Technology Project 2</td>
                             <td>สาขาวิชาเทคโนโลยีสารสนเทศ</td>
                             <td>วันจันทร์</td>
-                            <td>เช้า(08:00-12:00)</td>
+                            <td>เช้า (08:00-12:00)</td>
                             <td>5/4/3</td>
                             <td>30</td>
                             <td>
@@ -95,20 +95,21 @@
                             <input type="text" class="form-control" />
                         </div>
                         <div class="col-lg-2">
-                            <label class="form-label">ภาคที่เรียน</label>
+                            <label class="form-label">ภาคการศึกษา</label>
+                            <select class="form-select">
+                                <option selected>1</option>
+                                <option value="1">2</option>
+                                <option value="2">Summer</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">ภาค</label>
                             <select class="form-select">
                                 <option selected>ภาคปกติ</option>
                                 <option value="1">ภาคสมทบ</option>
                             </select>
                         </div>
-                        <div class="col-lg-2">
-                            <label class="form-label">เทอม</label>
-                            <select class="form-select">
-                                <option selected>1</option>
-                                <option value="1">2</option>
-                                <option value="2">summer</option>
-                            </select>
-                        </div>
+
                         <div class="col-lg-2">
                             <label class="form-label">วันที่เรียน</label>
                             <select class="form-select">
@@ -133,11 +134,11 @@
                             </select>
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">เวลาเริ่ม</label>
+                            <label class="form-label">เริ่มเวลา</label>
                             <input type="time" class="form-control" />
                         </div>
                         <div class="col-lg-3">
-                            <label class="form-label">เวลาจบ</label>
+                            <label class="form-label">สิ้นสุดเวลา</label>
                             <input type="time" class="form-control" />
                         </div>
                         <div class="col-lg-2">

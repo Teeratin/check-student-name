@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Scoring;
 use Illuminate\Http\Request;
 
 class ScoringController extends Controller
@@ -14,7 +15,8 @@ class ScoringController extends Controller
      */
     public function index()
     {
-        return view('manage.scoring_criteria');
+        $data = Scoring::all();
+        return view('manage.scoring_criteria', ['data' => $data]);
     }
 
     /**
@@ -22,9 +24,12 @@ class ScoringController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        Scoring::create($data);
+        return redirect()->route('manage_scoring_index');
+
     }
 
     /**
@@ -78,8 +83,9 @@ class ScoringController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Scoring::find($id)->delete();
+        return redirect()->route('manage_scoring_index');
     }
 }

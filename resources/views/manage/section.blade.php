@@ -20,8 +20,8 @@
                 <thead>
                     <tr>
                         <th scope="col">ลำดับ</th>
-                        <th scope="col">ห้องเรียน</th>
-                        <th scope="col">จำนวนนักเรียน</th>
+                        <th scope="col">กลุ่มเรียน</th>
+                        <th scope="col">จำนวนนักศึกษา</th>
                         <th scope="col">ตัวเลือก</th>
                     </tr>
                 </thead>

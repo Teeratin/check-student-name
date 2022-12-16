@@ -25,48 +25,86 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>สาขาวิชาเทคโนโลยีสารสนเทศ</td>
-                            <td>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalEdit">
-                                    <i class="bi bi-pencil-square"></i> แก้ไข
-                                </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalDelete">
-                                    <i class="bi bi-trash3"></i> ลบ
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>สาขาวิชาวิทยาการคอมพิวเตอร์</td>
-                            <td>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalEdit">
-                                    <i class="bi bi-pencil-square"></i> แก้ไข
-                                </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalDelete">
-                                    <i class="bi bi-trash3"></i> ลบ
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>สาขาวิชาเทคโนโลยีดิจิทัลมิเดีย</td>
-                            <td>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalEdit">
-                                    <i class="bi bi-pencil-square"></i> แก้ไข
-                                </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalDelete">
-                                    <i class="bi bi-trash3"></i> ลบ
-                                </button>
-                            </td>
-                        </tr>
+                        @php $i=1; @endphp
+                        @foreach ($data as $row)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $row->course_name }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#ModalEdit{{ $row->course_id }}">
+                                        <i class="bi bi-pencil-square"></i> แก้ไข
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#ModalDelete{{ $row->course_id }}">
+                                        <i class="bi bi-trash3"></i> ลบ
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Modal Edit -->
+                            <div class="modal fade" id="ModalEdit{{ $row->course_id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-warning">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                แก้ไขรายชื่อหลักสูตร
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form action="{{ route('manage_course_update', $row->course_id) }}" method="POST">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <div class="row m-auto g-3">
+                                                    <div class="col-lg-12">
+                                                        <label class="form-label">รายชื่อหลักสูตร</label>
+                                                        <input type="text" class="form-control" name="course_name"
+                                                            value="{{ $row->course_name }}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    ยกเลิก
+                                                </button>
+                                                <button type="submit" class="btn btn-warning">ยืนยัน</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Modal Delete -->
+                            <div class="modal fade" id="ModalDelete{{ $row->course_id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-danger">
+                                            <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
+                                                ลบ
+                                            </h1>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row m-auto g-3">
+                                                <p class="fs-5">คุณต้องการลบ "{{ $row->course_name }}" ใช่หรือไม่</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                ยกเลิก
+                                            </button>
+                                            <a href="{{ route('manage_course_delete', $row->course_id) }}"
+                                                class="btn btn-danger">ยืนยัน</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -83,78 +121,31 @@
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
                         เพิ่มรายชื่อหลักสูตร
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row m-auto g-3">
-                        <div class="col-lg-12">
-                            <label class="form-label">รายชื่อหลักสูตร</label>
-                            <input type="text" class="form-control" />
+                <form action="{{ route('manage_course_create') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row m-auto g-3">
+                            <div class="col-lg-12">
+                                <label class="form-label">รายชื่อหลักสูตร</label>
+                                <input type="text" class="form-control" name="course_name" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        ยกเลิก
-                    </button>
-                    <button type="button" class="btn btn-success">ยืนยัน</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            ยกเลิก
+                        </button>
+                        <button type="submit" class="btn btn-success">ยืนยัน</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Modal Edit -->
-    <div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-warning">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        แก้ไขรายชื่อหลักสูตร
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row m-auto g-3">
-                        <div class="col-lg-12">
-                            <label class="form-label">รายชื่อหลักสูตร</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        ยกเลิก
-                    </button>
-                    <button type="button" class="btn btn-warning">ยืนยัน</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal Delete -->
-    <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
-                        ลบ
-                    </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row m-auto g-3">
-                        <p class="fs-5">คุณต้องการลบ "" ใช่หรือไม่</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        ยกเลิก
-                    </button>
-                    <button type="button" class="btn btn-danger">ยืนยัน</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- End Modal Scetion -->
 @endsection

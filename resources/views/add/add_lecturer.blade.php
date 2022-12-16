@@ -16,6 +16,8 @@
                                 <option value="นาย">นาย</option>
                                 <option value="นาง">นาง</option>
                                 <option value="นางสาว">นางสาว</option>
+                                <option value="ผู้ช่วยศาสตราจารย์">ผู้ช่วยศาสตราจารย์</option>
+                                <option value="รองศาสตราจารย์">รองศาสตราจารย์</option>
                             </select>
                         </div>
                         <div class="col-lg-4">
@@ -28,7 +30,12 @@
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">Email</label>
-                            <input type="text" class="form-control" name="lecturer_username" required />
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="lecturer_username" required>
+                                <span class="input-group-text" >@rmutsb.ac.th</span>
+                              </div>
+
+
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">Password</label>
@@ -36,7 +43,7 @@
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">รูปภาพ</label>
-                            <input type="file" class="form-control" name="lecturer_image" required />
+                            <input type="file" class="form-control" name="lecturer_image"  />
                         </div>
                         <div class="col-lg-4">
                             <label class="form-label">สิทธิการใช้งาน</label>

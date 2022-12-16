@@ -53,6 +53,9 @@ Route::middleware('auth')->group(function () {
         });
         Route::prefix('course')->name('course_')->group(function () {
             Route::get('/', [CourseController::class, 'index'])->name('index');
+            Route::post('/create', [CourseController::class, 'create'])->name('create');
+            Route::post('/update/{id}', [CourseController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [CourseController::class, 'delete'])->name('delete');
         });
         Route::prefix('lecturer')->name('lecturer_')->group(function () {
             Route::get('/', [LecturerController::class, 'index'])->name('index');
@@ -60,10 +63,12 @@ Route::middleware('auth')->group(function () {
             Route::post('/create', [LecturerController::class, 'create'])->name('create');
             Route::get('/edit/{id}', [LecturerController::class, 'edit'])->name('edit');
             Route::post('/update/{id}', [LecturerController::class, 'update'])->name('update');
-            Route::get('/delete/{id}', [LecturerController::class, 'destroy'])->name('delete');
+            Route::get('/delete/{id}', [LecturerController::class, 'delete'])->name('delete');
         });
         Route::prefix('scoring')->name('scoring_')->group(function () {
             Route::get('/', [ScoringController::class, 'index'])->name('index');
+            Route::post('/create',[ScoringController::class, 'create'])->name('create');
+            Route::get('/delete/{id}', [ScoringController::class, 'delete'])->name('delete');
         });
         Route::prefix('section')->name('section_')->group(function () {
             Route::get('/', [SectionController::class, 'index'])->name('index');

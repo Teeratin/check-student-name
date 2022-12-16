@@ -93,11 +93,9 @@ class LecturerController extends Controller
             $filePath = $request->file('lecturer_image')->storeAs('uploads', $fileName, 'public');
             $data['lecturer_image'] = $filePath;
         }
-
         if ($data['lecturer_password'] == null or $data['lecturer_password'] == "") {
             unset($data['lecturer_password']);
         }
-
         Lecturer::find($id)->update($data);
 
         return redirect()->route('manage_lecturer_index');
@@ -109,7 +107,7 @@ class LecturerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         Lecturer::find($id)->delete();
 

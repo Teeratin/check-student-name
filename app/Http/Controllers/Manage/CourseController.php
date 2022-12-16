@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,7 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('manage.course');
+        $data = Course::all();
+        return view('manage.course',['data' => $data]);
     }
 
     /**
@@ -22,9 +24,11 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        Course::create($data);
+        return redirect()->route('manage_course_index');
     }
 
     /**
@@ -57,7 +61,7 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -69,7 +73,9 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        Course::find($id)->update($data);
+        return redirect()->route('manage_course_index');
     }
 
     /**
@@ -78,8 +84,9 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Course::find($id)->delete();
+        return redirect()->route('manage_course_index');
     }
 }

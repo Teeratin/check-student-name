@@ -26,34 +26,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>5/4/3</td>
-                            <td>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalEdit">
-                                    <i class="bi bi-pencil-square"></i> แก้ไข
-                                </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalDelete">
-                                    <i class="bi bi-trash3"></i> ลบ
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>5/3/1</td>
-                            <td>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalEdit">
-                                    <i class="bi bi-pencil-square"></i> แก้ไข
-                                </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalDelete">
-                                    <i class="bi bi-trash3"></i> ลบ
-                                </button>
-                            </td>
-                        </tr>
+                        @php $i=1; @endphp
+                        @foreach ($data as $row)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $row->scoring_name }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModalEdit">
+                                        <i class="bi bi-pencil-square"></i> แก้ไข
+                                    </button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModalDelete{{ $row->scoring_id }}">
+                                        <i class="bi bi-trash3"></i> ลบ
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -70,34 +59,38 @@
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
                         เพิ่มเกณฑ์การให้คะแนน
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row m-auto g-3">
-                        <div class="col-lg-12">
-                            <label class="form-label">เกณฑ์การให้คะแนน</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="form-label">มาเรียน</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="form-label">สาย</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="form-label">ขาด</label>
-                            <input type="text" class="form-control" />
+                <form action="{{ route('manage_scoring_create') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row m-auto g-3">
+                            <div class="col-lg-12">
+                                <label class="form-label">เกณฑ์การให้คะแนน</label>
+                                <input type="text" class="form-control" name="scoring_name" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="form-label">มาเรียน</label>
+                                <input type="text" class="form-control" name="scoring_punctual" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="form-label">สาย</label>
+                                <input type="text" class="form-control" name="scoring_late" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="form-label">ขาด</label>
+                                <input type="text" class="form-control" name="scoring_absent" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        ยกเลิก
-                    </button>
-                    <button type="button" class="btn btn-success">ยืนยัน</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            ยกเลิก
+                        </button>
+                        <button type="submit" class="btn btn-success">ยืนยัน</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -143,15 +136,16 @@
     </div>
 
     <!-- Modal Delete -->
-    <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="ModalDelete" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-danger">
                     <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
                         ลบ
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row m-auto g-3">
@@ -162,7 +156,8 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         ยกเลิก
                     </button>
-                    <button type="button" class="btn btn-danger">ยืนยัน</button>
+                    <a href=""
+                         class="btn btn-danger">ยืนยัน</a>
                 </div>
             </div>
         </div>
