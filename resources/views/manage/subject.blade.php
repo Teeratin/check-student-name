@@ -35,7 +35,7 @@
                                 <td>{{ $row->subject_name }}</td>
                                 <td>{{ $row->course->course_name }}</td>
                                 <td>{{ $row->subject_day }}</td>
-                                <td>{{ $row->subject_period . ' ' . '(' . $row->subject_timeS . '-' . $row->subject_timeE . ')' }}
+                                <td>{{ $row->subject_period . ' ' . '(' . date('H:i', strtotime($row->subject_timeS)) . '-' . date('H:i', strtotime($row->subject_timeE)) . ')' }}
                                 </td>
                                 <td>{{ $row->scoring->scoring_name }}</td>
                                 <td>{{ $row->students->count() }}</td>
