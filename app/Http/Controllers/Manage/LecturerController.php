@@ -21,7 +21,7 @@ class LecturerController extends Controller
 
     public function add()
     {
-        return view('add.add_lecturer');
+        return view('add.lecturer');
     }
 
     /**
@@ -78,7 +78,7 @@ class LecturerController extends Controller
     {
         $data = Lecturer::find($id);
 
-        return view('edit.edit_lecturer', ['id' => $id, 'data' => $data]);
+        return view('edit.lecturer', ['id' => $id, 'data' => $data]);
     }
 
     /**

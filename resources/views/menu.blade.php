@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    @php
+        $user_id = auth()->user()->lecturer_id;
+    @endphp
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand ms-3 d-flex align-items-center" href="{{ route('menu') }}">
@@ -35,7 +38,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('profile_index') }}">
+                                <a class="dropdown-item" href="{{ route('profile_index',$user_id) }}">
                                     <i class="bi bi-person-gear"></i> บัญชี</a>
                             </li>
                             <li>
@@ -75,7 +78,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <a href="{{ route('profile_index') }}">
+                        <a href="{{ route('profile_index', $user_id) }}">
                             <div class="card card-menu p-3 mb-5 bg-body">
                                 <div class="card-body text-center">
                                     <i class="bi bi-person-vcard" style="font-size: 100px"></i>

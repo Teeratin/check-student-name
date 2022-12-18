@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\Scoring;
+use App\Models\Section;
+use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -15,12 +19,16 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('manage.subject');
+        $data = Subject::where('lecturer_id', auth()->user()->lecturer_id)->get();
+        return view('manage.subject', compact('data'));
     }
 
     public function add()
     {
-        return view('add.add_subject');
+        $courses = Course::get();
+        $scoring = Scoring::where('lecturer_id', auth()->user()->lecturer_id)->get();
+        $section = Section::get();
+        return view('add.subject', compact('courses', 'scoring', 'section'));
     }
 
 
@@ -32,7 +40,12 @@ class SubjectController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-        Subject::create($data);
+        $create = Subject::create($data);
+        if ($create) {
+            $section_id = $request->input('section_id');
+            $students = Student::where('section_id', $section_id)->pluck('student_id');
+            $create->students()->attach($students);
+        }
         return redirect()->route('manage_subject_index');
     }
 
@@ -64,9 +77,13 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-
+        $courses = Course::get();
+        $scoring = Scoring::where('lecturer_id', auth()->user()->lecturer_id)->get();
+        $section = Section::get();
+        $data = Subject::find($id);
+        return view('edit.subject', compact('id', 'data', 'courses', 'scoring', 'section'));
     }
 
     /**
@@ -87,8 +104,9 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Subject::find($id)->delete();
+        return redirect()->route('manage_subject_index');
     }
 }

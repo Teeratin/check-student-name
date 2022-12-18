@@ -5,93 +5,111 @@
         <div class="m-4">
             <div class="row g-3">
                 <div class="col-lg-12">
-                    <p class="fs-5">Information Technology Project 2</p>
+                    <p class="fs-5">{{ $data->subject_name }}</p>
                 </div>
-                <div class="row m-auto g-3">
-                    <div class="col-lg-4">
-                        <label class="form-label">รหัสวิชา</label>
-                        <input type="text" class="form-control" />
+                <form action="" method="POST">
+                    @csrf
+                    <div class="row m-auto g-3">
+                        <div class="col-lg-4">
+                            <label class="form-label">รหัสวิชา</label>
+                            <input type="text" class="form-control"
+                                oninput="this.value = this.value.replace(/[^0-9.-]/g, '').replace(/(\..*?)\..*/g, '$1'); console.log(this.value)"
+                                name="subject_code" value="{{ $data->subject_code }}" />
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="form-label">รายชื่อวิชา</label>
+                            <input type="text" class="form-control" name="subject_name"
+                                value="{{ $data->subject_name }}" />
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="form-label">สถานที่เรียน</label>
+                            <input type="text" class="form-control" name="subject_place"
+                                value="{{ $data->subject_place }}" />
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label">หลักสูตร</label>
+                            <select class="form-select" name="course_id" value="{{ $data->course_id }}">
+                                @foreach ($courses as $row)
+                                    <option value="{{ $row->course_id }}" {{ $row->course_id == $data->course_id ? 'selected' : "" }}>{{ $row->course_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">ปีการศึกษา</label>
+                            <input type="text" class="form-control" name="subject_year"
+                                value="{{ $data->subject_year }}" />
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">ภาคการศึกษา</label>
+                            <select class="form-select" name="subject_term" value="{{ $data->subject_term }}">
+                                <option value="1" {{ "1" == $data->subject_term ? 'selected' : "" }}>1</option>
+                                <option value="2" {{ "2" == $data->subject_term ? 'selected' : "" }}>2</option>
+                                <option value="Summer" {{ "Summer" == $data->subject_term ? 'selected' : "" }}>Summer</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">ภาค</label>
+                            <select class="form-select" name="subject_semester" value="{{ $data->subject_semester }}">
+                                <option value="1" {{ "1" == $data->subject_semester ? 'selected' : "" }}>ภาคปกติ</option>
+                                <option value="2" {{ "2" == $data->subject_semester ? 'selected' : "" }}>ภาคสมทบ</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <label class="form-label">วันที่เรียน</label>
+                            <select class="form-select" name="subject_day" value="{{ $data->subject_day }}">
+                                <option value="จันทร์">จันทร์</option>
+                                <option value="อังคาร">อังคาร</option>
+                                <option value="พุธ">พุธ</option>
+                                <option value="พฤหัส">พฤหัส</option>
+                                <option value="ศุกร์">ศุกร์</option>
+                                <option value="เสาร์">เสาร์</option>
+                                <option value="อาทิตย์">อาทิตย์</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">กลุ่มเรียน</label>
+                            <select class="form-select" name="section_id" value="{{ $data->section_id }}">
+                                @foreach ($section as $row)
+                                    <option value="{{ $row->section_id }}">{{ $row->section_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">ช่วงเวลาเรียน</label>
+                            <select class="form-select" name="subject_period" value="{{ $data->subject_period }}">
+                                <option value="เช้า">เช้า</option>
+                                <option value="บ่าย">บ่าย</option>
+                                <option value="ค่ำ">ค่ำ</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">เริ่มเวลา</label>
+                            <input type="time" class="form-control" name="subject_timeS"
+                                value="{{ $data->subject_timeS }}" />
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="form-label">สิ้นสุดเวลา</label>
+                            <input type="time" class="form-control" name="subject_timeE"
+                                value="{{ $data->subject_timeE }}" />
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">เกณฑ์การให้คะแนน</label>
+                            <select class="form-select" name="scoring_id" value="{{ $data->scoring_id }}">
+                                @foreach ($scoring as $row)
+                                    <option value="{{ $row->scoring_id }}">{{ $row->scoring_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-lg-4">
-                        <label class="form-label">รายชื่อวิชา</label>
-                        <input type="text" class="form-control" />
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-success float-end mt-2">
+                            <i class="bi bi-check2-square"></i>
+                            ยืนยัน
+                        </button>
                     </div>
-                    <div class="col-lg-4">
-                        <label class="form-label">สถานที่เรียน</label>
-                        <input type="text" class="form-control" />
-                    </div>
-                    <div class="col-lg-4">
-                        <label class="form-label">หลักสูตร</label>
-                        <select class="form-select">
-                            <option selected>สาขาวิชาเทคโนโลยีสารสนเทศ</option>
-                            <option value="1">สาขาวิชาวิทยาการคอมพิวเตอร์</option>
-                            <option value="2">สาขาวิชาเทคโนโลยีดิจิทัลมิเดีย</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2">
-                        <label class="form-label">ปีการศึกษา</label>
-                        <input type="text" class="form-control" />
-                    </div>
-                    <div class="col-lg-2">
-                        <label class="form-label">ภาคที่เรียน</label>
-                        <select class="form-select">
-                            <option selected>ภาคปกติ</option>
-                            <option value="1">ภาคสมทบ</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2">
-                        <label class="form-label">เทอม</label>
-                        <select class="form-select">
-                            <option selected>1</option>
-                            <option value="1">2</option>
-                            <option value="2">summer</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2">
-                        <label class="form-label">วันที่เรียน</label>
-                        <select class="form-select">
-                            <option selected>จันทร์</option>
-                            <option value="1">อังคาร</option>
-                            <option value="2">พุธ</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2">
-                        <label class="form-label">กลุ่มเรียน</label>
-                        <select class="form-select">
-                            <option selected>ITS16421N</option>
-                            <option value="1">ITS16421N</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2">
-                        <label class="form-label">ช่วงเวลาเรียน</label>
-                        <select class="form-select">
-                            <option selected>เช้า</option>
-                            <option value="1">บ่าย</option>
-                            <option value="2">ค่ำ</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label">เวลาเริ่ม</label>
-                        <input type="time" class="form-control" />
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label">เวลาจบ</label>
-                        <input type="time" class="form-control" />
-                    </div>
-                    <div class="col-lg-2">
-                        <label class="form-label">เกณฑ์การให้คะแนน</label>
-                        <select class="form-select">
-                            <option selected>5/4/3</option>
-                            <option value="1">5/0/0</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <button type="button" class="btn btn-success float-end mt-2">
-                        <i class="bi bi-check2-square"></i>
-                        ยืนยัน
-                    </button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

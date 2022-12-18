@@ -10,7 +10,7 @@
                 <i class="bi bi-plus"></i> เพิ่มรายชื่อนักศึกษา
             </button>
             <button type="button" class="btn btn-success float-end me-3" data-bs-toggle="modal"
-                data-bs-target="#exampleModalAddExcel">
+                data-bs-target="#ModalImportExcel">
                 <i class="bi bi-file-earmark-excel"></i> Import Excel
             </button>
         </div>
@@ -126,7 +126,8 @@
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                             ยกเลิก
                                         </button>
-                                        <button type="button" class="btn btn-danger">ยืนยัน</button>
+                                        <a href="{{ route('manage_section_delete_student', ['id' => $row->section_id, 'sid' => $row->student_id]) }}"
+                                            class="btn btn-danger">ยืนยัน</a>
                                     </div>
                                 </div>
                             </div>
@@ -190,8 +191,8 @@
         </div>
     </div>
 
-    <!-- Modal Add Excel -->
-    <div class="modal fade" id="exampleModalAddExcel" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <!-- Modal Imoprt Excel -->
+    <div class="modal fade" id="ModalImportExcel" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -202,20 +203,26 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row m-auto g-3">
-                        <div class="col-lg-12">
-                            <label class="form-label">Import File</label>
-                            <input type="file" class="form-control" />
+                <form action="{{ route('manage_section_import_excel', $id) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row m-auto g-3">
+                            <div class="col-lg-12">
+                                <label class="form-label">Import File</label>
+                                <input type="file" class="form-control" name="student_file" />
+                                <input type="text" class="form-control" hidden name="section_id"
+                                    value="{{ $id }}" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        ยกเลิก
-                    </button>
-                    <button type="button" class="btn btn-success">ยืนยัน</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            ยกเลิก
+                        </button>
+                        <button type="submit" class="btn btn-success">ยืนยัน</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

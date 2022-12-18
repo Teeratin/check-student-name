@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lecturer;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -11,9 +12,10 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        return view('profile');
+        $data = Lecturer::find($user_id);
+        return view('profile', ['data' => $data]);
     }
 
     /**
@@ -54,9 +56,23 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
+            $filePath = $request->file('lecturer_image')->storeAs('uploads', $fileName, 'public');
+            $data['lecturer_image'] = $filePath;
+        }
+        if ($data['lecturer_password'] == null or $data['lecturer_password'] == "") {
+            unset($data['lecturer_password']);
+        }
+        if ($data['lecturer_username']) {
+            $data['lecturer_username'] = $data['lecturer_username'] . "@rmutsb.ac.th";
+        }
+        Lecturer::find($id)->update($data);
+
+        return Redirect()->back()->with('success','success');
     }
 
     /**

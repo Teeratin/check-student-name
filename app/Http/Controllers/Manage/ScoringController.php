@@ -16,7 +16,7 @@ class ScoringController extends Controller
      */
     public function index()
     {
-        $data = Scoring::all();
+        $data = Scoring::where('lecturer_id',auth()->user()->lecturer_id)->get();
         return view('manage.scoring_criteria', ['data' => $data]);
     }
 

@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    @php
+        $user_id = auth()->user()->lecturer_id;
+    @endphp
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand ms-3 d-flex align-items-center" href="{{ route('menu') }}">
@@ -31,11 +34,11 @@
                             aria-expanded="false">
                             <img src="https://images.unsplash.com/photo-1667382479804-e0c062fd6ad2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                                 class="avatar" alt="" />
-                                {{ auth()->user()->fullname }}
+                            {{ auth()->user()->fullname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('profile_index') }}">
+                                <a class="dropdown-item" href="{{ route('profile_index',$user_id) }}">
                                     <i class="bi bi-person-gear"></i> บัญชี</a>
                             </li>
                             <li>

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Section;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Imports\StudentImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class SectionController extends Controller
 {
@@ -71,7 +74,7 @@ class SectionController extends Controller
     {
         $data_student = Student::select('student_id', 'student_code', 'student_perfix', 'student_fname', 'student_lname', 'section_id')->where('section_id', $id)->get();
         $data_section = Section::find($id);
-        return view('edit.edit_section', ['id' => $id], ['data_student' => $data_student], ['data_section' => $data_section]);
+        return view('edit.section', ['id' => $id], ['data_student' => $data_student], ['data_section' => $data_section]);
     }
 
     /**
@@ -97,6 +100,31 @@ class SectionController extends Controller
     public function delete($id)
     {
         Section::find($id)->delete();
+        Student::where('section_id', $id)->delete();
         return redirect()->route('manage_section_index');
+    }
+
+    public function delete_student($id, $sid)
+    {
+        Student::find($sid)->delete();
+        return redirect()->route('manage_section_edit', $id);
+    }
+
+    public function import_excel(Request $request,$id)
+    {
+        $data = Excel::toArray(new StudentImport,$request->file('student_file'))[0];
+
+        foreach($data as $item){
+            $create = [
+                'student_code' => $item['student_code'],
+                'student_perfix' => $item['student_perfix'],
+                'student_fname' => $item['student_fname'],
+                'student_lname' => $item['student_lname'],
+                'section_id' => $id,
+            ];
+            Student::create($create);
+        }
+        return back();
+        // return redirect()->route('manage_section_index');
     }
 }

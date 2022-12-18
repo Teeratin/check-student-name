@@ -55,7 +55,8 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ route('manage_scoring_update', $row->scoring_id) }}" method="POST">
+                                        <form action="{{ route('manage_scoring_update', $row->scoring_id) }}"
+                                            method="POST">
                                             @csrf
                                             <div class="modal-body">
                                                 <div class="row m-auto g-3">
@@ -158,6 +159,7 @@
                             <div class="col-lg-4">
                                 <label class="form-label">ขาด</label>
                                 <input type="text" class="form-control" name="scoring_absent" />
+                                <input type="hidden" name="lecturer_id" value="{{ auth()->user()->lecturer_id }}">
                             </div>
                         </div>
                     </div>

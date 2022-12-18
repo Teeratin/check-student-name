@@ -4,6 +4,11 @@ const tooltipTriggerList = document.querySelectorAll(
 const tooltipList = [...tooltipTriggerList].map(
     (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
 );
+
+$(document).ready(function () {
+    $('#example').DataTable();
+});
+
 const selectElement = document.querySelector(".input-nonenumber");
 selectElement.addEventListener("input", (event) => {
     const result = document.querySelector(".result");

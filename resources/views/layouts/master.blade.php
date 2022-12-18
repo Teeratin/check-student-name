@@ -14,10 +14,14 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
-
+    @php
+        $user_id = auth()->user()->lecturer_id;
+    @endphp
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -33,13 +37,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <img src="https://images.unsplash.com/photo-1667382479804-e0c062fd6ad2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                            <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
                                 class="avatar" alt="" />
                             {{ auth()->user()->fullname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('profile_index') }}">
+                                <a class="dropdown-item" href="{{ route('profile_index', $user_id) }}">
                                     <i class="bi bi-person-gear"></i> บัญชี</a>
                             </li>
                             <li>
@@ -66,6 +70,7 @@
                     <img
                         src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" />
                     <h1 class="sidebar-avatar-text mb-0">{{ auth()->user()->fullname }}</h1>
+                    <h2></h2>
                 </div>
             </a>
             <ul class="list-unstyled ps-0">
@@ -108,14 +113,16 @@
                     </a>
                     <div class="collapse {{ $menu_manage ? 'show' : '' }}" id="manage-collapse">
                         <ul class="submenu">
-                            <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'manage_lecturer_index' ? 'active' : '' }}"
-                                    href="{{ route('manage_lecturer_index') }}"> <span>อาจารย์</span></a>
-                            </li>
-                            <li>
-                                <a class="nav-link {{ Route::currentRouteName() == 'manage_course_index' ? 'active' : '' }}"
-                                    href="{{ route('manage_course_index') }}"><span>หลักสูตร</span></a>
-                            </li>
+                            @if (auth()->user()->lecturer_type == 1)
+                                <li>
+                                    <a class="nav-link {{ Route::currentRouteName() == 'manage_lecturer_index' ? 'active' : '' }}"
+                                        href="{{ route('manage_lecturer_index') }}"> <span>อาจารย์</span></a>
+                                </li>
+                                <li>
+                                    <a class="nav-link {{ Route::currentRouteName() == 'manage_course_index' ? 'active' : '' }}"
+                                        href="{{ route('manage_course_index') }}"><span>หลักสูตร</span></a>
+                                </li>
+                            @endif
                             <li>
                                 <a class="nav-link {{ Route::currentRouteName() == 'manage_scoring_index' ? 'active' : '' }}"
                                     href="{{ route('manage_scoring_index') }}"><span>เกณฑ์การให้คะแนน</span></a>

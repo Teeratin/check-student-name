@@ -34,7 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/menu', [MenuController::class, 'index'])->name('menu');
     Route::get('/menu_section', [MenuController::class, 'menu_section'])->name('menu_section');
     Route::prefix('profile')->name('profile_')->group(function () {
-        Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::get('/{id}', [ProfileController::class, 'index'])->name('index');
+        Route::post('/{id}', [ProfileController::class, 'edit'])->name('edit');
     });
     Route::prefix('checkname')->name('checkname_')->group(function () {
         Route::get('/', [ChecknameController::class, 'index'])->name('index');
@@ -52,7 +53,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [SubjectController::class, 'index'])->name('index');
             Route::get('/add', [SubjectController::class, 'add'])->name('add');
             Route::post('/create', [SubjectController::class, 'create'])->name('create');
-            Route::get('/edit', [SubjectController::class, 'edit'])->name('edit');
+            Route::get('/edit/{id}', [SubjectController::class, 'edit'])->name('edit');
+            Route::get('/delete/{id}', [SubjectController::class, 'delete'])->name('delete');
         });
         Route::prefix('course')->name('course_')->group(function () {
             Route::get('/', [CourseController::class, 'index'])->name('index');
@@ -81,6 +83,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{id}', [SectionController::class, 'edit'])->name('edit');
             Route::post('/edit/create_student', [SectionController::class, 'create_student'])->name('create_student');
             Route::post('/update/{id}/{sid}', [SectionController::class, 'update'])->name('update');
+            Route::get('/delete_student/{id}/{sid}', [SectionController::class, 'delete_student'])->name('delete_student');
+            Route::post('/import/{id}', [SectionController::class, 'import_excel'])->name('import_excel');
         });
     });
 });

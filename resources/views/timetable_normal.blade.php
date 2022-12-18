@@ -15,7 +15,7 @@
                 <option selected>เทอม</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
-                <option value="3">summer</option>
+                <option value="3">Summer</option>
             </select>
         </div>
         <div class="col-lg-12">

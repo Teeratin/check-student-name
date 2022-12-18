@@ -16,4 +16,9 @@ class Section extends Model
     public $timestamps = false;
 
     protected $guarded = [];
+
+
+    public function students(){
+        return $this->hasMany(Student::class,'section_id');
+    }
 }

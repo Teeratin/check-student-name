@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $row->section_name }}</td>
-                            <td>36</td>
+                            <td>{{ $row->students()->count() }}</td>
                             <td>
                                 <a href="{{ route('manage_section_edit',$row->section_id) }}">
                                     <button type="button" class="btn btn-warning">
