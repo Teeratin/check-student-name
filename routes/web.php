@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('profile')->name('profile_')->group(function () {
         Route::get('/{id}', [ProfileController::class, 'index'])->name('index');
         Route::post('/{id}', [ProfileController::class, 'edit'])->name('edit');
+        Route::post('/edit_img/{id}', [ProfileController::class, 'edit_img'])->name('edit_img');
     });
     Route::prefix('checkname')->name('checkname_')->group(function () {
         Route::get('/', [ChecknameController::class, 'index'])->name('index');
@@ -55,6 +56,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/create', [SubjectController::class, 'create'])->name('create');
             Route::get('/edit/{id}', [SubjectController::class, 'edit'])->name('edit');
             Route::get('/delete/{id}', [SubjectController::class, 'delete'])->name('delete');
+            Route::post('/update/{id}', [SubjectController::class, 'update'])->name('update');
         });
         Route::prefix('course')->name('course_')->group(function () {
             Route::get('/', [CourseController::class, 'index'])->name('index');

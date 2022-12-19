@@ -59,7 +59,7 @@
         <div class="d-flex align-items-center h-100">
             <div class="container">
                 <div class="row g-5">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mx-auto">
                         <a href="{{ route('menu_section') }}">
                             <div class="card card-menu p-3 mb-5 bg-body">
                                 <div class="card-body text-center">
@@ -69,15 +69,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card card-menu p-3 mb-5 bg-body">
-                            <div class="card-body text-center">
-                                <i class="bi bi-gear-wide-connected" style="font-size: 100px"></i>
-                                <h4>ตั้งค่า</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mx-auto">
                         <a href="{{ route('profile_index', $user_id) }}">
                             <div class="card card-menu p-3 mb-5 bg-body">
                                 <div class="card-body text-center">

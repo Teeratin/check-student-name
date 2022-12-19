@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Timetable;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class EveningController extends Controller
@@ -14,7 +15,19 @@ class EveningController extends Controller
      */
     public function index()
     {
-        return view('timetable_evening');
+        $data_m = Subject::where([
+            ['subject_semester', '=', 2],
+            ['subject_period', '=', "เช้า"]
+        ])->get();
+        $data_a = Subject::where([
+            ['subject_semester', '=', 2],
+            ['subject_period', '=', "บ่าย"]
+        ])->get();
+        $data_e = Subject::where([
+            ['subject_semester', '=', 2],
+            ['subject_period', '=', "ค่ำ"]
+        ])->get();
+        return view('timetable_evening', compact('data_m', 'data_a', 'data_e'));
     }
 
     /**

@@ -3,30 +3,34 @@
 @section('content')
     <div class="row">
         <div class="col-lg-4 col-md-12">
-            <!-- Profile picture card-->
-            <div class="card mb-4 mb-lg-0">
-                <div class="card-header">Profile Picture</div>
-                <div class="card-body text-center">
-                    <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2"
-                        src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
-                        alt="">
+            <form action="{{ route('profile_edit_img', $data->lecturer_id) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <!-- Profile picture card-->
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        <img class="img-account-profile rounded-circle mb-2"
+                            src="{{ asset('image/user_avatar.png') }}"
+                            alt="">
                         <div class="mt-2 mb-2 ps-5 pe-5">
                             <input type="file" class="form-control" name="lecturer_image">
                         </div>
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-login" type="submit">Upload new image</button>
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <!-- Profile picture upload button-->
+                        <button class="btn btn-login" type="submit">Upload new image</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="col-lg-8 col-md-12">
             <!-- Account details card-->
             <div class="card">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
-                    <form action="{{ route('profile_edit',$data->lecturer_id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profile_edit', $data->lecturer_id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3 mt-3">
                             <div class="col-lg-4">
@@ -48,11 +52,13 @@
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">ชื่อ</label>
-                                <input type="text" class="form-control" name="lecturer_fname" value="{{ $data->lecturer_fname }}">
+                                <input type="text" class="form-control" name="lecturer_fname"
+                                    value="{{ $data->lecturer_fname }}">
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">นามสกุล</label>
-                                <input type="text" class="form-control" name="lecturer_lname" value="{{ $data->lecturer_lname }}">
+                                <input type="text" class="form-control" name="lecturer_lname"
+                                    value="{{ $data->lecturer_lname }}">
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">Email</label>

@@ -22,7 +22,12 @@ class Student extends Model
         return $this->student_perfix . $this->student_fname . ' ' . $this->student_lname;
     }
 
-    public function section(){
-        return $this->belongsTo(Section::class,'section_id');
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
+    public function subject()
+    {
+        return $this->belongsToMany(Student::class, 'subject_student', 'subject_id', 'student_id');
     }
 }

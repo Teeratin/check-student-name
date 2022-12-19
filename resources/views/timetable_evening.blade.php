@@ -23,52 +23,58 @@
             <p class="h4 mt-3">ช่วงเช้า</p>
         </div>
 
-        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-            <a href="{{ route('checkname_index') }}">
-                <div class="card bg-c-green">
-                    <div class="card-block">
-                        <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
-                        <h6>[405-41-06 - 42464]</h6>
-                        <p>17081 เขตเหนือ [อาคาร 17 ]</p>
-                        <p>Information Technology Project2</p>
+        @foreach ($data_m as $row)
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                <a href="{{ route('checkname_index') }}">
+                    <div class="card bg-c-green">
+                        <div class="card-block">
+                            <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
+                                    class="bi bi-calendar4-week float-end"></i></p>
+                            <p>{{ $row->subject_place }}</p>
+                            <p>{{ $row->subject_name }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+        @endforeach
 
         <div class="col-lg-12">
             <p class="h4 mt-3">ช่วงบ่าย</p>
         </div>
 
-        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-            <a href="{{ route('checkname_index') }}">
-                <div class="card bg-c-green">
-                    <div class="card-block">
-                        <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
-                        <h6>[405-41-06 - 42464]</h6>
-                        <p>17081 เขตเหนือ [อาคาร 17 ]</p>
-                        <p>Information Technology Project2</p>
+        @foreach ($data_a as $row)
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                <a href="{{ route('checkname_index') }}">
+                    <div class="card bg-c-green">
+                        <div class="card-block">
+                            <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
+                                    class="bi bi-calendar4-week float-end"></i></p>
+                            <p>{{ $row->subject_place }}</p>
+                            <p>{{ $row->subject_name }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+        @endforeach
 
         <div class="col-lg-12">
             <p class="h4 mt-3">ช่วงค่ำ</p>
         </div>
 
-        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-            <a href="{{ route('checkname_index') }}">
-                <div class="card bg-c-green">
-                    <div class="card-block">
-                        <p class="fs-4">วันจันทร์ <i class="bi bi-calendar4-week float-end"></i></p>
-                        <h6>[405-41-06 - 42464]</h6>
-                        <p>17081 เขตเหนือ [อาคาร 17 ]</p>
-                        <p>Information Technology Project2</p>
+        @foreach ($data_e as $row)
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                <a href="{{ route('checkname_index') }}">
+                    <div class="card bg-c-green">
+                        <div class="card-block">
+                            <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
+                                    class="bi bi-calendar4-week float-end"></i></p>
+                            <p>{{ $row->subject_place }}</p>
+                            <p>{{ $row->subject_name }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+        @endforeach
 
 
     </div>

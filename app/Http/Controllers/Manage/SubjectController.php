@@ -8,6 +8,7 @@ use App\Models\Scoring;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Subject_Student;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -82,8 +83,9 @@ class SubjectController extends Controller
         $courses = Course::get();
         $scoring = Scoring::where('lecturer_id', auth()->user()->lecturer_id)->get();
         $section = Section::get();
+        $students = Subject_Student::where('subject_id', $id)->get();
         $data = Subject::find($id);
-        return view('edit.subject', compact('id', 'data', 'courses', 'scoring', 'section'));
+        return view('edit.subject', compact('id', 'data', 'courses', 'scoring', 'section', 'students'));
     }
 
     /**
@@ -95,7 +97,9 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        Subject::find($id)->update($data);
+        return back();
     }
 
     /**

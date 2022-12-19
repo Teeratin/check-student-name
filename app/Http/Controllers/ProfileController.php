@@ -72,7 +72,20 @@ class ProfileController extends Controller
         }
         Lecturer::find($id)->update($data);
 
-        return Redirect()->back()->with('success','success');
+        return Redirect()->back()->with('success', 'success');
+    }
+
+    public function edit_img(Request $request, $id)
+    {
+        $data = $request->all();
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
+            $filePath = $request->file('lecturer_image')->storeAs('uploads', $fileName,);
+            $data['lecturer_image'] = $filePath;
+        }
+        Lecturer::find($id)->update($data);
+
+        return Redirect()->back();
     }
 
     /**
