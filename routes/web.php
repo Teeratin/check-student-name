@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/edit_img/{id}', [ProfileController::class, 'edit_img'])->name('edit_img');
     });
     Route::prefix('checkname')->name('checkname_')->group(function () {
-        Route::get('/', [ChecknameController::class, 'index'])->name('index');
+        Route::get('/{id}', [ChecknameController::class, 'index'])->name('index');
     });
     Route::prefix('timetable')->name('timetable_')->group(function () {
         Route::prefix('normal')->name('normal_')->group(function () {

@@ -19,7 +19,7 @@ class Student extends Model
     public function getFullnameAttribute()
 
     {
-        return $this->student_perfix . $this->student_fname . ' ' . $this->student_lname;
+        return $this->student_prefix . $this->student_fname . ' ' . $this->student_lname;
     }
 
     public function section()
@@ -29,5 +29,9 @@ class Student extends Model
     public function subject()
     {
         return $this->belongsToMany(Student::class, 'subject_student', 'subject_id', 'student_id');
+    }
+    public function scoring()
+    {
+        return $this->belongsTo(Student::class, 'subject_student', 'subject_id', 'student_id');
     }
 }

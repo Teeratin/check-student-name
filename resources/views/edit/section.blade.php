@@ -72,11 +72,11 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <label class="form-label">คำนำหน้า</label>
-                                                    <select class="form-select" name="student_perfix">
+                                                    <select class="form-select" name="student_prefix">
                                                         <option value="นาย"
-                                                            {{ $row->student_perfix == 'นาย' ? 'select' : '' }}>นาย</option>
+                                                            {{ $row->student_prefix == 'นาย' ? 'select' : '' }}>นาย</option>
                                                         <option value="นางสาว"
-                                                            {{ $row->student_perfix == 'นางสาว' ? 'select' : '' }}>นางสาว
+                                                            {{ $row->student_prefix == 'นางสาว' ? 'select' : '' }}>นางสาว
                                                         </option>
                                                     </select>
                                                 </div>
@@ -163,7 +163,7 @@
                             </div>
                             <div class="col-12">
                                 <label class="form-label">คำนำหน้า</label>
-                                <select class="form-select" name="student_perfix">
+                                <select class="form-select" name="student_prefix">
                                     <option value="นาย">นาย</option>
                                     <option value="นางสาว">นางสาว</option>
                                 </select>

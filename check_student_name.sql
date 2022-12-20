@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2022 at 10:21 AM
+-- Generation Time: Dec 20, 2022 at 08:03 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -61,36 +61,22 @@ CREATE TABLE `leave_information` (
 
 CREATE TABLE `lecturer` (
   `lecturer_id` int(10) UNSIGNED NOT NULL,
-  `lecturer_perfix` varchar(255) DEFAULT NULL,
+  `lecturer_prefix` varchar(255) DEFAULT NULL,
   `lecturer_fname` varchar(255) NOT NULL,
   `lecturer_lname` varchar(255) NOT NULL,
   `lecturer_type` varchar(255) DEFAULT NULL,
   `lecturer_username` varchar(255) DEFAULT NULL,
   `lecturer_password` varchar(255) DEFAULT NULL,
-  `lecturer_image` varchar(255) NOT NULL
+  `lecturer_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `lecturer`
 --
 
-INSERT INTO `lecturer` (`lecturer_id`, `lecturer_perfix`, `lecturer_fname`, `lecturer_lname`, `lecturer_type`, `lecturer_username`, `lecturer_password`, `lecturer_image`) VALUES
-(1, 'นาย', 'ธีรทิน', 'ภู่ระมาต', '1', 'teeratin@rmutsb.ac.th', '$2y$10$Zcyn5ptXlXNnMR0zhs0Kn.BcopqSzCzhGO/.ih5RHLpnHv.pDNPJq', 'uploads/1671441118_Screenshot 2022-11-24 103434.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roll_call`
---
-
-CREATE TABLE `roll_call` (
-  `rc_id` int(10) UNSIGNED NOT NULL,
-  `rc_type` enum('present','absent','late','leave') DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `student_id` int(10) DEFAULT NULL,
-  `subject_id` int(10) DEFAULT NULL,
-  `li_id` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+INSERT INTO `lecturer` (`lecturer_id`, `lecturer_prefix`, `lecturer_fname`, `lecturer_lname`, `lecturer_type`, `lecturer_username`, `lecturer_password`, `lecturer_image`) VALUES
+(1, 'นาย', 'ธีรทิน', 'ภู่ระมาต', '1', 'teeratin@rmutsb.ac.th', '$2y$10$Zcyn5ptXlXNnMR0zhs0Kn.BcopqSzCzhGO/.ih5RHLpnHv.pDNPJq', 'public/1671517508_123.png'),
+(5, 'นาย', 'ฆราวัฒน์', 'สนธิเณร', '1', 'karawat@rmutsb.ac.th', '$2y$10$e1dfFtSiC.fm4jd1zmer/OluUuZqYXn8vma6/JrZfXeqIGxKNsa3K', NULL);
 
 -- --------------------------------------------------------
 
@@ -132,7 +118,8 @@ CREATE TABLE `section` (
 
 INSERT INTO `section` (`section_id`, `section_name`) VALUES
 (1, 'ITS16421N'),
-(3, 'ITS16422N');
+(3, 'ITS16422N'),
+(5, 'ITS16234N');
 
 -- --------------------------------------------------------
 
@@ -143,7 +130,7 @@ INSERT INTO `section` (`section_id`, `section_name`) VALUES
 CREATE TABLE `student` (
   `student_id` int(10) UNSIGNED NOT NULL,
   `student_code` varchar(255) DEFAULT NULL,
-  `student_perfix` varchar(255) DEFAULT NULL,
+  `student_prefix` varchar(255) DEFAULT NULL,
   `student_fname` varchar(255) DEFAULT NULL,
   `student_lname` varchar(255) NOT NULL,
   `section_id` int(11) NOT NULL
@@ -153,7 +140,7 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_code`, `student_perfix`, `student_fname`, `student_lname`, `section_id`) VALUES
+INSERT INTO `student` (`student_id`, `student_code`, `student_prefix`, `student_fname`, `student_lname`, `section_id`) VALUES
 (5, '164424221001', 'นาย', 'กรทอง', 'มากไอ', 1),
 (6, '164424221002', 'นางสาว', 'กวินธิดา', 'กลบแก้ว', 1),
 (7, '164424221003', 'นางสาว', 'กัญญารัตน์', ' นิลทัศ', 1),
@@ -189,7 +176,79 @@ INSERT INTO `student` (`student_id`, `student_code`, `student_perfix`, `student_
 (37, '164424221035', 'นาย', 'อธิศ ', 'มีเครือ', 1),
 (38, '164424221036', 'นาย', 'อนพัทย์ ', 'แพงมา', 1),
 (39, '164424221037', 'นาย', 'อรรถพร ', 'คำจักร', 1),
-(40, '164424221038', 'นาย', 'พันธกานต์ ', 'รี้พลรุจี', 1);
+(40, '164424221038', 'นาย', 'พันธกานต์ ', 'รี้พลรุจี', 1),
+(42, '164424221001', 'นาย', 'กรทอง', 'มากไอ', 3),
+(43, '164424221002', 'นางสาว', 'กวินธิดา', 'กลบแก้ว', 3),
+(44, '164424221003', 'นางสาว', 'กัญญารัตน์', 'นิลทัศ', 3),
+(45, '164424221004', 'นาย', 'คมชาญ', 'เพ็ชร์กูล', 3),
+(46, '164424221005', 'นาย', 'ฆราวัฒน์', 'สนธิเณร', 3),
+(47, '164424221006', 'นาย', 'จิรภัทร', 'หวยสูงเนิน', 3),
+(48, '164424221007', 'นาย', 'ฉันทกร', 'เสือสวัสดิ์', 3),
+(49, '164424221008', 'นาย', 'ชุติพนธ์', 'แจ่มประภาพร', 3),
+(50, '164424221009', 'นาย', 'ณัฐธัญ', 'อุ่นซิม', 3),
+(51, '164424221010', 'นาย', 'ณัฐพล', 'ชื่นบุญชม', 3),
+(52, '164424221011', 'นาย', 'ธนวรรษ', 'ธนวงศ์วิสูตร', 3),
+(53, '164424221012', 'นางสาว', 'ธิดา', 'โอบัวหงษ์', 3),
+(54, '164424221013', 'นาย', 'ธีรทิน', 'ภู่ระมาต', 3),
+(55, '164424221014', 'นางสาว', 'นูรูลฟิตรี', 'มูดอ', 3),
+(56, '164424221015', 'นาย', 'บวรรัตน์', 'รักเพ็ง', 3),
+(57, '164424221016', 'นาย', 'ปฐพี', 'แก้วฉิม', 3),
+(58, '164424221017', 'นาย', 'ปรมินทร์', 'ชายหงษ์', 3),
+(59, '164424221018', 'นาย', 'ปรีดา', 'เถื่อนเล็ก', 3),
+(60, '164424221019', 'นาย', 'ปิยวัฒน์', 'ฤกษ์ถนอม', 3),
+(61, '164424221020', 'นาย', 'ปิยะวัฒน์', 'บุญอาจ', 3),
+(62, '164424221021', 'นาย', 'พงศกร', 'แพงจักร', 3),
+(63, '164424221022', 'นาย', 'พงศธร', 'ปานจำรูญ', 3),
+(64, '164424221023', 'นาย', 'พันกร', 'โสบิน', 3),
+(65, '164424221025', 'นาย', 'พิสิฐพงศ์', 'กิตติชัยมาพร', 3),
+(66, '164424221026', 'นาย', 'พีรพัฒน์', 'ทับเงิน', 3),
+(67, '164424221028', 'นาย', 'ภูมินทร์', 'ลายเครือวัลย์', 3),
+(68, '164424221029', 'นาย', 'ภูมินทร์', 'หุมมะจันทร์', 3),
+(69, '164424221030', 'นางสาว', 'มัลลิกา', 'การเสี่ยงศรี', 3),
+(70, '164424221031', 'นาย', 'เลิศชาย', 'เจิมขุนทด', 3),
+(71, '164424221032', 'นาย', 'สิทธิเดช', 'ทวีกิจโชติรัตน์', 3),
+(72, '164424221033', 'นาย', 'สิรวิชญ์', 'ชาติเผือก', 3),
+(73, '164424221034', 'นาย', 'สุรศักดิ์', 'แสงสุกใส', 3),
+(74, '164424221035', 'นาย', 'อธิศ', 'มีเครือ', 3),
+(75, '164424221036', 'นาย', 'อนพัทย์', 'แพงมา', 3),
+(76, '164424221037', 'นาย', 'อรรถพร', 'คำจักร', 3),
+(77, '164424221038', 'นาย', 'พันธกานต์', 'รี้พลรุจี', 3),
+(150, '164424221001', 'นาย', 'กรทอง', 'มากไอ', 5),
+(151, '164424221002', 'นางสาว', 'กวินธิดา', 'กลบแก้ว', 5),
+(152, '164424221003', 'นางสาว', 'กัญญารัตน์', 'นิลทัศ', 5),
+(153, '164424221004', 'นาย', 'คมชาญ', 'เพ็ชร์กูล', 5),
+(154, '164424221005', 'นาย', 'ฆราวัฒน์', 'สนธิเณร', 5),
+(155, '164424221006', 'นาย', 'จิรภัทร', 'หวยสูงเนิน', 5),
+(156, '164424221007', 'นาย', 'ฉันทกร', 'เสือสวัสดิ์', 5),
+(157, '164424221008', 'นาย', 'ชุติพนธ์', 'แจ่มประภาพร', 5),
+(158, '164424221009', 'นาย', 'ณัฐธัญ', 'อุ่นซิม', 5),
+(159, '164424221010', 'นาย', 'ณัฐพล', 'ชื่นบุญชม', 5),
+(160, '164424221011', 'นาย', 'ธนวรรษ', 'ธนวงศ์วิสูตร', 5),
+(161, '164424221012', 'นางสาว', 'ธิดา', 'โอบัวหงษ์', 5),
+(162, '164424221013', 'นาย', 'ธีรทิน', 'ภู่ระมาต', 5),
+(163, '164424221014', 'นางสาว', 'นูรูลฟิตรี', 'มูดอ', 5),
+(164, '164424221015', 'นาย', 'บวรรัตน์', 'รักเพ็ง', 5),
+(165, '164424221016', 'นาย', 'ปฐพี', 'แก้วฉิม', 5),
+(166, '164424221017', 'นาย', 'ปรมินทร์', 'ชายหงษ์', 5),
+(167, '164424221018', 'นาย', 'ปรีดา', 'เถื่อนเล็ก', 5),
+(168, '164424221019', 'นาย', 'ปิยวัฒน์', 'ฤกษ์ถนอม', 5),
+(169, '164424221020', 'นาย', 'ปิยะวัฒน์', 'บุญอาจ', 5),
+(170, '164424221021', 'นาย', 'พงศกร', 'แพงจักร', 5),
+(171, '164424221022', 'นาย', 'พงศธร', 'ปานจำรูญ', 5),
+(172, '164424221023', 'นาย', 'พันกร', 'โสบิน', 5),
+(173, '164424221025', 'นาย', 'พิสิฐพงศ์', 'กิตติชัยมาพร', 5),
+(174, '164424221026', 'นาย', 'พีรพัฒน์', 'ทับเงิน', 5),
+(175, '164424221028', 'นาย', 'ภูมินทร์', 'ลายเครือวัลย์', 5),
+(176, '164424221029', 'นาย', 'ภูมินทร์', 'หุมมะจันทร์', 5),
+(177, '164424221030', 'นางสาว', 'มัลลิกา', 'การเสี่ยงศรี', 5),
+(178, '164424221031', 'นาย', 'เลิศชาย', 'เจิมขุนทด', 5),
+(179, '164424221032', 'นาย', 'สิทธิเดช', 'ทวีกิจโชติรัตน์', 5),
+(180, '164424221033', 'นาย', 'สิรวิชญ์', 'ชาติเผือก', 5),
+(181, '164424221034', 'นาย', 'สุรศักดิ์', 'แสงสุกใส', 5),
+(182, '164424221035', 'นาย', 'อธิศ', 'มีเครือ', 5),
+(183, '164424221036', 'นาย', 'อนพัทย์', 'แพงมา', 5),
+(184, '164424221037', 'นาย', 'อรรถพร', 'คำจักร', 5),
+(185, '164424221038', 'นาย', 'พันธกานต์', 'รี้พลรุจี', 5);
 
 -- --------------------------------------------------------
 
@@ -229,17 +288,6 @@ INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_day`, `subject_nam
 (17, '405-33-02', 'พฤหัส', 'Integrated Programming Technology', '17076 เขตเหนือ [ อาคาร 17 ]', 'บ่าย', '13:00:00', '17:00:00', '2', 2565, '1', 1, 1, 1, 1),
 (18, '603-22-02', 'ศุกร์', 'Talent English', '17098 เขตเหนือ [ อาคาร 17 ]', 'เช้า', '08:00:00', '10:00:00', '2', 2565, '1', 1, 1, 1, 1),
 (19, '405-37-01', 'ศุกร์', 'Information Technology for Presentation', '17081 เขตเหนือ [ อาคาร 17 ]', 'บ่าย', '13:00:00', '17:00:00', '2', 2565, '1', 1, 1, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subject_lecturer`
---
-
-CREATE TABLE `subject_lecturer` (
-  `subject_id` int(10) NOT NULL,
-  `lecturer_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -585,6 +633,21 @@ INSERT INTO `subject_student` (`subject_id`, `student_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE `timetable` (
+  `tt_id` int(10) UNSIGNED NOT NULL,
+  `tt_type` enum('present','absent','late','leave') DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `student_id` int(10) DEFAULT NULL,
+  `subject_id` int(10) DEFAULT NULL,
+  `li_id` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `total_score`
 --
 
@@ -618,12 +681,6 @@ ALTER TABLE `lecturer`
   ADD PRIMARY KEY (`lecturer_id`);
 
 --
--- Indexes for table `roll_call`
---
-ALTER TABLE `roll_call`
-  ADD PRIMARY KEY (`rc_id`);
-
---
 -- Indexes for table `scoring`
 --
 ALTER TABLE `scoring`
@@ -655,6 +712,12 @@ ALTER TABLE `subject_student`
   ADD KEY `student_id` (`student_id`);
 
 --
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`tt_id`);
+
+--
 -- Indexes for table `total_score`
 --
 ALTER TABLE `total_score`
@@ -680,13 +743,7 @@ ALTER TABLE `leave_information`
 -- AUTO_INCREMENT for table `lecturer`
 --
 ALTER TABLE `lecturer`
-  MODIFY `lecturer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `roll_call`
---
-ALTER TABLE `roll_call`
-  MODIFY `rc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `lecturer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `scoring`
@@ -698,19 +755,25 @@ ALTER TABLE `scoring`
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `section_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `section_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `student_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
   MODIFY `subject_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `tt_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `total_score`

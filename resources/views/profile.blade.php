@@ -11,7 +11,8 @@
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <img class="img-account-profile rounded-circle mb-2"
-                            src="{{ asset('image/user_avatar.png') }}"
+                            src="{{ URL::asset('storage/'.$data->lecturer_image) }}"
+
                             alt="">
                         <div class="mt-2 mb-2 ps-5 pe-5">
                             <input type="file" class="form-control" name="lecturer_image">
@@ -35,18 +36,18 @@
                         <div class="row g-3 mt-3">
                             <div class="col-lg-4">
                                 <label class="form-label">คำนำหน้า</label>
-                                <select class="form-select" name="lecturer_perfix">
-                                    <option value="นาย" {{ $data->lecturer_perfix == 'นาย' ? 'selected' : '' }}>นาย
+                                <select class="form-select" name="lecturer_prefix">
+                                    <option value="นาย" {{ $data->lecturer_prefix == 'นาย' ? 'selected' : '' }}>นาย
                                     </option>
-                                    <option value="นาง" {{ $data->lecturer_perfix == 'นาง' ? 'selected' : '' }}>นาง
+                                    <option value="นาง" {{ $data->lecturer_prefix == 'นาง' ? 'selected' : '' }}>นาง
                                     </option>
-                                    <option value="นางสาว" {{ $data->lecturer_perfix == 'นางสาว' ? 'selected' : '' }}>นางสาว
+                                    <option value="นางสาว" {{ $data->lecturer_prefix == 'นางสาว' ? 'selected' : '' }}>นางสาว
                                     </option>
                                     <option value="ผู้ช่วยศาสตราจารย์"
-                                        {{ $data->lecturer_perfix == 'ผู้ช่วยศาสตราจารย์' ? 'selected' : '' }}>
+                                        {{ $data->lecturer_prefix == 'ผู้ช่วยศาสตราจารย์' ? 'selected' : '' }}>
                                         ผู้ช่วยศาสตราจารย์</option>
                                     <option value="รองศาสตราจารย์"
-                                        {{ $data->lecturer_perfix == 'รองศาสตราจารย์' ? 'selected' : '' }}>
+                                        {{ $data->lecturer_prefix == 'รองศาสตราจารย์' ? 'selected' : '' }}>
                                         รองศาสตราจารย์</option>
                                 </select>
                             </div>

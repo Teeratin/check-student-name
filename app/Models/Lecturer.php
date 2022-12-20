@@ -25,7 +25,7 @@ class Lecturer extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-        'lecturer_perfix',
+        'lecturer_prefix',
         'lecturer_fname',
         'lecturer_lname',
         'lecturer_type',
@@ -45,7 +45,7 @@ class Lecturer extends Authenticatable
 
     public function getFullnameAttribute()
     {
-        return $this->lecturer_perfix . $this->lecturer_fname . ' ' . $this->lecturer_lname;
+        return $this->lecturer_prefix . $this->lecturer_fname . ' ' . $this->lecturer_lname;
     }
 
     public function getPasswordAttribute()

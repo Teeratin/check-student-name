@@ -24,7 +24,7 @@
 
         @foreach ($data_m as $row)
             <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                <a href="{{ route('checkname_index') }}">
+                <a href="{{ route('checkname_index',$row->subject_id) }}">
                     <div class="card bg-c-green">
                         <div class="card-block">
                             <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
@@ -43,7 +43,7 @@
 
         @foreach ($data_a as $row)
             <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                <a href="{{ route('checkname_index') }}">
+                <a href="{{ route('checkname_index',$row->subject_id) }}">
                     <div class="card bg-c-green">
                         <div class="card-block">
                             <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i

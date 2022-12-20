@@ -12,7 +12,7 @@
                     <div class="row m-auto g-3">
                         <div class="col-lg-4">
                             <label class="form-label">คำนำหน้า</label>
-                            <select class="form-select" name="lecturer_perfix">
+                            <select class="form-select" name="lecturer_prefix">
                                 <option value="นาย">นาย</option>
                                 <option value="นาง">นาง</option>
                                 <option value="นางสาว">นางสาว</option>

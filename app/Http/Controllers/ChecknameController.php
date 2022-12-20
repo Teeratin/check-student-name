@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject_Student;
 use Illuminate\Http\Request;
 
 class ChecknameController extends Controller
@@ -11,9 +12,10 @@ class ChecknameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('checkname');
+        $students = Subject_Student::where('subject_id', $id)->get();
+        return view('checkname', compact('students'));
     }
 
     /**

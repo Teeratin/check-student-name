@@ -72,7 +72,7 @@ class SectionController extends Controller
      */
     public function edit($id)
     {
-        $data_student = Student::select('student_id', 'student_code', 'student_perfix', 'student_fname', 'student_lname', 'section_id')->where('section_id', $id)->get();
+        $data_student = Student::select('student_id', 'student_code', 'student_prefix', 'student_fname', 'student_lname', 'section_id')->where('section_id', $id)->get();
         $data_section = Section::find($id);
         return view('edit.section', ['id' => $id], ['data_student' => $data_student], ['data_section' => $data_section]);
     }
@@ -117,7 +117,7 @@ class SectionController extends Controller
         foreach($data as $item){
             $create = [
                 'student_code' => $item['student_code'],
-                'student_perfix' => $item['student_perfix'],
+                'student_prefix' => $item['student_prefix'],
                 'student_fname' => $item['student_fname'],
                 'student_lname' => $item['student_lname'],
                 'section_id' => $id,
