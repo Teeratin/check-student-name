@@ -3,10 +3,10 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <p class="fs-2">[405-41-06 - 42464] Information Technology Project2</p>
+            <p class="fs-2">[ {{ $subject->subject_code }} ] {{ $subject->subject_name }}</p>
         </div>
         <div class="col-lg-12">
-            <table class="table">
+            <table class="table" id="example">
                 <thead>
                     <tr>
                         <th scope="col">รหัสนักศึกษา</th>
@@ -19,32 +19,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>164424221013</td>
-                        <td>นายธีรทิน ภู่ระมาต</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>5</td>
-                        <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" data-bs-title="เข้าเรียน">
-                                <i class="bi bi-person-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" data-bs-title="มาสาย">
-                                <i class="bi bi-person-exclamation"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" data-bs-title="ขาดเรียน">
-                                <i class="bi bi-person-dash"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                <i class="bi bi-clipboard-minus"></i>
-                            </button>
-                        </td>
-                    </tr>
+                    @foreach ($students as $student)
+                        <tr>
+                            <td>{{ $student->student->student_code }}</td>
+                            <td>{{ $student->student->fullname }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-success" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" data-bs-title="เข้าเรียน">
+                                    <i class="bi bi-person-check"></i>
+                                </button>
+                                <button type="button" class="btn btn-warning" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" data-bs-title="มาสาย">
+                                    <i class="bi bi-person-exclamation"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" data-bs-title="ขาดเรียน">
+                                    <i class="bi bi-person-dash"></i>
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <i class="bi bi-clipboard-minus"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

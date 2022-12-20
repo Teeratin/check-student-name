@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use App\Models\Subject;
 use App\Models\Subject_Student;
+use App\Models\Timetable;
 use Illuminate\Http\Request;
 
 class ChecknameController extends Controller
@@ -15,7 +18,9 @@ class ChecknameController extends Controller
     public function index($id)
     {
         $students = Subject_Student::where('subject_id', $id)->get();
-        return view('checkname', compact('students'));
+        $subject = Subject::where('subject_id', $id)->first();
+
+        return view('checkname', compact('students', 'subject'));
     }
 
     /**

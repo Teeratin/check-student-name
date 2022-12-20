@@ -5,17 +5,10 @@
     <div class="row m-auto g-3">
         <div class="col-lg-2">
             <select class="form-select">
-                <option selected>ปีการศึกษา</option>
-                <option value="1">2566</option>
-                <option value="2">2565</option>
-            </select>
-        </div>
-        <div class="col-lg-2">
-            <select class="form-select">
                 <option selected>เทอม</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
-                <option value="3">Summer</option>
+                <option value="Summers">Summer</option>
             </select>
         </div>
         <div class="col-lg-12">
@@ -24,7 +17,7 @@
 
         @foreach ($data_m as $row)
             <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                <a href="{{ route('checkname_index',$row->subject_id) }}">
+                <a href="{{ route('checkname_index', $row->subject_id) }}">
                     <div class="card bg-c-green">
                         <div class="card-block">
                             <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
@@ -43,7 +36,7 @@
 
         @foreach ($data_a as $row)
             <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                <a href="{{ route('checkname_index',$row->subject_id) }}">
+                <a href="{{ route('checkname_index', $row->subject_id) }}">
                     <div class="card bg-c-green">
                         <div class="card-block">
                             <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i

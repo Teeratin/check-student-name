@@ -34,4 +34,8 @@ class Student extends Model
     {
         return $this->belongsTo(Student::class, 'subject_student', 'subject_id', 'student_id');
     }
+    public function timetable()
+    {
+        return $this->hasmany(Timetable::class, 'student_id');
+    }
 }

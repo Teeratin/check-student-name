@@ -23,7 +23,8 @@ class NormalController extends Controller
             ['subject_semester', '=', 1],
             ['subject_period', '=', "บ่าย"]
         ])->get();
-        return view('timetable_normal', compact('data_m','data_a'));
+        $data = Subject::get();
+        return view('timetable_normal', compact('data_m','data_a','data'));
     }
 
     /**
