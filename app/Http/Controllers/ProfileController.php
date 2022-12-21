@@ -60,8 +60,7 @@ class ProfileController extends Controller
     {
         $data = $request->all();
         if ($request->file()) {
-            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
-            $filePath = $request->file('lecturer_image')->storeAs('public/',$fileName);
+            $filePath = $request->file('lecturer_image')->store('public/profile');
             $data['lecturer_image'] = $filePath;
         }
         if ($data['lecturer_password'] == null or $data['lecturer_password'] == "") {
@@ -79,8 +78,7 @@ class ProfileController extends Controller
     {
         $data = $request->all();
         if ($request->file()) {
-            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
-            $filePath = $request->file('lecturer_image')->storeAs('uploads', $fileName,);
+            $filePath = $request->file('lecturer_image')->store('public/profile');
             $data['lecturer_image'] = $filePath;
         }
         Lecturer::find($id)->update($data);

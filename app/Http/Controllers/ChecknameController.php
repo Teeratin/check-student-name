@@ -17,10 +17,10 @@ class ChecknameController extends Controller
      */
     public function index($id)
     {
-        $students = Subject_Student::where('subject_id', $id)->get();
+
         $subject = Subject::where('subject_id', $id)->first();
 
-        return view('checkname', compact('students', 'subject'));
+        return view('checkname', compact('id', 'subject'));
     }
 
     /**
@@ -28,6 +28,53 @@ class ChecknameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function present($id, $sid)
+    {
+        $create = new Timetable;
+        $create->tt_type = 'present';
+        $create->date = date('Y-m-d');
+        $create->student_id = $sid;
+        $create->subject_id = $id;
+        $create->save();
+        return back();
+    }
+
+    public function late($id, $sid)
+    {
+        $create = new Timetable;
+        $create->tt_type = 'late';
+        $create->date = date('Y-m-d');
+        $create->student_id = $sid;
+        $create->subject_id = $id;
+        $create->save();
+        return back();
+    }
+
+    public function absent($id, $sid)
+    {
+        $create = new Timetable;
+        $create->tt_type = 'absent';
+        $create->date = date('Y-m-d');
+        $create->student_id = $sid;
+        $create->subject_id = $id;
+        $create->save();
+        return back();
+    }
+
+    public function leave(Request $request, $id, $sid)
+    {
+        $data = $request->all();
+        $create = new Timetable;
+        $create->tt_type = 'leave';
+        $create->date = date('Y-m-d');
+        $create->student_id = $sid;
+        $create->subject_id = $id;
+        $create->leave_description = $data['leave_description'];
+        $create->leave_type	 = $data['leave_type'];
+        $create->save();
+        return back();
+    }
+
     public function create()
     {
         //

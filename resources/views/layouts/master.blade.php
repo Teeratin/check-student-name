@@ -37,7 +37,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
+                            <img src="{{ Storage::url(auth()->user()->lecturer_image) }}"
                                 class="avatar" alt="" />
                             {{ auth()->user()->fullname }}
                         </a>
@@ -68,7 +68,7 @@
             <a href="{{ route('profile_index',auth()->user()->lecturer_id) }}">
                 <div class="sidebar-avatar">
                     <img
-                        src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" />
+                        src="{{ Storage::url(auth()->user()->lecturer_image) }}" />
                     <h1 class="sidebar-avatar-text mb-0">{{ auth()->user()->fullname }}</h1>
                     <h2></h2>
                 </div>

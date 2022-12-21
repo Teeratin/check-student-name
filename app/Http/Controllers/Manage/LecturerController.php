@@ -36,8 +36,7 @@ class LecturerController extends Controller
             $data['lecturer_username'] = $data['lecturer_username'] . "@rmutsb.ac.th";
         }
         if ($request->file()) {
-            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
-            $filePath = $request->file('lecturer_image')->storeAs('public',$fileName);
+            $filePath = $request->file('lecturer_image')->store('public/lecturer');
             $data['lecturer_image'] = $filePath;
         }
         Lecturer::create($data);
@@ -91,8 +90,7 @@ class LecturerController extends Controller
     {
         $data = $request->all();
         if ($request->file()) {
-            $fileName = time() . '_' . $request->lecturer_image->getClientOriginalName();
-            $filePath = $request->file('lecturer_image')->storeAs('public',$fileName);
+            $filePath = $request->file('lecturer_image')->store('public/lecturer');
             $data['lecturer_image'] = $filePath;
         }
         if ($data['lecturer_password'] == null or $data['lecturer_password'] == "") {

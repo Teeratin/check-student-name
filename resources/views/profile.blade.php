@@ -11,9 +11,7 @@
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <img class="img-account-profile rounded-circle mb-2"
-                            src="{{ URL::asset('storage/'.$data->lecturer_image) }}"
-
-                            alt="">
+                            src="{{ Storage::url(auth()->user()->lecturer_image) }}" alt="">
                         <div class="mt-2 mb-2 ps-5 pe-5">
                             <input type="file" class="form-control" name="lecturer_image">
                         </div>

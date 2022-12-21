@@ -6,7 +6,7 @@
             <p class="fs-2">[ {{ $subject->subject_code }} ] {{ $subject->subject_name }}</p>
         </div>
         <div class="col-lg-12">
-            <table class="table" id="example">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">รหัสนักศึกษา</th>
@@ -14,36 +14,84 @@
                         <th scope="col">มา</th>
                         <th scope="col">สาย</th>
                         <th scope="col">ขาด</th>
+                        <th scope="col">ลา</th>
                         <th scope="col">คะแนน</th>
                         <th scope="col">ตัวเลือก</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($students as $student)
+                    @foreach ($subject->students as $student)
                         <tr>
-                            <td>{{ $student->student->student_code }}</td>
-                            <td>{{ $student->student->fullname }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $student->student_code }}</td>
+                            <td>{{ $student->fullname }}</td>
+                            <td>{{ $student->CountPresent($id) }}</td>
+                            <td>{{ $student->CountLate($id) }}</td>
+                            <td>{{ $student->CountAbsent($id) }}</td>
+                            <td>{{ $student->CountLeave($id) }}</td>
+                            <td>{{ $student->SumScore($id) }}</td>
                             <td>
-                                <button type="button" class="btn btn-success" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" data-bs-title="เข้าเรียน">
-                                    <i class="bi bi-person-check"></i>
-                                </button>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" data-bs-title="มาสาย">
-                                    <i class="bi bi-person-exclamation"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" data-bs-title="ขาดเรียน">
-                                    <i class="bi bi-person-dash"></i>
-                                </button>
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <i class="bi bi-clipboard-minus"></i>
-                                </button>
+                                @if (!$student->isCheck($id))
+                                    @php($data = ['id' => $id, 'sid' => $student->student_id])
+                                    <a href="{{ route('checkname_present', $data) }}" class="btn btn-success"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="เข้าเรียน">
+                                        <i class="bi bi-person-check"></i>
+                                    </a>
+                                    <a href="{{ route('checkname_late', $data) }}" class="btn btn-warning"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="มาสาย">
+                                        <i class="bi bi-person-exclamation"></i>
+                                    </a>
+                                    <a href="{{ route('checkname_absent', $data) }}" class="btn btn-danger"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="ขาดเรียน">
+                                        <i class="bi bi-person-dash"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#ModalLeave{{ $student->student_id }}">
+                                        <i class="bi bi-clipboard-minus"></i>
+                                    </button>
+                                @else
+                                    <p class="fs-ถ text-success">เสร็จสิ้น</p>
+                                @endif
+
+
+                                <!-- Modal -->
+                                <div class="modal" id="ModalLeave{{ $student->student_id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-secondary">
+                                                <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">การลา</h1>
+                                                <button type="button" class="btn-close btn-close-white"
+                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            @php($data = ['id' => $id, 'sid' => $student->student_id])
+                                            <form action="{{ route('checkname_leave', $data) }}" method="post">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">ประเภทการลา</label>
+                                                        <select class="form-select" name="leave_type">
+                                                            <option value="ลาป่วย">ลาป่วย</option>
+                                                            <option value="ลากิจ">ลากิจ</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">ข้อมูลการลา</label>
+                                                        <textarea class="form-control" rows="3" name="leave_description"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal">
+                                                        ยกเลิก
+                                                    </button>
+                                                    <button type="submit" class="btn btn-secondary">ยืนยัน</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
                             </td>
                         </tr>
                     @endforeach
@@ -51,37 +99,4 @@
             </table>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary">
-                    <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">การลา</h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">ประเภทการลา</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>ลาป่วย</option>
-                            <option value="1">ลากิจ</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">ข้อมูลการลา</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        ยกเลิก
-                    </button>
-                    <button type="button" class="btn btn-secondary">ยืนยัน</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Modal -->
 @endsection

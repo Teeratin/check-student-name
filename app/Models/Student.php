@@ -30,12 +30,38 @@ class Student extends Model
     {
         return $this->belongsToMany(Student::class, 'subject_student', 'subject_id', 'student_id');
     }
-    public function scoring()
-    {
-        return $this->belongsTo(Student::class, 'subject_student', 'subject_id', 'student_id');
-    }
     public function timetable()
     {
-        return $this->hasmany(Timetable::class, 'student_id');
+        return $this->hasMany(Timetable::class, 'student_id');
+    }
+
+    public function CountPresent($id)
+    {
+        return $this->timetable()->where('subject_id', $id)->where('tt_type', 'present')->count();
+    }
+    public function CountLate($id)
+    {
+        return $this->timetable()->where('subject_id', $id)->where('tt_type', 'late')->count();
+    }
+    public function CountAbsent($id)
+    {
+        return $this->timetable()->where('subject_id', $id)->where('tt_type', 'absent')->count();
+    }
+    public function CountLeave($id)
+    {
+        return $this->timetable()->where('subject_id', $id)->where('tt_type', 'leave')->count();
+    }
+    public function isCheck($id)
+    {
+        return $this->timetable()->where('subject_id', $id)->whereDate('date',date('Y-m-d'))->count();
+    }
+    public function SumScore($id)
+    {
+        $subject = Subject::find($id);
+        $present = $subject->scoring->scoring_present * $this->CountPresent($id);
+        $late = $subject->scoring->scoring_late * $this->CountLate($id);
+        $absent = $subject->scoring->scoring_absent * $this->CountAbsent($id);
+
+        return number_format(($present + $late + $absent) / 7.5, 1, '.', '');
     }
 }
