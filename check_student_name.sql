@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 20, 2022 at 08:03 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Host: localhost:3306
+-- Generation Time: Dec 21, 2022 at 07:47 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `course` (
-  `course_id` int(11) NOT NULL,
+  `course_id` int NOT NULL,
   `course_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `course`
@@ -44,23 +44,11 @@ INSERT INTO `course` (`course_id`, `course_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `leave_information`
---
-
-CREATE TABLE `leave_information` (
-  `li_id` int(10) UNSIGNED NOT NULL,
-  `li_description` varchar(255) DEFAULT NULL,
-  `li_type` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `lecturer`
 --
 
 CREATE TABLE `lecturer` (
-  `lecturer_id` int(10) UNSIGNED NOT NULL,
+  `lecturer_id` int UNSIGNED NOT NULL,
   `lecturer_prefix` varchar(255) DEFAULT NULL,
   `lecturer_fname` varchar(255) NOT NULL,
   `lecturer_lname` varchar(255) NOT NULL,
@@ -68,14 +56,14 @@ CREATE TABLE `lecturer` (
   `lecturer_username` varchar(255) DEFAULT NULL,
   `lecturer_password` varchar(255) DEFAULT NULL,
   `lecturer_image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `lecturer`
 --
 
 INSERT INTO `lecturer` (`lecturer_id`, `lecturer_prefix`, `lecturer_fname`, `lecturer_lname`, `lecturer_type`, `lecturer_username`, `lecturer_password`, `lecturer_image`) VALUES
-(1, 'นาย', 'ธีรทิน', 'ภู่ระมาต', '1', 'teeratin@rmutsb.ac.th', '$2y$10$Zcyn5ptXlXNnMR0zhs0Kn.BcopqSzCzhGO/.ih5RHLpnHv.pDNPJq', 'public/1671517508_123.png'),
+(1, 'นาย', 'ธีรทิน', 'ภู่ระมาต', '1', 'teeratin@rmutsb.ac.th', '$2y$10$Zcyn5ptXlXNnMR0zhs0Kn.BcopqSzCzhGO/.ih5RHLpnHv.pDNPJq', 'public/profile/c1nQub19BJ3LUwNei37rGVrYGhFoXWh7eah0DHP3.png'),
 (5, 'นาย', 'ฆราวัฒน์', 'สนธิเณร', '1', 'karawat@rmutsb.ac.th', '$2y$10$e1dfFtSiC.fm4jd1zmer/OluUuZqYXn8vma6/JrZfXeqIGxKNsa3K', NULL);
 
 -- --------------------------------------------------------
@@ -85,19 +73,19 @@ INSERT INTO `lecturer` (`lecturer_id`, `lecturer_prefix`, `lecturer_fname`, `lec
 --
 
 CREATE TABLE `scoring` (
-  `scoring_id` int(10) UNSIGNED NOT NULL,
+  `scoring_id` int UNSIGNED NOT NULL,
   `scoring_name` varchar(255) NOT NULL,
-  `scoring_punctual` varchar(255) NOT NULL,
+  `scoring_present` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `scoring_late` varchar(255) NOT NULL,
   `scoring_absent` varchar(255) NOT NULL,
-  `lecturer_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `lecturer_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `scoring`
 --
 
-INSERT INTO `scoring` (`scoring_id`, `scoring_name`, `scoring_punctual`, `scoring_late`, `scoring_absent`, `lecturer_id`) VALUES
+INSERT INTO `scoring` (`scoring_id`, `scoring_name`, `scoring_present`, `scoring_late`, `scoring_absent`, `lecturer_id`) VALUES
 (1, 'จิตพิสัย 10 คะแนน', '5', '4', '3', 1),
 (2, 'จิตพิสัย 11 คะแนน', '5', '4', '3', 2);
 
@@ -108,9 +96,9 @@ INSERT INTO `scoring` (`scoring_id`, `scoring_name`, `scoring_punctual`, `scorin
 --
 
 CREATE TABLE `section` (
-  `section_id` int(10) UNSIGNED NOT NULL,
+  `section_id` int UNSIGNED NOT NULL,
   `section_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `section`
@@ -128,13 +116,13 @@ INSERT INTO `section` (`section_id`, `section_name`) VALUES
 --
 
 CREATE TABLE `student` (
-  `student_id` int(10) UNSIGNED NOT NULL,
+  `student_id` int UNSIGNED NOT NULL,
   `student_code` varchar(255) DEFAULT NULL,
   `student_prefix` varchar(255) DEFAULT NULL,
   `student_fname` varchar(255) DEFAULT NULL,
   `student_lname` varchar(255) NOT NULL,
-  `section_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `section_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `student`
@@ -257,7 +245,7 @@ INSERT INTO `student` (`student_id`, `student_code`, `student_prefix`, `student_
 --
 
 CREATE TABLE `subject` (
-  `subject_id` int(10) UNSIGNED NOT NULL,
+  `subject_id` int UNSIGNED NOT NULL,
   `subject_code` varchar(255) NOT NULL,
   `subject_day` varchar(255) NOT NULL,
   `subject_name` varchar(255) NOT NULL,
@@ -266,13 +254,13 @@ CREATE TABLE `subject` (
   `subject_timeS` time NOT NULL,
   `subject_timeE` time NOT NULL,
   `subject_term` varchar(255) NOT NULL,
-  `subject_year` int(11) NOT NULL,
+  `subject_year` int NOT NULL,
   `subject_semester` varchar(255) NOT NULL,
-  `scoring_id` int(11) NOT NULL,
-  `course_id` int(11) NOT NULL,
-  `section_id` int(11) NOT NULL,
-  `lecturer_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `scoring_id` int NOT NULL,
+  `course_id` int NOT NULL,
+  `section_id` int NOT NULL,
+  `lecturer_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `subject`
@@ -296,9 +284,9 @@ INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_day`, `subject_nam
 --
 
 CREATE TABLE `subject_student` (
-  `subject_id` int(10) UNSIGNED NOT NULL,
-  `student_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `subject_id` int UNSIGNED NOT NULL,
+  `student_id` int UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `subject_student`
@@ -637,26 +625,14 @@ INSERT INTO `subject_student` (`subject_id`, `student_id`) VALUES
 --
 
 CREATE TABLE `timetable` (
-  `tt_id` int(10) UNSIGNED NOT NULL,
+  `tt_id` int UNSIGNED NOT NULL,
   `tt_type` enum('present','absent','late','leave') DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `student_id` int(10) DEFAULT NULL,
-  `subject_id` int(10) DEFAULT NULL,
-  `li_id` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `total_score`
---
-
-CREATE TABLE `total_score` (
-  `ts_id` int(10) UNSIGNED NOT NULL,
-  `ts_score` varchar(255) DEFAULT NULL,
-  `student_id` int(10) DEFAULT NULL,
-  `subject_id` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `student_id` int DEFAULT NULL,
+  `subject_id` int DEFAULT NULL,
+  `leave_description` varchar(255) DEFAULT NULL,
+  `leave_type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Indexes for dumped tables
@@ -667,12 +643,6 @@ CREATE TABLE `total_score` (
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`course_id`);
-
---
--- Indexes for table `leave_information`
---
-ALTER TABLE `leave_information`
-  ADD PRIMARY KEY (`li_id`);
 
 --
 -- Indexes for table `lecturer`
@@ -718,12 +688,6 @@ ALTER TABLE `timetable`
   ADD PRIMARY KEY (`tt_id`);
 
 --
--- Indexes for table `total_score`
---
-ALTER TABLE `total_score`
-  ADD PRIMARY KEY (`ts_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -731,55 +695,43 @@ ALTER TABLE `total_score`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `leave_information`
---
-ALTER TABLE `leave_information`
-  MODIFY `li_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `course_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lecturer`
 --
 ALTER TABLE `lecturer`
-  MODIFY `lecturer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `lecturer_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `scoring`
 --
 ALTER TABLE `scoring`
-  MODIFY `scoring_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `scoring_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `section_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `section_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+  MODIFY `student_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `subject_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `tt_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `total_score`
---
-ALTER TABLE `total_score`
-  MODIFY `ts_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `tt_id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
