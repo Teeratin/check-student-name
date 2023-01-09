@@ -44,6 +44,10 @@ class Student extends Model
     {
         return $this->timetable()->where('subject_id', $id)->where('tt_type', 'late')->count();
     }
+    public function CountTotal($id)
+    {
+        return $this->timetable()->where('subject_id', $id)->count();
+    }
     public function CountAbsent($id)
     {
         return $this->timetable()->where('subject_id', $id)->where('tt_type', 'absent')->count();
@@ -59,14 +63,20 @@ class Student extends Model
     public function SumScore($id)
     {
         $subject = Subject::find($id);
-        $present = $subject->scoring->scoring_present * $this->CountPresent($id);
-        $late = $subject->scoring->scoring_late * $this->CountLate($id);
-        $absent = $subject->scoring->scoring_absent * $this->CountAbsent($id);
-        $sum = $present + $late + $absent;
-        $calculate = $sum /10;
-        $result = $sum / $calculate;
-        dd($result);
+        if ($subject) {
+            $total = $this->CountTotal($id);
+            $score_max = $subject->scoring->scoring_present * 15;
+            $present = $subject->scoring->scoring_present * $this->CountPresent($id);
+            $late = $subject->scoring->scoring_late * $this->CountLate($id);
+            $absent = $subject->scoring->scoring_absent * $this->CountAbsent($id);
+            $sum = $present + $late + $absent;
+            // $calculate = $total / $sum;
 
-        return number_format($sum);
+            $result = $total != 0 ? ($sum / $score_max) * 10 : 0;
+        } else {
+            $result = 0;
+        }
+
+        return number_format($result, 2);
     }
 }

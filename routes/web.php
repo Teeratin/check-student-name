@@ -41,9 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::prefix('checkname')->name('checkname_')->group(function () {
         Route::get('/{id}', [ChecknameController::class, 'index'])->name('index');
         Route::get('/present/{id}/{sid}', [ChecknameController::class, 'present'])->name('present');
+        Route::get('/update_present/{id}/{sid}', [ChecknameController::class, 'update_present'])->name('update_present');
         Route::get('/late/{id}/{sid}', [ChecknameController::class, 'late'])->name('late');
+        Route::get('/update_late/{id}/{sid}', [ChecknameController::class, 'update_late'])->name('update_late');
         Route::get('/absent/{id}/{sid}', [ChecknameController::class, 'absent'])->name('absent');
+        Route::get('/update_absent/{id}/{sid}', [ChecknameController::class, 'update_absent'])->name('update_absent');
         Route::post('/leave/{id}/{sid}', [ChecknameController::class, 'leave'])->name('leave');
+        Route::post('/update_leave/{id}/{sid}', [ChecknameController::class, 'update_leave'])->name('update_leave');
     });
     Route::prefix('timetable')->name('timetable_')->group(function () {
         Route::prefix('normal')->name('normal_')->group(function () {

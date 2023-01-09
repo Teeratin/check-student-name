@@ -11,6 +11,12 @@
                 <option value="Summers">Summer</option>
             </select>
         </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder="ปีการศึกษา">
+        </div>
+        <div class="col-lg-8">
+            <button type="submit" class="btn bg-green text-white float-end"><i class="bi bi-search"></i> ยืนยัน</button>
+        </div>
         <div class="col-lg-12">
             <p class="h4 mt-3">ช่วงเช้า</p>
         </div>

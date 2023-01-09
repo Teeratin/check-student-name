@@ -19,7 +19,6 @@ class ChecknameController extends Controller
     {
 
         $subject = Subject::where('subject_id', $id)->first();
-
         return view('checkname', compact('id', 'subject'));
     }
 
@@ -39,6 +38,16 @@ class ChecknameController extends Controller
         return back();
     }
 
+    public function update_present($id, $sid)
+    {
+        $update = Timetable::where('student_id', $sid)
+            ->where('subject_id', $id)
+            ->whereDate('date', date('Y-m-d'))->first();
+        $update->tt_type = 'present';
+        $update->save();
+        return back();
+    }
+
     public function late($id, $sid)
     {
         $create = new Timetable;
@@ -47,6 +56,16 @@ class ChecknameController extends Controller
         $create->student_id = $sid;
         $create->subject_id = $id;
         $create->save();
+        return back();
+    }
+
+    public function update_late($id, $sid)
+    {
+        $update = Timetable::where('student_id', $sid)
+            ->where('subject_id', $id)
+            ->whereDate('date', date('Y-m-d'))->first();
+        $update->tt_type = 'late';
+        $update->save();
         return back();
     }
 
@@ -61,6 +80,16 @@ class ChecknameController extends Controller
         return back();
     }
 
+    public function update_absent($id, $sid)
+    {
+        $update = Timetable::where('student_id', $sid)
+            ->where('subject_id', $id)
+            ->whereDate('date', date('Y-m-d'))->first();
+        $update->tt_type = 'absent';
+        $update->save();
+        return back();
+    }
+
     public function leave(Request $request, $id, $sid)
     {
         $data = $request->all();
@@ -70,8 +99,21 @@ class ChecknameController extends Controller
         $create->student_id = $sid;
         $create->subject_id = $id;
         $create->leave_description = $data['leave_description'];
-        $create->leave_type	 = $data['leave_type'];
+        $create->leave_type = $data['leave_type'];
         $create->save();
+        return back();
+    }
+
+    public function update_leave(Request $request, $id, $sid)
+    {
+        $data = $request->all();
+        $update = Timetable::where('student_id', $sid)
+            ->where('subject_id', $id)
+            ->whereDate('date', date('Y-m-d'))->first();
+        $update->tt_type = 'leave';
+        $update->leave_description = $data['leave_description'];
+        $update->leave_type = $data['leave_type'];
+        $update->save();
         return back();
     }
 
