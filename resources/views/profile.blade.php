@@ -9,9 +9,13 @@
                 <div class="card mb-4 mb-lg-0">
                     <div class="card-header">Profile Picture</div>
                     <div class="card-body text-center">
-                        <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2"
-                            src="{{ Storage::url(auth()->user()->lecturer_image) }}" alt="">
+                        @if (auth()->user()->lecturer_image == null)
+                            <img class="img-account-profile rounded-circle mb-2"
+                                src="{{ asset('image/user_avatar.png') }}" alt="">
+                        @else
+                            <img class="img-account-profile rounded-circle mb-2"
+                                src="{{ Storage::url(auth()->user()->lecturer_image) }}" alt="">
+                        @endif
                         <div class="mt-2 mb-2 ps-5 pe-5">
                             <input type="file" class="form-control" name="lecturer_image">
                         </div>

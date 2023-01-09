@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpOffice\PhpSpreadsheet\Reader\Xml\Style\NumberFormat;
 
 class Student extends Model
 {
@@ -53,7 +54,7 @@ class Student extends Model
     }
     public function isCheck($id)
     {
-        return $this->timetable()->where('subject_id', $id)->whereDate('date',date('Y-m-d'))->count();
+        return $this->timetable()->where('subject_id', $id)->whereDate('date', date('Y-m-d'))->count();
     }
     public function SumScore($id)
     {
@@ -61,7 +62,11 @@ class Student extends Model
         $present = $subject->scoring->scoring_present * $this->CountPresent($id);
         $late = $subject->scoring->scoring_late * $this->CountLate($id);
         $absent = $subject->scoring->scoring_absent * $this->CountAbsent($id);
+        $sum = $present + $late + $absent;
+        $calculate = $sum /10;
+        $result = $sum / $calculate;
+        dd($result);
 
-        return number_format(($present + $late + $absent) / 7.5, 1, '.', '');
+        return number_format($sum);
     }
 }

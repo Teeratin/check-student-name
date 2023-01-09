@@ -15,19 +15,8 @@ class EveningController extends Controller
      */
     public function index()
     {
-        $data_m = Subject::where([
-            ['subject_semester', '=', 2],
-            ['subject_period', '=', "เช้า"]
-        ])->get();
-        $data_a = Subject::where([
-            ['subject_semester', '=', 2],
-            ['subject_period', '=', "บ่าย"]
-        ])->get();
-        $data_e = Subject::where([
-            ['subject_semester', '=', 2],
-            ['subject_period', '=', "ค่ำ"]
-        ])->get();
-        return view('timetable_evening', compact('data_m', 'data_a', 'data_e'));
+        $data = Subject::where('subject_semester',2)->get();
+        return view('timetable_evening', compact('data'));
     }
 
     /**

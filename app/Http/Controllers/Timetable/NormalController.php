@@ -15,16 +15,9 @@ class NormalController extends Controller
      */
     public function index()
     {
-        $data_m = Subject::where([
-            ['subject_semester', '=', 1],
-            ['subject_period', '=', "เช้า"]
-        ])->get();
-        $data_a = Subject::where([
-            ['subject_semester', '=', 1],
-            ['subject_period', '=', "บ่าย"]
-        ])->get();
-        $data = Subject::get();
-        return view('timetable_normal', compact('data_m','data_a','data'));
+        $id = auth()->user()->lecturer_id;
+        $data = Subject::where('subject_semester',1)->where('lecturer_id',$id)->get();
+        return view('timetable_normal', compact('data'));
     }
 
     /**

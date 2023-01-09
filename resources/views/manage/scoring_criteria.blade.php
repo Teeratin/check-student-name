@@ -67,8 +67,8 @@
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label class="form-label">มาเรียน</label>
-                                                        <input type="text" class="form-control" name="scoring_punctual"
-                                                            value="{{ $row->scoring_punctual }}" />
+                                                        <input type="text" class="form-control" name="scoring_present"
+                                                            value="{{ $row->scoring_present }}" />
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label class="form-label">สาย</label>
@@ -150,7 +150,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">มาเรียน</label>
-                                <input type="text" class="form-control" name="scoring_punctual" />
+                                <input type="text" class="form-control" name="scoring_present" />
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">สาย</label>

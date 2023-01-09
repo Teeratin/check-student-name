@@ -28,31 +28,25 @@
                             <td>{{ $student->CountLate($id) }}</td>
                             <td>{{ $student->CountAbsent($id) }}</td>
                             <td>{{ $student->CountLeave($id) }}</td>
-                            <td>{{ $student->SumScore($id) }}</td>
+                            <td>{{ $student->Sumscore($id) }}</td>
                             <td>
-                                @if (!$student->isCheck($id))
-                                    @php($data = ['id' => $id, 'sid' => $student->student_id])
-                                    <a href="{{ route('checkname_present', $data) }}" class="btn btn-success"
-                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="เข้าเรียน">
-                                        <i class="bi bi-person-check"></i>
-                                    </a>
-                                    <a href="{{ route('checkname_late', $data) }}" class="btn btn-warning"
-                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="มาสาย">
-                                        <i class="bi bi-person-exclamation"></i>
-                                    </a>
-                                    <a href="{{ route('checkname_absent', $data) }}" class="btn btn-danger"
-                                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="ขาดเรียน">
-                                        <i class="bi bi-person-dash"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#ModalLeave{{ $student->student_id }}">
-                                        <i class="bi bi-clipboard-minus"></i>
-                                    </button>
-                                @else
-                                    <p class="fs-ถ text-success">เสร็จสิ้น</p>
-                                @endif
-
-
+                                @php($data = ['id' => $id, 'sid' => $student->student_id])
+                                <a href="{{ route('checkname_present', $data) }}" class="btn btn-success"
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="เข้าเรียน">
+                                    <i class="bi bi-person-check"></i>
+                                </a>
+                                <a href="{{ route('checkname_late', $data) }}" class="btn btn-warning"
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="มาสาย">
+                                    <i class="bi bi-person-exclamation"></i>
+                                </a>
+                                <a href="{{ route('checkname_absent', $data) }}" class="btn btn-danger"
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="ขาดเรียน">
+                                    <i class="bi bi-person-dash"></i>
+                                </a>
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#ModalLeave{{ $student->student_id }}">
+                                    <i class="bi bi-clipboard-minus"></i>
+                                </button>
                                 <!-- Modal -->
                                 <div class="modal" id="ModalLeave{{ $student->student_id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">

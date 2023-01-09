@@ -37,8 +37,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <img src="{{ Storage::url(auth()->user()->lecturer_image) }}"
-                                class="avatar" alt="" />
+                            @if (auth()->user()->lecturer_image == null)
+                                <img src="{{ asset('image/user_avatar.png') }}" class="avatar" alt="" />
+                            @else
+                                <img src="{{ Storage::url(auth()->user()->lecturer_image) }}" class="avatar"
+                                    alt="" />
+                            @endif
                             {{ auth()->user()->fullname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -65,10 +69,13 @@
 
         <!-- Sidebar -->
         <div class="flex-shrink-0 p-3 bg-white sidebar">
-            <a href="{{ route('profile_index',auth()->user()->lecturer_id) }}">
+            <a href="{{ route('profile_index', auth()->user()->lecturer_id) }}">
                 <div class="sidebar-avatar">
-                    <img
-                        src="{{ Storage::url(auth()->user()->lecturer_image) }}" />
+                    @if (auth()->user()->lecturer_image == null)
+                        <img src="{{ asset('image/user_avatar.png') }}" />
+                    @else
+                        <img src="{{ Storage::url(auth()->user()->lecturer_image) }}" />
+                    @endif
                     <h1 class="sidebar-avatar-text mb-0">{{ auth()->user()->fullname }}</h1>
                     <h2></h2>
                 </div>
@@ -83,8 +90,9 @@
                 @php
                     $menu_timetable = strpos(Route::currentRouteName(), 'timetable_') === 0;
                 @endphp
-                <li class="sidebar-item has-submenu {{ !$menu_timetable ? 'collapsed' : '' }}" data-bs-toggle="collapse"
-                    data-bs-target="#section-collapse" aria-expanded="{{ $menu_timetable ? 'true' : 'false' }}">
+                <li class="sidebar-item has-submenu {{ !$menu_timetable ? 'collapsed' : '' }}"
+                    data-bs-toggle="collapse" data-bs-target="#section-collapse"
+                    aria-expanded="{{ $menu_timetable ? 'true' : 'false' }}">
                     <a class="sidebar-link sidebar-submenu {{ $menu_timetable ? 'active' : '' }}" href="#">
                         <i class="bi bi-calendar-check"></i>
                         <span>ตารางสอน</span>

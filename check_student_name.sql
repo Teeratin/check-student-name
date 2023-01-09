@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 21, 2022 at 07:47 AM
+-- Generation Time: Jan 09, 2023 at 01:45 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -63,8 +63,8 @@ CREATE TABLE `lecturer` (
 --
 
 INSERT INTO `lecturer` (`lecturer_id`, `lecturer_prefix`, `lecturer_fname`, `lecturer_lname`, `lecturer_type`, `lecturer_username`, `lecturer_password`, `lecturer_image`) VALUES
-(1, 'นาย', 'ธีรทิน', 'ภู่ระมาต', '1', 'teeratin@rmutsb.ac.th', '$2y$10$Zcyn5ptXlXNnMR0zhs0Kn.BcopqSzCzhGO/.ih5RHLpnHv.pDNPJq', 'public/profile/c1nQub19BJ3LUwNei37rGVrYGhFoXWh7eah0DHP3.png'),
-(5, 'นาย', 'ฆราวัฒน์', 'สนธิเณร', '1', 'karawat@rmutsb.ac.th', '$2y$10$e1dfFtSiC.fm4jd1zmer/OluUuZqYXn8vma6/JrZfXeqIGxKNsa3K', NULL);
+(1, 'นาย', 'ธีรทิน', 'ภู่ระมาต', '1', 'teeratin@rmutsb.ac.th', '$2y$10$Zcyn5ptXlXNnMR0zhs0Kn.BcopqSzCzhGO/.ih5RHLpnHv.pDNPJq', 'public/profile/TGeWgVODEpXo7tzd19KSfTQrTSEF79T1DizL82iS.jpg'),
+(5, 'นาย', 'ฆราวัฒน์', 'สนธิเณร', '2', 'karawat@rmutsb.ac.th', '$2y$10$m3OQJEfKqFCj8NMmaSrTDe0smx0XkUTIl95bPC9tWC8D5UEbYn5rW', 'public/profile/pk13c8Wz5KsRXatxx4uXjoe9cfonlcnqLc720jq5.jpg');
 
 -- --------------------------------------------------------
 
@@ -106,8 +106,7 @@ CREATE TABLE `section` (
 
 INSERT INTO `section` (`section_id`, `section_name`) VALUES
 (1, 'ITS16421N'),
-(3, 'ITS16422N'),
-(5, 'ITS16234N');
+(3, 'ITS16422N');
 
 -- --------------------------------------------------------
 
@@ -200,43 +199,7 @@ INSERT INTO `student` (`student_id`, `student_code`, `student_prefix`, `student_
 (74, '164424221035', 'นาย', 'อธิศ', 'มีเครือ', 3),
 (75, '164424221036', 'นาย', 'อนพัทย์', 'แพงมา', 3),
 (76, '164424221037', 'นาย', 'อรรถพร', 'คำจักร', 3),
-(77, '164424221038', 'นาย', 'พันธกานต์', 'รี้พลรุจี', 3),
-(150, '164424221001', 'นาย', 'กรทอง', 'มากไอ', 5),
-(151, '164424221002', 'นางสาว', 'กวินธิดา', 'กลบแก้ว', 5),
-(152, '164424221003', 'นางสาว', 'กัญญารัตน์', 'นิลทัศ', 5),
-(153, '164424221004', 'นาย', 'คมชาญ', 'เพ็ชร์กูล', 5),
-(154, '164424221005', 'นาย', 'ฆราวัฒน์', 'สนธิเณร', 5),
-(155, '164424221006', 'นาย', 'จิรภัทร', 'หวยสูงเนิน', 5),
-(156, '164424221007', 'นาย', 'ฉันทกร', 'เสือสวัสดิ์', 5),
-(157, '164424221008', 'นาย', 'ชุติพนธ์', 'แจ่มประภาพร', 5),
-(158, '164424221009', 'นาย', 'ณัฐธัญ', 'อุ่นซิม', 5),
-(159, '164424221010', 'นาย', 'ณัฐพล', 'ชื่นบุญชม', 5),
-(160, '164424221011', 'นาย', 'ธนวรรษ', 'ธนวงศ์วิสูตร', 5),
-(161, '164424221012', 'นางสาว', 'ธิดา', 'โอบัวหงษ์', 5),
-(162, '164424221013', 'นาย', 'ธีรทิน', 'ภู่ระมาต', 5),
-(163, '164424221014', 'นางสาว', 'นูรูลฟิตรี', 'มูดอ', 5),
-(164, '164424221015', 'นาย', 'บวรรัตน์', 'รักเพ็ง', 5),
-(165, '164424221016', 'นาย', 'ปฐพี', 'แก้วฉิม', 5),
-(166, '164424221017', 'นาย', 'ปรมินทร์', 'ชายหงษ์', 5),
-(167, '164424221018', 'นาย', 'ปรีดา', 'เถื่อนเล็ก', 5),
-(168, '164424221019', 'นาย', 'ปิยวัฒน์', 'ฤกษ์ถนอม', 5),
-(169, '164424221020', 'นาย', 'ปิยะวัฒน์', 'บุญอาจ', 5),
-(170, '164424221021', 'นาย', 'พงศกร', 'แพงจักร', 5),
-(171, '164424221022', 'นาย', 'พงศธร', 'ปานจำรูญ', 5),
-(172, '164424221023', 'นาย', 'พันกร', 'โสบิน', 5),
-(173, '164424221025', 'นาย', 'พิสิฐพงศ์', 'กิตติชัยมาพร', 5),
-(174, '164424221026', 'นาย', 'พีรพัฒน์', 'ทับเงิน', 5),
-(175, '164424221028', 'นาย', 'ภูมินทร์', 'ลายเครือวัลย์', 5),
-(176, '164424221029', 'นาย', 'ภูมินทร์', 'หุมมะจันทร์', 5),
-(177, '164424221030', 'นางสาว', 'มัลลิกา', 'การเสี่ยงศรี', 5),
-(178, '164424221031', 'นาย', 'เลิศชาย', 'เจิมขุนทด', 5),
-(179, '164424221032', 'นาย', 'สิทธิเดช', 'ทวีกิจโชติรัตน์', 5),
-(180, '164424221033', 'นาย', 'สิรวิชญ์', 'ชาติเผือก', 5),
-(181, '164424221034', 'นาย', 'สุรศักดิ์', 'แสงสุกใส', 5),
-(182, '164424221035', 'นาย', 'อธิศ', 'มีเครือ', 5),
-(183, '164424221036', 'นาย', 'อนพัทย์', 'แพงมา', 5),
-(184, '164424221037', 'นาย', 'อรรถพร', 'คำจักร', 5),
-(185, '164424221038', 'นาย', 'พันธกานต์', 'รี้พลรุจี', 5);
+(77, '164424221038', 'นาย', 'พันธกานต์', 'รี้พลรุจี', 3);
 
 -- --------------------------------------------------------
 
@@ -635,6 +598,42 @@ CREATE TABLE `timetable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`tt_id`, `tt_type`, `date`, `student_id`, `subject_id`, `leave_description`, `leave_type`) VALUES
+(1, 'present', '2022-12-26', 5, 11, NULL, NULL),
+(2, 'present', '2022-12-26', 5, 11, NULL, NULL),
+(3, 'present', '2022-12-26', 5, 11, NULL, NULL),
+(4, 'present', '2022-12-26', 5, 11, NULL, NULL),
+(5, 'present', '2022-12-26', 5, 11, NULL, NULL),
+(6, 'late', '2022-12-26', 5, 11, NULL, NULL),
+(7, 'late', '2022-12-26', 5, 11, NULL, NULL),
+(8, 'absent', '2022-12-26', 5, 11, NULL, NULL),
+(9, 'absent', '2022-12-26', 5, 11, NULL, NULL),
+(10, 'absent', '2022-12-26', 5, 11, NULL, NULL),
+(11, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(12, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(13, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(14, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(15, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(16, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(17, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(18, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(19, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(20, 'absent', '2022-12-26', 6, 11, NULL, NULL),
+(21, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(22, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(23, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(24, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(25, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(26, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(27, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(28, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(29, 'late', '2022-12-26', 7, 11, NULL, NULL),
+(30, 'late', '2022-12-26', 7, 11, NULL, NULL);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -695,43 +694,43 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `course_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lecturer`
 --
 ALTER TABLE `lecturer`
-  MODIFY `lecturer_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `lecturer_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `scoring`
 --
 ALTER TABLE `scoring`
-  MODIFY `scoring_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `scoring_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `section_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `section_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+  MODIFY `student_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `subject_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `tt_id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `tt_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables

@@ -15,38 +15,43 @@
             <p class="h4 mt-3">ช่วงเช้า</p>
         </div>
 
-        @foreach ($data_m as $row)
-            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                <a href="{{ route('checkname_index', $row->subject_id) }}">
-                    <div class="card bg-c-green">
-                        <div class="card-block">
-                            <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
-                                    class="bi bi-calendar4-week float-end"></i></p>
-                            <p>{{ $row->subject_place }}</p>
-                            <p>{{ $row->subject_name }}</p>
+        @foreach ($data as $row)
+            @if ($row->subject_period == 'เช้า')
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                    <a href="{{ route('checkname_index', $row->subject_id) }}">
+                        <div class="card bg-c-green">
+                            <div class="card-block">
+                                <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
+                                        class="bi bi-calendar4-week float-end"></i></p>
+                                <p>{{ $row->subject_place }}</p>
+                                <p>{{ $row->subject_name }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            @endif
         @endforeach
+
 
         <div class="col-lg-12">
             <p class="h4 mt-3">ช่วงบ่าย</p>
         </div>
 
-        @foreach ($data_a as $row)
-            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
-                <a href="{{ route('checkname_index', $row->subject_id) }}">
-                    <div class="card bg-c-green">
-                        <div class="card-block">
-                            <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
-                                    class="bi bi-calendar4-week float-end"></i></p>
-                            <p>{{ $row->subject_place }}</p>
-                            <p>{{ $row->subject_name }}</p>
+        @foreach ($data as $row)
+            @if ($row->subject_period == 'บ่าย')
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+                    <a href="{{ route('checkname_index', $row->subject_id) }}">
+                        <div class="card bg-c-green">
+                            <div class="card-block">
+                                <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
+                                        class="bi bi-calendar4-week float-end"></i></p>
+                                <p>{{ $row->subject_place }}</p>
+                                <p>{{ $row->subject_name }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            @endif
         @endforeach
     </div>
 @endsection
