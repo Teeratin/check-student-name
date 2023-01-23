@@ -15,7 +15,14 @@ class EveningController extends Controller
      */
     public function index()
     {
-        $data = Subject::where('subject_semester',2)->get();
+        $data = Subject::where('subject_semester', 2)->get();
+        return view('timetable_evening', compact('data'));
+    }
+
+    public function search(Request $request)
+    {
+        $id = auth()->user()->lecturer_id;
+        $data = Subject::where('subject_semester', 2)->where('lecturer_id', $id)->where('subject_term', $request->subject_term)->where('subject_year', $request->subject_year)->get();
         return view('timetable_evening', compact('data'));
     }
 

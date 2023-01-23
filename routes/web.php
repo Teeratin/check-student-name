@@ -52,9 +52,11 @@ Route::middleware('auth')->group(function () {
     Route::prefix('timetable')->name('timetable_')->group(function () {
         Route::prefix('normal')->name('normal_')->group(function () {
             Route::get('/', [NormalController::class, 'index'])->name('index');
+            Route::post('/search', [NormalController::class, 'search'])->name('search');
         });
         Route::prefix('evening')->name('evening_')->group(function () {
             Route::get('/', [EveningController::class, 'index'])->name('index');
+            Route::post('/search', [EveningController::class, 'search'])->name('search');
         });
     });
     Route::prefix('manage')->name('manage_')->group(function () {
