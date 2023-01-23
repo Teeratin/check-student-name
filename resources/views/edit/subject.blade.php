@@ -83,8 +83,7 @@
                             <label class="form-label">กลุ่มเรียน</label>
                             <select class="form-select" name="section_id" value="{{ $data->section_id }}">
                                 @foreach ($section as $row)
-                                    <option
-                                        value="{{ $row->section_id }}"{{ $row->section_id == $id ? 'selected' : '' }}>
+                                    <option value="{{ $row->section_id }}"{{ $row->section_id == $id ? 'selected' : '' }}>
                                         {{ $row->section_name }}</option>
                                 @endforeach
                             </select>
@@ -196,7 +195,8 @@
                     <div class="row m-auto g-3">
                         <div class="col-lg-12">
                             <label class="form-label">กลุ่มเรียน</label>
-                            <select class="form-select" name="section_id" value="{{ $data->section_id }}">
+                            <select class="form-select" name="filter_student" id="filter_student"
+                                value="{{ $data->section_id }}">
                                 @foreach ($section as $row)
                                     <option
                                         value="{{ $row->section_id }}"{{ $row->section_id == $id ? 'selected' : '' }}>
@@ -214,18 +214,20 @@
                                         <th scope="col">ตัวเลือก</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>164424221013</td>
-                                        <td>นายธีรทิน ภู่ระมาต</td>
-                                        <td>ITS16421N</td>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value=""id="defaultCheck1">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tbody id="student_filter">
+                                    @foreach ($filter_student as $row)
+                                        <tr>
+                                            <td>{{ $row->student_code }}</td>
+                                            <td>{{ $row->fullname }}</td>
+                                            <td>{{ $row->section->section_name }}</td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        value=""id="defaultCheck1">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

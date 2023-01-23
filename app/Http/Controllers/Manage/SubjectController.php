@@ -78,14 +78,20 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $courses = Course::get();
         $scoring = Scoring::where('lecturer_id', auth()->user()->lecturer_id)->get();
         $section = Section::get();
         $students = Subject_Student::where('subject_id', $id)->get();
         $data = Subject::find($id);
-        return view('edit.subject', compact('id', 'data', 'courses', 'scoring', 'section', 'students'));
+        $filter_student = Student::where('section_id', 1)->get();
+
+        if ($request->ajax()) {
+            $students = Student::where(['section_id' => $request->filter_student])->get();
+            return response()->json(['students' => $students]);
+        }
+        return view('edit.subject', compact('id', 'data', 'courses', 'scoring', 'section', 'students', 'filter_student'));
     }
 
     /**
