@@ -24,6 +24,12 @@ $(document).ready(function () {
                                 <td>" +
                             students[i]["section->section_name"] +
                             "</td>\
+                            <td>\
+                            <div class='form-check'>\
+                              <input class='form-check-input' type='checkbox'\
+                                value='' id='defaultCheck1'>\
+                            </div>\
+                            </td>\
                                 </tr>";
                     }
                 } else {
