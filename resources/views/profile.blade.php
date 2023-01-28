@@ -13,7 +13,7 @@
                             <img class="img-account-profile rounded-circle mb-2"
                                 src="{{ asset('image/user_avatar.png') }}" alt="">
                         @else
-                            <img class="img-account-profile rounded-circle mb-2"
+                        <img class="img-account-profile rounded-circle mb-2"
                                 src="{{ Storage::url(auth()->user()->lecturer_image) }}" alt="">
                         @endif
                         <div class="mt-2 mb-2 ps-5 pe-5">

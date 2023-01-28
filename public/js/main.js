@@ -24,7 +24,7 @@ $(document).ready(function () {
                             <td>\
                             <div class='form-check'>\
                               <input class='form-check-input' type='checkbox'\
-                                value='' id='defaultCheck1'>\
+                                value='"+students[i]["student_id"]+"' name='checkbox[]'>\
                             </div>\
                             </td>\
                                 </tr>";

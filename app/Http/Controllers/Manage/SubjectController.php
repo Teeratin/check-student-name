@@ -46,7 +46,7 @@ class SubjectController extends Controller
 
     public function add_student(Request $request)
     {
-        foreach ($request->checkbox as $key => $id) {
+        foreach ($request->checkbox as $key=>$id) {
             $insert = [
                 'student_id' => $request->checkbox[$key],
                 'subject_id' => $request->subject_id,
