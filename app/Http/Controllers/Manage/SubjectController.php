@@ -32,12 +32,6 @@ class SubjectController extends Controller
         return view('add.subject', compact('courses', 'scoring', 'section'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $data = $request->all();
@@ -48,6 +42,18 @@ class SubjectController extends Controller
             $create->students()->attach($students);
         }
         return redirect()->route('manage_subject_index');
+    }
+
+    public function add_student(Request $request)
+    {
+        foreach ($request->checkbox as $key => $id) {
+            $insert = [
+                'student_id' => $request->checkbox[$key],
+                'subject_id' => $request->subject_id,
+            ];
+            Subject_Student::create($insert);
+        }
+        return redirect()->back();
     }
 
     /**

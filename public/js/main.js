@@ -21,9 +21,6 @@ $(document).ready(function () {
                             " " +
                             students[i]["student_lname"] +
                             "</td>\
-                                <td>" +
-                            students[i]["section->section_name"] +
-                            "</td>\
                             <td>\
                             <div class='form-check'>\
                               <input class='form-check-input' type='checkbox'\

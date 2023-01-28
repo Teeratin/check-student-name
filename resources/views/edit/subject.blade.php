@@ -192,46 +192,46 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row m-auto g-3">
-                        <div class="col-lg-12">
-                            <label class="form-label">กลุ่มเรียน</label>
-                            <select class="form-select" name="filter_student" id="filter_student"
-                                value="{{ $data->section_id }}">
-                                @foreach ($section as $row)
-                                    <option
-                                        value="{{ $row->section_id }}"{{ $row->section_id == $id ? 'selected' : '' }}>
-                                        {{ $row->section_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mt-3">
-                            <table class="table" id="example">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">รหัสนักศึกษา</th>
-                                        <th scope="col">ชื่อ-นามสกุล</th>
-                                        <th scope="col">กลุ่มเรียน</th>
-                                        <th scope="col">ตัวเลือก</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="student_filter">
-                                    @foreach ($filter_student as $row)
-                                        <tr>
-                                            <td>{{ $row->student_code }}</td>
-                                            <td>{{ $row->fullname }}</td>
-                                            <td>{{ $row->section->section_name }}</td>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        value=""id="defaultCheck1">
-                                                </div>
-                                            </td>
-                                        </tr>
+                    <form action="{{ route('manage_subject_index') }}" method="POST">
+                        @csrf
+                        <div class="row m-auto g-3">
+                            <div class="col-lg-12">
+                                <label class="form-label">กลุ่มเรียน</label>
+                                <select class="form-select" name="subject_id" id="filter_student"
+                                    value="{{ $data->section_id }}">
+                                    @foreach ($section as $row)
+                                        <option
+                                            value="{{ $row->section_id }}"{{ $row->section_id == $id ? 'selected' : '' }}>
+                                            {{ $row->section_name }}</option>
                                     @endforeach
-                                </tbody>
-                            </table>
+                                </select>
+                            </div>
+                            <div class="mt-3">
+                                <table class="table" id="example">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">รหัสนักศึกษา</th>
+                                            <th scope="col">ชื่อ-นามสกุล</th>
+                                            <th scope="col">ตัวเลือก</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="student_filter">
+                                        @foreach ($filter_student as $row)
+                                            <tr>
+                                                <td>{{ $row->student_code }}</td>
+                                                <td>{{ $row->fullname }}</td>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="{{ $row->student_id }}" name="checkbox[]">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -239,6 +239,7 @@
                     </button>
                     <button type="button" class="btn btn-success">ยืนยัน</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>

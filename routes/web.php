@@ -12,7 +12,6 @@ use App\Http\Controllers\Manage\SubjectController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Timetable\EveningController;
 use App\Http\Controllers\Timetable\NormalController;
-use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +63,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [SubjectController::class, 'index'])->name('index');
             Route::get('/add', [SubjectController::class, 'add'])->name('add');
             Route::post('/create', [SubjectController::class, 'create'])->name('create');
+            Route::post('/add_student', [SubjectController::class, 'add_student'])->name('add_student');
             Route::get('/edit/{id}', [SubjectController::class, 'edit'])->name('edit');
             Route::get('/delete/{id}', [SubjectController::class, 'delete'])->name('delete');
             Route::post('/update/{id}', [SubjectController::class, 'update'])->name('update');
