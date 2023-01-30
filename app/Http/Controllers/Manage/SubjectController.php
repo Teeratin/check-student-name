@@ -46,7 +46,7 @@ class SubjectController extends Controller
 
     public function add_student(Request $request)
     {
-        foreach ($request->checkbox as $key=>$id) {
+        foreach ($request->checkbox as $key => $id) {
             $insert = [
                 'student_id' => $request->checkbox[$key],
                 'subject_id' => $request->subject_id,
@@ -56,7 +56,8 @@ class SubjectController extends Controller
         return redirect()->back();
     }
 
-    /**
+
+       /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -125,4 +126,12 @@ class SubjectController extends Controller
         Subject::find($id)->delete();
         return redirect()->route('manage_subject_index');
     }
+
+    public function delete_student($id,$sid)
+    {
+        Subject_Student::where('subject_id', $id)->where('student_id',$sid)->delete();
+
+        return redirect()->back();
+    }
+
 }

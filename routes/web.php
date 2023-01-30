@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{id}', [SubjectController::class, 'edit'])->name('edit');
             Route::get('/delete/{id}', [SubjectController::class, 'delete'])->name('delete');
             Route::post('/update/{id}', [SubjectController::class, 'update'])->name('update');
+            Route::post('/delete_student/{id}/{sid}', [SubjectController::class, 'delete_student'])->name('delete_student');
         });
         Route::prefix('course')->name('course_')->group(function () {
             Route::get('/', [CourseController::class, 'index'])->name('index');

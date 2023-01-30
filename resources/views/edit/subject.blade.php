@@ -159,10 +159,6 @@
                                     <td>{{ $row->student->fullname }}</td>
                                     <td>{{ $row->student->section->section_name }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#ModalEdit{{ $row->student->student_id }}">
-                                            <i class="bi bi-pencil-square"></i> แก้ไข
-                                        </button>
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#ModalDelete{{ $row->student->student_id }}">
                                             <i class="bi bi-trash3"></i> ลบ
@@ -174,88 +170,33 @@
                                 <div class="modal fade" id="ModalDelete{{ $row->student->student_id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-danger">
-                                                <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
-                                                    ลบ
-                                                </h1>
-                                                <button type="button" class="btn-close btn-close-white"
-                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row m-auto g-3">
-                                                    <p class="fs-5">คุณต้องการลบ "{{ $row->student->fullname }}" ใช่หรือไม่</p>
+                                        <form
+                                            action="{{ route('manage_subject_delete_student', ['id' => $data->subject_id, 'sid' => $row->student->student_id]) }}"
+                                            method="POST">
+                                            @csrf
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-danger">
+                                                    <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
+                                                        ลบ
+                                                    </h1>
+                                                    <button type="button" class="btn-close btn-close-white"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    ยกเลิก
-                                                </button>
-                                                <button type="button" class="btn btn-danger">ยืนยัน</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Modal Edit -->
-                                <div class="modal fade" id="ModalEdit{{ $row->student->student_id }}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-warning">
-                                                <h1 class="modal-title fs-5 " id="exampleModalLabel">
-                                                    แก้ไขรายชือนักศึกษา
-                                                </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row m-auto g-3">
-                                                    <div class="col-lg-12">
-                                                        <label class="form-label">รหัสนักศึกษา</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="{{ $row->student->student_code }}" />
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <label class="form-label">คำนำหน้า</label>
-                                                        <select class="form-select" name="">
-                                                            <option value="นาย"
-                                                                {{ $row->student->student_prefix == 'นาย' ? 'selected' : '' }}>
-                                                                นาย</option>
-                                                            <option value="นางสาว"
-                                                                {{ $row->student->student_prefix == 'นางสาว' ? 'selected' : '' }}>
-                                                                นางสาว</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <label class="form-label">ชื่อ</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="{{ $row->student->student_fname }}" />
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <label class="form-label">นามสกุล</label>
-                                                        <input type="text" class="form-control" name=""
-                                                            value="{{ $row->student->student_lname }}" />
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <label class="form-label">กลุ่มเรียน</label>
-                                                        <select class="form-select" disabled>
-                                                            @foreach ($students as $row)
-                                                                <option value="{{ $row->student->section->section_name }}"
-                                                                    {{ $row->student->section->section_name == $row->student->section->section_name ? 'selected' : '' }}>
-                                                                    {{ $row->student->section->section_name }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                <div class="modal-body">
+                                                    <div class="row m-auto g-3">
+                                                        <p class="fs-5">คุณต้องการลบ "{{ $row->student->fullname }}"
+                                                            ใช่หรือไม่</p>
                                                     </div>
                                                 </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">
+                                                        ยกเลิก
+                                                    </button>
+                                                    <button type="submit" class="btn btn-danger">ยืนยัน</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    ยกเลิก
-                                                </button>
-                                                <button type="button" class="btn btn-warning">ยืนยัน</button>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -289,14 +230,14 @@
                         <div class="row m-auto g-3">
                             <div class="col-lg-12">
                                 <label class="form-label">กลุ่มเรียน</label>
-                                <select class="form-select" name="subject_id" id="filter_student"
-                                    value="{{ $data->section_id }}">
+                                <select class="form-select" name="section_id" id="filter_student">
                                     @foreach ($section as $row)
                                         <option
                                             value="{{ $row->section_id }}"{{ $row->section_id == $id ? 'selected' : '' }}>
                                             {{ $row->section_name }}</option>
                                     @endforeach
                                 </select>
+                                <input type="hidden" name="subject_id" value="{{ $data->subject_id }}">
                             </div>
                             <div class="mt-3">
                                 <table class="table" id="example">
