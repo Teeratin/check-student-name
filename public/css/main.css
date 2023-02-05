@@ -401,21 +401,357 @@ a:focus {
     object-position: center;
 }
 
-.bg-c-green {
-    background: linear-gradient(90deg, #038a7c, #038a7c);
-    color: #fff;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-    border: none;
-    margin-bottom: 30px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    padding: 25px;
-    height: 200px;
-}
-
 .bg-green {
     background: linear-gradient(90deg, #038a7c, #038a7c);
-    color: #fff;
 }
+
+
+/* Card Time Table */
+.card-mon {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-mon:focus,
+.card-mon:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-mon .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-mon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #FBCE69;
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-mon:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FBCE69;
+    z-index: 0;
+}
+/* Card Time Table */
+
+/* Card Time Table */
+.card-tue {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-tue:focus,
+.card-tue:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-tue .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-tue::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #F9B5D0;
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-tue:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F9B5D0;
+    z-index: 0;
+}
+/* Card Time Table */
+
+/* Card Time Table */
+.card-wen {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-wen:focus,
+.card-wen:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-wen .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-wen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #B6E2A1;
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-wen:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #B6E2A1;
+    z-index: 0;
+}
+/* Card Time Table */
+
+/* Card Time Table */
+.card-thu {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-thu:focus,
+.card-thu:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-thu .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-thu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #FEBE8C;
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-thu:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FEBE8C;
+    z-index: 0;
+}
+/* Card Time Table */
+
+/* Card Time Table */
+.card-fri {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-fri:focus,
+.card-fri:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-fri .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-fri::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #AAC4FF;
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-fri:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #AAC4FF;
+    z-index: 0;
+}
+/* Card Time Table */
+
+/* Card Time Table */
+.card-sat {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-sat:focus,
+.card-sat:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-sat .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-sat::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #D09CFA;
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-sat:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #D09CFA;
+    z-index: 0;
+}
+/* Card Time Table */
+
+/* Card Time Table */
+.card-sun {
+    overflow: hidden;
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    transform: scale(1);
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+.card-sun:focus,
+.card-sun:active {
+    box-shadow: none;
+    transform: scale(0.96);
+}
+
+.card-sun .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-sun::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #FF7878;
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.card-sun:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FF7878;
+    z-index: 0;
+}
+/* Card Time Table */

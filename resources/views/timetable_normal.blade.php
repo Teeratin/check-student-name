@@ -27,10 +27,17 @@
 
     @foreach ($data as $row)
         @if ($row->subject_period == 'เช้า')
-            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 mb-2">
                 <a href="{{ route('checkname_index', $row->subject_id) }}">
-                    <div class="card bg-c-green">
-                        <div class="card-block">
+                    <div
+                        class="card {{ $row->subject_day == 'จันทร์' ? ' card-mon' : '' }}
+                                    {{ $row->subject_day == 'อังคาร' ? 'card-tue' : '' }}
+                                    {{ $row->subject_day == 'พุธ' ? 'card-wen' : '' }}
+                                    {{ $row->subject_day == 'พฤหัส' ? 'card-thu' : '' }}
+                                    {{ $row->subject_day == 'ศุกร์' ? 'card-fri' : '' }}
+                                    {{ $row->subject_day == 'เสาร์' ? 'card-sat' : '' }}
+                                    {{ $row->subject_day == 'อาทิตย์' ? 'card-sun' : '' }}">
+                        <div class="card-body">
                             <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
                                     class="bi bi-calendar4-week float-end"></i></p>
                             <p>{{ $row->subject_place }}</p>
@@ -49,10 +56,17 @@
 
     @foreach ($data as $row)
         @if ($row->subject_period == 'บ่าย')
-            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 mb-2">
                 <a href="{{ route('checkname_index', $row->subject_id) }}">
-                    <div class="card bg-c-green">
-                        <div class="card-block">
+                    <div
+                        class="card {{ $row->subject_day == 'จันทร์' ? ' card-mon' : '' }}
+                                    {{ $row->subject_day == 'อังคาร' ? 'card-tue' : '' }}
+                                    {{ $row->subject_day == 'พุธ' ? 'card-wen' : '' }}
+                                    {{ $row->subject_day == 'พฤหัส' ? 'card-thu' : '' }}
+                                    {{ $row->subject_day == 'ศุกร์' ? 'card-fri' : '' }}
+                                    {{ $row->subject_day == 'เสาร์' ? 'card-sat' : '' }}
+                                    {{ $row->subject_day == 'อาทิตย์' ? 'card-sun' : '' }}">
+                        <div class="card-body">
                             <p class="fs-4">{{ $row->subject_day }} [{{ $row->subject_code }}] <i
                                     class="bi bi-calendar4-week float-end"></i></p>
                             <p>{{ $row->subject_place }}</p>
