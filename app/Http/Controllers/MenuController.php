@@ -11,10 +11,8 @@ class MenuController extends Controller
         if(auth()->user()->lecturer_type == 1){
             return redirect()->route('manage_lecturer_index');
         }else{
-            return redirect()->route('menu');
+            return view('menu');
         }
-
-        return view('menu');
     }
 
     public function menu_section()
