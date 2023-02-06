@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subject->students as $student)
+                    @foreach ($students as $student)
                         <tr>
                             <td>{{ $student->student_code }}</td>
                             <td>{{ $student->fullname }}</td>
@@ -154,6 +154,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $students->links() }}
         </div>
     </div>
 @endsection

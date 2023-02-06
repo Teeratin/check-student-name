@@ -421,6 +421,7 @@ a:focus {
     align-items: center;
     padding: 10px;
 }
+
 .card-mon:focus,
 .card-mon:active {
     box-shadow: none;
@@ -454,6 +455,7 @@ a:focus {
     background-color: #FBCE69;
     z-index: 0;
 }
+
 /* Card Time Table */
 
 /* Card Time Table */
@@ -471,6 +473,7 @@ a:focus {
     align-items: center;
     padding: 10px;
 }
+
 .card-tue:focus,
 .card-tue:active {
     box-shadow: none;
@@ -504,6 +507,7 @@ a:focus {
     background-color: #F9B5D0;
     z-index: 0;
 }
+
 /* Card Time Table */
 
 /* Card Time Table */
@@ -521,6 +525,7 @@ a:focus {
     align-items: center;
     padding: 10px;
 }
+
 .card-wen:focus,
 .card-wen:active {
     box-shadow: none;
@@ -554,6 +559,7 @@ a:focus {
     background-color: #B6E2A1;
     z-index: 0;
 }
+
 /* Card Time Table */
 
 /* Card Time Table */
@@ -571,6 +577,7 @@ a:focus {
     align-items: center;
     padding: 10px;
 }
+
 .card-thu:focus,
 .card-thu:active {
     box-shadow: none;
@@ -604,6 +611,7 @@ a:focus {
     background-color: #FEBE8C;
     z-index: 0;
 }
+
 /* Card Time Table */
 
 /* Card Time Table */
@@ -621,6 +629,7 @@ a:focus {
     align-items: center;
     padding: 10px;
 }
+
 .card-fri:focus,
 .card-fri:active {
     box-shadow: none;
@@ -654,6 +663,7 @@ a:focus {
     background-color: #AAC4FF;
     z-index: 0;
 }
+
 /* Card Time Table */
 
 /* Card Time Table */
@@ -671,6 +681,7 @@ a:focus {
     align-items: center;
     padding: 10px;
 }
+
 .card-sat:focus,
 .card-sat:active {
     box-shadow: none;
@@ -704,6 +715,7 @@ a:focus {
     background-color: #D09CFA;
     z-index: 0;
 }
+
 /* Card Time Table */
 
 /* Card Time Table */
@@ -721,6 +733,7 @@ a:focus {
     align-items: center;
     padding: 10px;
 }
+
 .card-sun:focus,
 .card-sun:active {
     box-shadow: none;
@@ -754,4 +767,37 @@ a:focus {
     background-color: #FF7878;
     z-index: 0;
 }
+
 /* Card Time Table */
+
+.active>.page-link,
+.page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    font-size: var(--bs-pagination-font-size);
+    color: var(--primary);
+    text-decoration: none;
+    background-color: var(--bs-pagination-bg);
+    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.page-link:hover {
+    position: relative;
+    display: block;
+    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    font-size: var(--bs-pagination-font-size);
+    color: var(--primary);
+    text-decoration: none;
+    background-color: var(--bs-pagination-bg);
+    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}

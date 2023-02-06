@@ -8,6 +8,12 @@ class MenuController extends Controller
 {
     public function index()
     {
+        if(auth()->user()->lecturer_type == 1){
+            return redirect()->route('manage_lecturer_index');
+        }else{
+            return redirect()->route('menu');
+        }
+
         return view('menu');
     }
 
