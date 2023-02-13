@@ -65,11 +65,11 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
+                                            <a href="{{ route('manage_lecturer_delete', $data->lecturer_id) }}"
+                                                class="btn btn-danger">ยืนยัน</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                 ยกเลิก
                                             </button>
-                                            <a href="{{ route('manage_lecturer_delete', $data->lecturer_id) }}"
-                                                class="btn btn-danger">ยืนยัน</a>
                                         </div>
                                     </div>
                                 </div>

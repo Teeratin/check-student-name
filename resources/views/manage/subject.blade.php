@@ -70,11 +70,11 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
+                                            <a href="{{ route('manage_subject_delete', $row->subject_id) }}" type="button"
+                                                class="btn btn-danger">ยืนยัน</a>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                 ยกเลิก
                                             </button>
-                                            <a href="{{ route('manage_subject_delete', $row->subject_id) }}" type="button"
-                                                class="btn btn-danger">ยืนยัน</a>
                                         </div>
                                     </div>
                                 </div>

@@ -95,10 +95,10 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
+                                            <button type="submit" class="btn btn-warning">ยืนยัน</button>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                 ยกเลิก
                                             </button>
-                                            <button type="submit" class="btn btn-warning">ยืนยัน</button>
                                         </div>
                                     </form>
                                 </div>
@@ -123,11 +123,11 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <a href="{{ route('manage_section_delete_student', ['id' => $row->section_id, 'sid' => $row->student_id]) }}"
+                                            class="btn btn-danger">ยืนยัน</a>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                             ยกเลิก
                                         </button>
-                                        <a href="{{ route('manage_section_delete_student', ['id' => $row->section_id, 'sid' => $row->student_id]) }}"
-                                            class="btn btn-danger">ยืนยัน</a>
                                     </div>
                                 </div>
                             </div>
@@ -181,10 +181,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">ยืนยัน</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             ยกเลิก
                         </button>
-                        <button type="submit" class="btn btn-success">ยืนยัน</button>
                     </div>
                 </form>
             </div>
@@ -217,10 +217,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">ยืนยัน</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             ยกเลิก
                         </button>
-                        <button type="submit" class="btn btn-success">ยืนยัน</button>
                     </div>
                 </form>
             </div>

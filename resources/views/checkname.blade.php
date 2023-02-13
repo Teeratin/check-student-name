@@ -77,11 +77,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-secondary">ยืนยัน</button>
                                                         <button type="button" class="btn btn-outline-secondary"
                                                             data-bs-dismiss="modal">
                                                             ยกเลิก
                                                         </button>
-                                                        <button type="submit" class="btn btn-secondary">ยืนยัน</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -137,11 +137,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-secondary">ยืนยัน</button>
                                                         <button type="button" class="btn btn-outline-secondary"
                                                             data-bs-dismiss="modal">
                                                             ยกเลิก
                                                         </button>
-                                                        <button type="submit" class="btn btn-secondary">ยืนยัน</button>
                                                     </div>
                                                 </form>
                                             </div>

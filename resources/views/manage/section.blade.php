@@ -35,7 +35,7 @@
                             <td>{{ $row->section_name }}</td>
                             <td>{{ $row->students()->count() }}</td>
                             <td>
-                                <a href="{{ route('manage_section_edit',$row->section_id) }}">
+                                <a href="{{ route('manage_section_edit', $row->section_id) }}">
                                     <button type="button" class="btn btn-warning">
                                         <i class="bi bi-pencil-square"></i> แก้ไข
                                     </button>
@@ -48,8 +48,8 @@
                         </tr>
 
                         <!-- Modal Delete -->
-                        <div class="modal fade" id="ModalDelete{{ $row->section_id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="ModalDelete{{ $row->section_id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bg-danger">
@@ -65,10 +65,11 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <a href="{{ route('manage_section_delete', $row->section_id) }}"
+                                            class="btn btn-danger">ยืนยัน</a>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                             ยกเลิก
                                         </button>
-                                        <a href="{{ route('manage_section_delete', $row->section_id) }}" class="btn btn-danger">ยืนยัน</a>
                                     </div>
                                 </div>
                             </div>
@@ -103,10 +104,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="submint" class="btn btn-success">ยืนยัน</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             ยกเลิก
                         </button>
-                        <button type="submint" class="btn btn-success">ยืนยัน</button>
                     </div>
                 </form>
             </div>
