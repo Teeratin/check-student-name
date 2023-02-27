@@ -20,7 +20,7 @@ class ChecknameController extends Controller
 
         $subject = Subject::where('subject_id', $id)->first();
         $students = $subject->students()->paginate(10);
-        return view('checkname', compact('id', 'students'));
+        return view('checkname', compact('id', 'students','subject'));
     }
 
     /**

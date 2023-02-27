@@ -3,9 +3,10 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <p class="fs-2"></p>
+            <p class="fs-3 mt-3 mb-2 ms-1">[{{ $subject->subject_code }}] {{ $subject->subject_name }}</p>
         </div>
         <div class="col-lg-12">
+            <hr>
             <table class="table">
                 <thead>
                     <tr>
