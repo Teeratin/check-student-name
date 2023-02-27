@@ -33,7 +33,7 @@
                         class="card {{ $row->subject_day == 'จันทร์' ? ' card-mon' : '' }}
                                     {{ $row->subject_day == 'อังคาร' ? 'card-tue' : '' }}
                                     {{ $row->subject_day == 'พุธ' ? 'card-wen' : '' }}
-                                    {{ $row->subject_day == 'พฤหัส' ? 'card-thu' : '' }}
+                                    {{ $row->subject_day == 'พฤหัสบดี' ? 'card-thu' : '' }}
                                     {{ $row->subject_day == 'ศุกร์' ? 'card-fri' : '' }}
                                     {{ $row->subject_day == 'เสาร์' ? 'card-sat' : '' }}
                                     {{ $row->subject_day == 'อาทิตย์' ? 'card-sun' : '' }}">
@@ -62,7 +62,7 @@
                         class="card {{ $row->subject_day == 'จันทร์' ? ' card-mon' : '' }}
                                     {{ $row->subject_day == 'อังคาร' ? 'card-tue' : '' }}
                                     {{ $row->subject_day == 'พุธ' ? 'card-wen' : '' }}
-                                    {{ $row->subject_day == 'พฤหัส' ? 'card-thu' : '' }}
+                                    {{ $row->subject_day == 'พฤหัสบดี' ? 'card-thu' : '' }}
                                     {{ $row->subject_day == 'ศุกร์' ? 'card-fri' : '' }}
                                     {{ $row->subject_day == 'เสาร์' ? 'card-sat' : '' }}
                                     {{ $row->subject_day == 'อาทิตย์' ? 'card-sun' : '' }}">

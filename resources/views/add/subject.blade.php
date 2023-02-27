@@ -59,7 +59,7 @@
                                 <option value="จันทร์">จันทร์</option>
                                 <option value="อังคาร">อังคาร</option>
                                 <option value="พุธ">พุธ</option>
-                                <option value="พฤหัส">พฤหัส</option>
+                                <option value="พฤหัสบดี">พฤหัสบดี</option>
                                 <option value="ศุกร์">ศุกร์</option>
                                 <option value="เสาร์">เสาร์</option>
                                 <option value="อาทิตย์">อาทิตย์</option>

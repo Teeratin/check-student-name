@@ -69,7 +69,7 @@
                                 <option value="อังคาร" {{ 'อังคาร' == $data->subject_day ? 'selected' : '' }}>อังคาร
                                 </option>
                                 <option value="พุธ" {{ 'พุธ' == $data->subject_day ? 'selected' : '' }}>พุธ</option>
-                                <option value="พฤหัส" {{ 'พฤหัส' == $data->subject_day ? 'selected' : '' }}>พฤหัส
+                                <option value="พฤหัสบดี" {{ 'พฤหัสบดี' == $data->subject_day ? 'selected' : '' }}>พฤหัสบดี
                                 </option>
                                 <option value="ศุกร์" {{ 'ศุกร์' == $data->subject_day ? 'selected' : '' }}>ศุกร์
                                 </option>
