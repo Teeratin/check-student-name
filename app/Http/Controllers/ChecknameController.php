@@ -20,7 +20,7 @@ class ChecknameController extends Controller
 
         $subject = Subject::where('subject_id', $id)->first();
         $students = $subject->students()->paginate(10);
-        return view('checkname', compact('id', 'students','subject'));
+        return view('checkname', compact('id', 'students', 'subject'));
     }
 
     /**
@@ -51,21 +51,57 @@ class ChecknameController extends Controller
 
     public function late($id, $sid)
     {
+        $lateCount = Timetable::where('student_id', $sid)
+            ->where('subject_id', $id)
+            ->where('tt_type', 'late')
+            ->count();
+
+        if ($lateCount >= 2) {
+            // Delete the 'late' entries for the student
+            Timetable::where('student_id', $sid)
+                ->where('subject_id', $id)
+                ->where('tt_type', 'late')
+                ->delete();
+
+            $type = 'absent';
+        } else {
+            $type = 'late';
+        }
+
         $create = new Timetable;
-        $create->tt_type = 'late';
+        $create->tt_type = $type;
         $create->date = date('Y-m-d');
         $create->student_id = $sid;
         $create->subject_id = $id;
         $create->save();
+
         return back();
     }
 
     public function update_late($id, $sid)
     {
+        $lateCount = Timetable::where('student_id', $sid)
+            ->where('subject_id', $id)
+            ->where('tt_type', 'late')
+            ->whereDate('date', date('Y-m-d'))
+            ->count();
+
+        if ($lateCount >= 2) {
+            // Delete the 'late' entries for the student
+            Timetable::where('student_id', $sid)
+                ->where('subject_id', $id)
+                ->where('tt_type', 'late')
+                ->whereDate('date', date('Y-m-d'))
+                ->delete();
+
+            $type = 'absent';
+        } else {
+            $type = 'late';
+        }
         $update = Timetable::where('student_id', $sid)
             ->where('subject_id', $id)
             ->whereDate('date', date('Y-m-d'))->first();
-        $update->tt_type = 'late';
+        $update->tt_type = $type;
         $update->save();
         return back();
     }
