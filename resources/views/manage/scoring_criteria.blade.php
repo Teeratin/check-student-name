@@ -150,15 +150,15 @@
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">มาเรียน</label>
-                                <input type="text" class="form-control" name="scoring_present" />
+                                <input type="number" class="form-control" name="scoring_present" required />
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">สาย</label>
-                                <input type="text" class="form-control" name="scoring_late" />
+                                <input type="number" class="form-control" name="scoring_late" required />
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">ขาด</label>
-                                <input type="text" class="form-control" name="scoring_absent" />
+                                <input type="number" class="form-control" name="scoring_absent" required />
                                 <input type="hidden" name="lecturer_id" value="{{ auth()->user()->lecturer_id }}">
                             </div>
                         </div>

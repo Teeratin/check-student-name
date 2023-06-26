@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand ms-3 d-flex align-items-center" href="{{ route('menu') }}">
-                <img src="{{ asset('image/logo-rus.png') }}" width="60" height="60" />
+                <img src="/image/logo-rus.png" width="60" height="60" />
                 <h3 class="mb-0 ms-3 fw-bold font-header">
                     ระบบเช็คชื่อเข้าเรียนของนักศึกษา
                 </h3>
@@ -30,15 +30,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <img src="{{ Storage::url(auth()->user()->lecturer_image) }}"
-                                class="avatar" alt="" />
+                            @if (auth()->user()->lecturer_image == null)
+                                <img src="{{ asset('image/user_avatar.png') }}" class="avatar" alt="" />
+                            @else
+                                <img src="{{ Storage::url(auth()->user()->lecturer_image) }}" class="avatar"
+                                    alt="" />
+                            @endif
                             {{ auth()->user()->fullname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ route('profile_index',$user_id) }}">
+                                <a class="dropdown-item" href="{{ route('profile_index', $user_id) }}">
                                     <i class="bi bi-person-gear"></i> บัญชี</a>
                             </li>
                             <li>
